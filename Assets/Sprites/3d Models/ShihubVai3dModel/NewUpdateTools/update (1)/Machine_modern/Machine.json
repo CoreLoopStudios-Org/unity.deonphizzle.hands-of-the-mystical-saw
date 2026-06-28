@@ -1,0 +1,224 @@
+﻿{
+    "Machine": {
+        "Version": "1.10.1822.1",
+        "Scene": {
+            "Name": true,
+            "SupportShaderSelect": false
+        },
+        "Export Directory": "C:/Users/HP Z640/Desktop/Machine_modern",
+        "Object": {
+            "Machine": {
+                "Physics": {},
+                "Meshes": {
+                    "node_0_Remeshed_Remeshed_Remeshed_Remeshed": {
+                        "Materials": {
+                            "node_0_Remeshed_Remeshed_Remeshed_Bake": {
+                                "Textures": {
+                                    "Metallic": {
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ],
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Texture Path": "./textures/Machine/Machine/node_0_Remeshed_Remeshed_Remeshed_Remeshed/node_0_Remeshed_Remeshed_Remeshed_Bake/node_0_Remeshed_Remeshed_Remeshed_Bake_metallic.png",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "Base Color": {
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ],
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Texture Path": "node_0_Remeshed_Remeshed_Remeshed_Bake_Diffuse_0001.png",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "Roughness": {
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ],
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Texture Path": "./textures/Machine/Machine/node_0_Remeshed_Remeshed_Remeshed_Remeshed/node_0_Remeshed_Remeshed_Remeshed_Bake/node_0_Remeshed_Remeshed_Remeshed_Bake_roughness.png",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "Normal": {
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ],
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Texture Path": "node_0_Remeshed_Remeshed_Remeshed_Bake_Normal_0001.png",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    }
+                                },
+                                "MultiUV Index": 0,
+                                "Two Side": true,
+                                "Diffuse Color": [
+                                    255.0,
+                                    255.0,
+                                    255.0
+                                ],
+                                "Ambient Color": [
+                                    0.0,
+                                    0.0,
+                                    0.0
+                                ],
+                                "Specular Color": [
+                                    127.5,
+                                    127.5,
+                                    127.5
+                                ],
+                                "Opacity": 1.0,
+                                "Self Illumination": 0.0,
+                                "Material Type": "Pbr",
+                                "MultiUV Index": 0,
+                                "Two Side": true,
+                                "Diffuse Color": [
+                                    255.0,
+                                    255.0,
+                                    255.0
+                                ],
+                                "Ambient Color": [
+                                    0.0,
+                                    0.0,
+                                    0.0
+                                ],
+                                "Specular Color": [
+                                    127.5,
+                                    127.5,
+                                    127.5
+                                ],
+                                "Opacity": 1.0,
+                                "Self Illumination": 0.0
+                            }
+                        }
+                    },
+                    "polySurface5": {
+                        "Materials": {
+                            "node_0_Remeshed_Remeshed_Remeshed_Remeshed_Bake": {
+                                "Material Type": "Pbr",
+                                "MultiUV Index": 0,
+                                "Two Side": true,
+                                "Diffuse Color": [
+                                    255.0,
+                                    255.0,
+                                    255.0
+                                ],
+                                "Ambient Color": [
+                                    0.0,
+                                    0.0,
+                                    0.0
+                                ],
+                                "Specular Color": [
+                                    127.5,
+                                    127.5,
+                                    127.5
+                                ],
+                                "Opacity": 1.0,
+                                "Self Illumination": 0.0,
+                                "Textures": {
+                                    "Metallic": {
+                                        "Texture Path": "./textures/Machine/Machine/polySurface5/node_0_Remeshed_Remeshed_Remeshed_Remeshed_Bake/node_0_Remeshed_Remeshed_Remeshed_Remeshed_Bake_metallic.png",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "Base Color": {
+                                        "Texture Path": "node_0_Remeshed_Remeshed_Remeshed_Remeshed_Bake_Diffuse.png",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "Roughness": {
+                                        "Texture Path": "./textures/Machine/Machine/polySurface5/node_0_Remeshed_Remeshed_Remeshed_Remeshed_Bake/node_0_Remeshed_Remeshed_Remeshed_Remeshed_Bake_roughness.png",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    },
+                                    "Normal": {
+                                        "Texture Path": "node_0_Remeshed_Remeshed_Remeshed_Remeshed_Bake_Normal.png",
+                                        "Strength": 100.0,
+                                        "Offset": [
+                                            0.0,
+                                            0.0
+                                        ],
+                                        "Tiling": [
+                                            1.0,
+                                            1.0
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

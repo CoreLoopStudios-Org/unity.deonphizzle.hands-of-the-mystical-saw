@@ -1,0 +1,86 @@
+{
+    "stone_metadata": {
+        "stone_uid": "stn_e8620a06",
+        "predictor_id": "usr_99821",
+        "wager_points": 5000,
+        "creation_timestamp": "2026-03-02T08:37:20.1941166Z"
+    },
+    "physics_and_material": {
+        "size_scale": 4.420785427093506,
+        "density": 12.5,
+        "internal_stress": 0.6499999761581421,
+        "fracture_tolerance": 0.800000011920929,
+        "mesh_seed_id": 1106
+    },
+    "rotation_system": {
+        "base_speed": "Medium",
+        "pattern_sequence": [
+            {
+                "pattern_id": 1,
+                "duration": 2.5,
+                "direction": "clockwise"
+            },
+            {
+                "pattern_id": 2,
+                "duration": 1.5,
+                "direction": "counter_clockwise"
+            }
+        ]
+    },
+    "anchor_network": {
+        "primary_anchor": {
+            "position": {
+                "x": 0.5,
+                "y": 0.20000000298023225,
+                "z": -0.800000011920929
+            },
+            "adversities": [
+                "Hardened_Shell",
+                "Thermal_Resistance"
+            ]
+        },
+        "secondary_anchors": [
+            {
+                "id": "sec_1",
+                "position": {
+                    "x": -1.2000000476837159,
+                    "y": 0.5,
+                    "z": 0.4000000059604645
+                },
+                "adversities": [
+                    "Deep_Burial"
+                ]
+            }
+        ],
+        "hidden_anchor": {
+            "is_present": false,
+            "position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        }
+    },
+    "jade_core": {
+        "color_rating": "Imperial_Green_5Star",
+        "clarity_percentage": 94.5,
+        "quantity_mass": 2.299999952316284,
+        "calculated_base_value": 15000
+    },
+    "ai_validation": {
+        "is_solvable": true,
+        "minimum_strikes_required": 2,
+        "optimal_strike_vectors": [
+            {
+                "x": 0.5,
+                "y": 0.20000000298023225,
+                "z": -0.800000011920929
+            },
+            {
+                "x": -1.2000000476837159,
+                "y": 0.5,
+                "z": 0.4000000059604645
+            }
+        ]
+    }
+}

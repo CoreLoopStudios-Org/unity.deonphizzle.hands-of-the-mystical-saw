@@ -1,0 +1,16 @@
+=== RUNTIME BONE INFO ===
+RootBone 'Root': Pos=(0.00, -0.37, 0.00), Rot=(0.00, 0.00, 270.00), Scale=(1.00, 1.00, 1.00)
+TiltBone 'Up_down': Pos=(-0.12, 0.00, 0.00), Rot=(0.22, 179.85, 315.09), Scale=(1.00, 1.00, 1.00)
+ExtendBone 'front-back': Pos=(-1.87, 0.01, 0.00), Rot=(357.71, 359.79, 347.81), Scale=(1.00, 1.00, 1.00)
+
+Full Hierarchy Scales:
+- Chisel_rigged -modern | LocalScale: (5.44, 5.44, 5.44) | LossyScale: (5.44, 5.44, 5.44) | LocalRot: (358.74, 92.79, 1.54)
+  - Base | LocalScale: (1.00, 1.00, 1.00) | LossyScale: (5.44, 5.44, 5.44) | LocalRot: (0.00, 0.00, 0.00)
+  - polySurface10 | LocalScale: (1.00, 1.00, 1.00) | LossyScale: (5.44, 5.44, 5.44) | LocalRot: (0.00, 0.00, 0.00)
+  - polySurface23 | LocalScale: (1.00, 1.00, 1.00) | LossyScale: (5.44, 5.44, 5.44) | LocalRot: (0.00, 0.00, 0.00)
+  - polySurface25 | LocalScale: (1.00, 1.00, 1.00) | LossyScale: (5.44, 5.44, 5.44) | LocalRot: (5.51, 2.00, 356.44)
+  - Root | LocalScale: (1.00, 1.00, 1.00) | LossyScale: (5.44, 5.44, 5.44) | LocalRot: (0.00, 0.00, 270.00)
+    - No_need | LocalScale: (1.00, 1.00, 1.00) | LossyScale: (5.44, 5.44, 5.44) | LocalRot: (0.00, 180.00, 226.16)
+      - Up_down | LocalScale: (1.00, 1.00, 1.00) | LossyScale: (5.44, 5.44, 5.44) | LocalRot: (0.22, 179.85, 315.09)
+        - front-back | LocalScale: (1.00, 1.00, 1.00) | LossyScale: (5.44, 5.44, 5.44) | LocalRot: (357.71, 359.79, 347.81)
+          - No_need | LocalScale: (1.00, 1.00, 1.00) | LossyScale: (5.44, 5.44, 5.44) | LocalRot: (319.79, 90.00, 0.00)

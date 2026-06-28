@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 161d579de7179b5429e13949a1fc0c9d, type: 3}
+  m_Name: ActiveStoneData
+  m_EditorClassIdentifier: Assembly-CSharp::CurrentStoneModel
+  parsedBlueprint:
+    stone_metadata:
+      stone_uid: 
+      predictor_id: 
+      wager_points: 0
+      creation_timestamp: 
+    physics_and_material:
+      size_scale: 0
+      density: 0
+      internal_stress: 0
+      fracture_tolerance: 0
+      mesh_seed_id: 0
+    rotation_system:
+      base_speed: 
+      pattern_sequence: []
+    anchor_network:
+      primary_anchor:
+        position: {x: 0, y: 0, z: 0}
+        adversities: []
+      secondary_anchors: []
+      hidden_anchor:
+        is_present: 0
+        position: {x: 0, y: 0, z: 0}
+    jade_core:
+      color_rating: 
+      clarity_percentage: 0
+      quantity_mass: 0
+      calculated_base_value: 0
+    ai_validation:
+      is_solvable: 0
+      minimum_strikes_required: 0
+      optimal_strike_vectors: []
