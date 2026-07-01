@@ -17,13 +17,16 @@ public class OptionCarouselController : MonoBehaviour
     private string[] options;
     private int currentIndex = 0;
 
-    void Start()
+    void Awake()
     {
         if (carouselType == CarouselType.MovementPattern)
             options = new string[] { "Static", "Linear", "Oscillation", "Circular", "Chaotic" };
         else if (carouselType == CarouselType.DifficultyTier)
             options = new string[] { "Initiate", "Cutter", "Carver", "Master", "Mythic" };
+    }
 
+    void Start()
+    {
         if (leftButton != null) leftButton.onClick.AddListener(OnLeftButtonClicked);
         if (rightButton != null) rightButton.onClick.AddListener(OnRightButtonClicked);
         

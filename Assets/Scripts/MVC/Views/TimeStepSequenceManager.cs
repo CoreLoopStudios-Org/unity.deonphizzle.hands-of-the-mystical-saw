@@ -66,7 +66,7 @@ public class TimeStepSequenceManager : MonoBehaviour
     private void OnSliderValueChanged(float val)
     {
         float snappedVal = Mathf.Round(val);
-        timeStepSlider.value = snappedVal;
+        timeStepSlider.SetValueWithoutNotify(snappedVal);
         UpdateSliderText();
     }
 

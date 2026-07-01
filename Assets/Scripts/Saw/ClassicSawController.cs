@@ -370,6 +370,7 @@ public class ClassicSawController : MonoBehaviour
             MeshFilter targetFilter = target.GetComponent<MeshFilter>();
             Mesh oldMesh = targetFilter.sharedMesh;
             Mesh newMesh = pieceToStay.GetComponent<MeshFilter>().sharedMesh;
+            newMesh.name = "GeneratedSlicedMesh";
 
             targetFilter.sharedMesh = newMesh;
             target.GetComponent<MeshRenderer>().sharedMaterials = pieceToStay.GetComponent<MeshRenderer>().sharedMaterials; 
@@ -377,7 +378,7 @@ public class ClassicSawController : MonoBehaviour
             MeshCollider targetCollider = target.GetComponent<MeshCollider>();
             if (targetCollider != null) { targetCollider.sharedMesh = null; targetCollider.sharedMesh = newMesh; }
 
-            if (oldMesh != null && !oldMesh.name.Contains("Original")) Destroy(oldMesh);
+            if (oldMesh != null && oldMesh.name == "GeneratedSlicedMesh") Destroy(oldMesh);
 
             for (int i = target.transform.childCount - 1; i >= 0; i--)
             {
