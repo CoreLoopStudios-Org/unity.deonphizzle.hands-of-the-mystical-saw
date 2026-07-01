@@ -11,29 +11,29 @@ public class ChiselController : MonoBehaviour
     public float returnSpeed = 10f;      
     public Vector3 rotationOffset = new Vector3(0, 0, 0); 
     
-    [Tooltip("বাটালির বেস সবসময় খাড়া (Upright) থাকবে কি না")]
+    [Tooltip("Whether the base of the bottle is always upright")]
     public bool keepBodyUpright = true; 
     
     [Header("Hit Distance Tuning")]
     [Range(0f, 1f)]
     public float hitOffset = 0.1f;      
 
-    // 🌟 নতুন যোগ করা হয়েছে: হাতুড়ির মতো ইফেক্ট এবং সাউন্ড সেটিংস 🌟
+    // 🌟 Newly added: Hammer-like effects and sound settings 🌟
     [Header("Effects, Sound & Logic")]
     [Range(0f, 1f)] public float hitSoundVolume = 1f;
 
     [Space(10)]
-    [Tooltip("প্রথম ইফেক্ট (যেমন: Sparks)")]
+    [Tooltip("First Effect (ie: Sparks)")]
     public GameObject hitEffectPrefab;  
     public Vector3 particleRotationOffset = new Vector3(0, 0, 0);
-    [Tooltip("পাথরে আঘাত করার প্রধান সাউন্ড")]
+    [Tooltip("Main sound of hitting rock")]
     public AudioClip primaryHitSound;
 
     [Space(10)]
-    [Tooltip("দ্বিতীয় ইফেক্ট (যেমন: Dust বা Smoke)")]
+    [Tooltip("Second Effect (eg: Dust or Smoke)")]
     public GameObject secondaryHitEffectPrefab;  
     public Vector3 secondaryParticleRotationOffset = new Vector3(0, 0, 0);
-    [Tooltip("দ্বিতীয় ইফেক্টের সাউন্ড (যেমন: পাথর ভাঙার শব্দ - ঐচ্ছিক)")]
+    [Tooltip("Second effect sound (eg: stone breaking sound - optional)")]
     public AudioClip secondaryHitSound;
 
     private Vector3 originalPosition;
@@ -99,7 +99,7 @@ public class ChiselController : MonoBehaviour
 
         Debug.Log("💥 [Chisel Strike]: Chisel hits the stone straight!");
 
-        // 🌟 প্রথম ইফেক্ট ও সাউন্ড স্পন করা 🌟
+        // 🌟 First effect and sound spawn 🌟
         if (hitEffectPrefab != null)
         {
             Quaternion particleRot = Quaternion.LookRotation(surfaceNormal) * Quaternion.Euler(particleRotationOffset);
@@ -111,7 +111,7 @@ public class ChiselController : MonoBehaviour
             AudioSource.PlayClipAtPoint(primaryHitSound, targetPoint, hitSoundVolume);
         }
 
-        // 🌟 দ্বিতীয় ইফেক্ট ও সাউন্ড স্পন করা 🌟
+        // 🌟 Spawn second effect and sound 🌟
         if (secondaryHitEffectPrefab != null)
         {
             Quaternion secParticleRot = Quaternion.LookRotation(surfaceNormal) * Quaternion.Euler(secondaryParticleRotationOffset);

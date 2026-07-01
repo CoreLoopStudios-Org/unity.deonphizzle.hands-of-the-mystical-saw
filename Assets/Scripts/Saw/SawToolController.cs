@@ -14,7 +14,7 @@ public class SawToolController : MonoBehaviour
 
     [Header("--- Input Source (Gyro / Tilt) ---")]
     public bool enableGyro = true;  
-    [Tooltip("ফোন কতটুকু কাত করলে করাত কত জোরে মুভ করবে।")]
+    [Tooltip("The more you tilt the phone, the harder the saw will move.")]
     [Range(0.5f, 5f)]
     public float gyroSensitivity = 2.0f; 
 
@@ -148,7 +148,7 @@ public class SawToolController : MonoBehaviour
         HandleSawGrindingAndEffects();
     }
 
-    // 🌟 নতুন মেথড: UI Slider থেকে Gyro Sensitivity কন্ট্রোল করার জন্য 🌟
+    // 🌟 New Method: To control Gyro Sensitivity from UI Slider 🌟
     public void SetGyroSensitivityFromSlider(float sliderValue)
     {
         gyroSensitivity = sliderValue;

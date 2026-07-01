@@ -11,15 +11,15 @@ public class PlayerProfileUI : MonoBehaviour
         UpdateProfileUI();
     }
 
-    // যখনই প্রোফাইল সিন ওপেন হবে, এই ফাংশন লেটেস্ট পয়েন্ট টেনে আনবে
+    // Whenever the profile scene is opened, this function will fetch the latest point
     public void UpdateProfileUI()
     {
-        // মেমোরি থেকে সেভ করা পয়েন্ট টেনে আনা (আগে না থাকলে 0 দেখাবে)
+        // pull saved point from memory (will show 0 if not already)
         int totalPoints = PlayerPrefs.GetInt("PlayerTotalPoints", 0);
 
         if (totalPointsText != null)
         {
-            totalPointsText.text = totalPoints.ToString("N0"); // কমা দিয়ে সুন্দর করে দেখাবে, যেমন: 10,500
+            totalPointsText.text = totalPoints.ToString("N0"); // will show nicely with commas, eg: 10,500
         }
     }
 }

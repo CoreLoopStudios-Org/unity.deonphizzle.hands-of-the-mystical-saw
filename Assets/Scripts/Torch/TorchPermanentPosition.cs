@@ -12,7 +12,7 @@ public class TorchPermanentPosition : MonoBehaviour
 
     void Start()
     {
-        // গেম শুরুর সময় সংরক্ষিত পজিশনে টর্চ নিয়ে আসা
+        // Bring the torch to the position saved at game start
         transform.position = savedPosition;
         transform.eulerAngles = savedRotation;
 
@@ -20,7 +20,7 @@ public class TorchPermanentPosition : MonoBehaviour
         if (torchLight != null) torchLight.enabled = true;
     }
 
-    // ইউনিটি ইন্সপেক্টরে কম্পোনেন্টের ওপর রাইট ক্লিক করলে এই অপশনটি আসবে
+    // This option will appear when you right click on the component in the Unity inspector
     [ContextMenu("Save Current Transform Data")]
     public void SaveData()
     {

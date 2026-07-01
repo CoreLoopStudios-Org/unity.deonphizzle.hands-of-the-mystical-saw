@@ -88,16 +88,16 @@ public class WinLoseManager : MonoBehaviour
         SceneManager.LoadScene(mainMenuSceneName);
     }
 
-    // 🌟 আপডেট করা ফাংশন: মেইন মেনুতে রিডাইরেক্ট করে প্যানেল খোলার জন্য
+    // 🌟 Updated function: to open panel by redirecting to main menu
     public void LoadNextChallenge()
     {
         Debug.Log("Redirecting to Stone Market in Main Menu...");
 
-        // 🌟 সিগন্যাল সেভ করা হচ্ছে
+        // 🌟 Saving the signal
         PlayerPrefs.SetInt("AutoOpenStoneMarket", 1);
         PlayerPrefs.Save();
 
-        // মেইন মেনু লোড করা হচ্ছে
+        // Loading the main menu
         if (!string.IsNullOrEmpty(mainMenuSceneName))
         {
             SceneManager.LoadScene(mainMenuSceneName); 

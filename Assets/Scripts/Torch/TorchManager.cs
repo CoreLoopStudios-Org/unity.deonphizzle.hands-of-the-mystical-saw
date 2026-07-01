@@ -8,12 +8,12 @@ public class TorchManager : MonoBehaviour
 
     private bool isActive = false;
 
-    // Awake এবং Start থেকে পজিশন সেভ করার লজিক সরিয়ে দেওয়া হয়েছে 
-    // যাতে ইউনিটি আপনার সেট করা পজিশনে হাত না দেয়।
+    // Removed logic to save position from Awake and Start 
+    // so that Unity doesn't touch the position you set.
 
     void Start()
     {
-        // শুরুতে সবকিছু বন্ধ থাকবে
+        // Everything will be closed initially
         SetState(false);
     }
 
@@ -25,17 +25,17 @@ public class TorchManager : MonoBehaviour
 
     void SetState(bool state)
     {
-        // ১. ভিজ্যুয়াল মডেল অন/অফ
+        // 1. Visual model on/off
         if (torchVisual != null) 
             torchVisual.SetActive(state);
 
-        // ২. লাইট অন/অফ (গেম অবজেক্ট এবং কম্পোনেন্ট দুইটাই অন করা হচ্ছে)
+        // 2. Lights on/off (turning on both game objects and components)
         if (torchLight != null) 
         {
             torchLight.gameObject.SetActive(state); 
             torchLight.enabled = state;
             
-            // লাইট গেমে না দেখা গেলে নিচের লাইনটি ফোর্স রেন্ডার করতে সাহায্য করবে
+            // The following line will force render if the light is not visible in the game
             torchLight.renderMode = LightRenderMode.ForcePixel; 
         }
         

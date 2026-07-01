@@ -18,13 +18,13 @@ public class StoneItemUI : MonoBehaviour
     public Sprite largeStoneIcon;      
 
     [Header("Scene Settings")]
-    [Tooltip("আপনার কাটিং সিনের হুবহু নাম এখানে লিখুন")]
+    [Tooltip("Enter the exact name of your cutting scene here")]
     public string cuttingSceneName = "CuttingScene"; 
 
     private StoneBlueprint currentBlueprint;
 
     // ==========================================
-    // ১. ডামি পাথরের জন্য (Scriptable Object)
+    // 1. For Dummy Stone (Scriptable Object)
     // ==========================================
     public void Setup(StoneDataSO stoneData)
     {
@@ -33,18 +33,18 @@ public class StoneItemUI : MonoBehaviour
         currentBlueprint = stoneData.blueprint;
         UpdateUI(currentBlueprint);
 
-        // আইকন সেট করা
+        // Set the icon
         if (stoneIcon != null)
         {
             if (stoneData.stoneIcon != null) stoneIcon.sprite = stoneData.stoneIcon;
-            else SetIconBySize(GetCorrectSize(currentBlueprint)); // 🌟 আপডেটেড লজিক
+            else SetIconBySize(GetCorrectSize(currentBlueprint)); // 🌟 Updated logic
         }
 
         SetupButtonListener();
     }
 
     // ==========================================
-    // ২. লাইভ পাথরের জন্য (Predictor Mode থেকে আসা)
+    // 2. For live stones (coming from Predictor Mode)
     // ==========================================
     public void SetupLiveStone(StoneBlueprint bp)
     {
@@ -53,45 +53,45 @@ public class StoneItemUI : MonoBehaviour
         currentBlueprint = bp;
         UpdateUI(currentBlueprint);
         
-        SetIconBySize(GetCorrectSize(currentBlueprint)); // 🌟 আপডেটেড লজিক
+        SetIconBySize(GetCorrectSize(currentBlueprint)); // 🌟 Updated logic
         
         SetupButtonListener();
     }
 
     // ==========================================
-    // 🌟 নতুন: সঠিক সাইজ বের করার ম্যাজিক ফাংশন
+    // 🌟 New: Magic function to find the correct size
     // ==========================================
     private string GetCorrectSize(StoneBlueprint bp)
     {
-        // যদি Predictor Data থাকে, তবে সেখান থেকে একদম একুরেট সাইজটা নেবে
+        // If there is Predictor Data, take the exact size from there
         if (bp != null && bp.predictor_challenge_data != null)
         {
             return bp.predictor_challenge_data.targetStoneSize.ToString();
         }
         
-        // না থাকলে ব্লুপ্রিন্টের ডিফল্ট সাইজ নেবে
+        // If not, will take the blueprint's default size
         return string.IsNullOrEmpty(bp.stone_size_label) ? "Medium" : bp.stone_size_label;
     }
 
     // ==========================================
-    // ৩. কমন UI আপডেট ফাংশন
+    // 3. Common UI update function
     // ==========================================
     private void UpdateUI(StoneBlueprint bp)
     {
         if (pointsText != null) pointsText.text = bp.challenge_points.ToString("N0");
         if (weightText != null) weightText.text = "Weight: " + bp.total_weight_kg.ToString("F1") + "kg";
         
-        // 🌟 এখন সাইজটা সরাসরি সঠিক ফাংশন থেকে আসবে
+        // 🌟 Now the size will come directly from the correct function
         string finalSize = GetCorrectSize(bp);
         if (sizeText != null) sizeText.text = "Size: " + finalSize;
     }
 
     // ==========================================
-    // ৪. বাটন লিসেনার সেটআপ (কাটিং সিনে ডাটা পাঠানো)
+    // 4. Button listener setup (sending data to cutting scene)
     // ==========================================
     private void SetupButtonListener()
     {
-        // (আপনার আগের কোড অনুযায়ী কমেন্ট করা আছে)
+        // (Your previous code is commented out)
     }
 
     private void SetIconBySize(string sizeLabel)
@@ -112,7 +112,7 @@ public class StoneItemUI : MonoBehaviour
         }
     }
     
-    // 🌟 এই ফাংশনটা আমরা ইউনিটির ইন্সপেক্টর থেকে ম্যানুয়ালি ধরিয়ে দেব
+    // 🌟 We will call this function manually from Unity's inspector
     public void ManualAcceptClick()
     {
         Debug.Log("<color=cyan>🔥 MANUAL CLICK WORKED!</color>");

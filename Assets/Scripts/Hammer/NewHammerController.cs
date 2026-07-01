@@ -42,10 +42,10 @@ public class NewHammerController : MonoBehaviour
     public bool invertJoystickX = true;
 
     [Header("--- Strict Strike Settings ---")]
-    // 🟢 FIX 2: হাতুড়িটি ১০ থেকে -১০০ তে ঘোরার জন্য নির্দিষ্ট অপশন
-    [Tooltip("আঘাত করার আগে হাতুড়ি কত ডিগ্রিতে পেছনে যাবে (যেমন: -180)")]
+    // 🟢 FIX 2: Fixed option to rotate the hammer from 10 to -100
+    [Tooltip("How many degrees will the hammer go back before striking (eg: -180)")]
     public float pullbackAngleZ = -180f;
-    [Tooltip("পাথরে আঘাত করার সময় ঠিক কত ডিগ্রিতে গিয়ে থামবে (যেমন: -20)")]
+    [Tooltip("Exact degree to stop when hitting rock (eg: -20)")]
     public float strikeAngleZ = -20f;
     
     public float stopMargin = 0.5f;

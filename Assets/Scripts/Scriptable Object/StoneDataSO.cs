@@ -1,12 +1,12 @@
 using UnityEngine;
 
-// 🌟 রাইট ক্লিক করে মেনু থেকে ডাটা ফাইল বানানোর জন্য
+// 🌟 Right click to create data file from the menu
 [CreateAssetMenu(fileName = "NewStoneData", menuName = "Three Cuts/Stone Data")]
 public class StoneDataSO : ScriptableObject
 {
     [Header("UI Visuals")]
-    public Sprite stoneIcon; // পাথরের ছবিটা সরাসরি এখানেই থাকবে
+    public Sprite stoneIcon; // The stone image will be directly here
 
     [Header("Stone Core Data (Blueprint)")]
-    public StoneBlueprint blueprint; // তোমার ওই পুরো ডাটা স্ট্রাকচারটা এখানে থাকবে
+    public StoneBlueprint blueprint; // Your entire data structure will be here
 }

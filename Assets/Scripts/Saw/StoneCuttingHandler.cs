@@ -1,16 +1,16 @@
 using UnityEngine;
-// using EzySlice; // আপনার EzySlice এর নেমস্পেস যদি প্রয়োজন হয়
+// using EzySlice; // Your EzySlice namespace if needed
 
 public class StoneCuttingHandler : MonoBehaviour
 {
     [Header("Saw Settings")]
-    public Transform sawBladeVisual;     // করারতের ব্লেডের ৩ডি মডেল
-    public ParticleSystem sawDustParticles; // গুঁড়ো ওড়ার পার্টিকেল ইফেক্ট
-    public float cuttingDepth = 0.1f;    // করারতের ব্লেড কতটা পাথরের ভেতরে ঢুকবে
-    public float bladeSpinSpeed = 1000f; // ব্লেড কত জোরে ঘুরবে
+    public Transform sawBladeVisual;     // 3D model of the blade of the karate
+    public ParticleSystem sawDustParticles; // Powder flying particle effect
+    public float cuttingDepth = 0.1f;    // How far into the stone will the blade of the karat go
+    public float bladeSpinSpeed = 1000f; // How hard the blade will spin
 
     [Header("Target")]
-    public GameObject targetStone; // আপনার ঘোরন্ত পাথর (targetStone)
+    public GameObject targetStone; // your rotating stone(targetStone)
 
     private bool isSawing = false;
     private Vector3 dragStartPoint; 
@@ -19,14 +19,14 @@ public class StoneCuttingHandler : MonoBehaviour
     void Start()
     {
         mainCam = Camera.main;
-        // শুরুতে করারতের ব্লেড ও পার্টিকেল বন্ধ
+        // Initialize the blade and particles of the carvet
         if (sawBladeVisual != null) sawBladeVisual.gameObject.SetActive(false);
         if (sawDustParticles != null) sawDustParticles.Stop();
     }
 
     void Update()
     {
-        // ১. টুল সিলেকশন চেক: যদি আপনার টুলের Enums মডার্ন মোড বা ক্লাসিক মোড অনুযায়ী Saw সিলেক্ট করে থাকে
+        // 1. Tool Selection Check: If your tool's Enums have selected Saw according to Modern Mode or Classic Mode
         if (!IsSawSelected()) return;
 
         HandleSawInput();
@@ -34,40 +34,40 @@ public class StoneCuttingHandler : MonoBehaviour
 
     private void HandleSawInput()
     {
-        if (Input.GetMouseButtonDown(0)) // ১. ক্লিক শুরু
+        if (Input.GetMouseButtonDown(0)) // 1. Click Start
         {
             if (CanStartCutting())
             {
-                // ২. করারতের ব্লেড অন করো, পার্টিকেল অন করো
+                // 2. Turn on the blade of Karnat, turn on the particles
                 sawBladeVisual.gameObject.SetActive(true);
                 sawDustParticles.Play();
                 isSawing = true;
-                dragStartPoint = GetMouseWorldPosition(); // করারতের স্টার্ট পজিশন নাও
+                dragStartPoint = GetMouseWorldPosition(); // Get the start position of the cursor
             }
         }
 
-        if (Input.GetMouseButton(0) && isSawing) // ২. ক্লিক করে ধরে ড্র্যাগ করা (The Cutting Process)
+        if (Input.GetMouseButton(0) && isSawing) // 2. Clicking and Dragging (The Cutting Process)
         {
-            // ৩. করারতের ব্লেড ঘোরাও
+            // 3. Rotate the blade of the karate
             sawBladeVisual.Rotate(Vector3.right * bladeSpinSpeed * Time.deltaTime, Space.Self);
             
-            // ৪. করারতের ব্লেডকে মাউসের সাথে সাথে পাথরের ভেতর দিয়ে মুভ করাও
+            // 4. Also move the blade of the crowbar through the stone with the mouse
             UpdateSawPositionOnMesh();
         }
 
-        if (Input.GetMouseButtonUp(0) && isSawing) // ৩. ক্লিক শেষ (The Split)
+        if (Input.GetMouseButtonUp(0) && isSawing) // 3. The Split (The Split)
         {
-            // ৫. করারতের ব্লেড ও পার্টিকেল অফ করো
+            // 5. Turn off the blade and particles of the karate
             isSawing = false;
             sawBladeVisual.gameObject.SetActive(false);
             sawDustParticles.Stop();
 
-            // ৬. এখন EzySlice দিয়ে ফাইনাল কাট করো!
+            // 6. Make the final cut with EzySlice now!
             PerformFinalEzySlice(dragStartPoint, GetMouseWorldPosition()); 
         }
     }
 
-    // মাউস দিয়ে একটা Raycast করে পাথরের উপর করারতের পজিশন বের করার জন্য ফাংশন
+    // Function to find the position of the cursor on the stone by making a Raycast with the mouse
     private void UpdateSawPositionOnMesh()
     {
         Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
@@ -77,28 +77,28 @@ public class StoneCuttingHandler : MonoBehaviour
         {
             if (hit.collider.gameObject == targetStone)
             {
-                // করারতের ব্লেডকে ক্লিক করা জায়গায় নিয়ে যাও এবং একটু ভেতরের দিকে ঢুকাও
+                // Move the karat blade to the clicked area and move it slightly inward
                 sawBladeVisual.position = hit.point - hit.normal * cuttingDepth;
                 
-                // পার্টিকেল সিস্টেমকেও করারতের ব্লেডের সাথে মুভ করাও
+                // Also move the particle system along with the blade of the karate
                 sawDustParticles.transform.position = hit.point;
             }
         }
     }
 
-    // EzySlice এর মাধ্যমে মূল কাটটি করার ফাংশন
+    // Function to make the original cut with EzySlice
     private void PerformFinalEzySlice(Vector3 start, Vector3 end)
     {
-        // এখানে আপনার আগের EzySlice এর লজিক বসাবেন
-        // start এবং end পয়েন্ট দিয়ে একটি কাটিং প্লেন তৈরি করে স্লাইস করবেন।
-        // কাট হওয়ার পর আপনি কাটের দাগ বা কচ্ছপের খোলসের মতো কিছু চাইলে, স্লাইসড মেশের গায়ে কাটের দাগের টেক্সচার (Texture) লাগাতে হবে।
+        // Place your previous EzySlice logic here
+        // Create a cutting plane with start and end points and slice.
+        // After the cut, if you want something like a cut scar or a turtle shell, apply a cut scar texture to the sliced mesh.
         Debug.Log("Now EzySlice performs the actual split from: " + start + " to: " + end);
     }
 
     // ==========================================
-    // 🌟 হেল্পার ফাংশনস (এগুলো আপনার বর্তমান কোডে আছে)
+    // 🌟 Helper functions (these are in your current code)
     // ==========================================
-    private bool IsSawSelected() { /* আপনার টুল সিলেকশন এনুমের চেক বসান */ return true; } 
-    private bool CanStartCutting() { /* পাথরটা কি কাটার উপযোগী? */ return true; }
-    private Vector3 GetMouseWorldPosition() { /* Raycast করে মাউসের ওয়ার্ল্ড পজিশন বের করুন */ return Vector3.zero; }
+    private bool IsSawSelected() { /* check your tool selection enum */ return true; } 
+    private bool CanStartCutting() { /* Is the stone suitable for cutting? */ return true; }
+    private Vector3 GetMouseWorldPosition() { /* Raycast the world position of the mouse */ return Vector3.zero; }
 }

@@ -27,7 +27,7 @@ public class OptionCarouselController : MonoBehaviour
         if (leftButton != null) leftButton.onClick.AddListener(OnLeftButtonClicked);
         if (rightButton != null) rightButton.onClick.AddListener(OnRightButtonClicked);
         
-        RefreshIfLocked(); // শুরুতে সব ঠিকঠাক লোড করার জন্য
+        RefreshIfLocked(); // to load everything properly at the beginning
     }
 
     public void OnLeftButtonClicked()
@@ -37,7 +37,7 @@ public class OptionCarouselController : MonoBehaviour
         {
             currentIndex--;
             if (currentIndex < 0) currentIndex = options.Length - 1; 
-            if (currentIndex == startIndex) break; // যদি সবগুলো লক থাকে, তাহলে লুপ ভেঙে যাবে
+            if (currentIndex == startIndex) break; // If all are locked, the loop will break
         } while (IsLocked(options[currentIndex]));
         
         UpdateDisplay();
@@ -50,13 +50,13 @@ public class OptionCarouselController : MonoBehaviour
         {
             currentIndex++;
             if (currentIndex >= options.Length) currentIndex = 0; 
-            if (currentIndex == startIndex) break; // যদি সবগুলো লক থাকে, তাহলে লুপ ভেঙে যাবে
+            if (currentIndex == startIndex) break; // If all are locked, the loop will break
         } while (IsLocked(options[currentIndex]));
         
         UpdateDisplay();
     }
 
-    // 🌟 নতুন: সেভ করার পর অটোমেটিক পরের আনলক অপশনে যাওয়ার জন্য
+    // 🌟 New: Automatically go to next unlock option after saving
     public void RefreshIfLocked()
     {
         if (IsLocked(options[currentIndex]))
@@ -69,7 +69,7 @@ public class OptionCarouselController : MonoBehaviour
         }
     }
 
-    // 🌟 চেক করবে এই অপশনটি অলরেডি সেভড লিস্টে আছে কি না
+    // 🌟 Check if this option is in already saved list or not
     private bool IsLocked(string opt)
     {
         if (carouselType == CarouselType.MovementPattern && TimeStepSequenceManager.Instance != null)
@@ -87,7 +87,7 @@ public class OptionCarouselController : MonoBehaviour
         
         if (displayText != null)
         {
-            // যদি ৫টি অপশনই ব্যবহার হয়ে যায়
+            // if all 5 options are used
             if (IsLocked(selectedOption)) 
             {
                 displayText.text = "All Used";
@@ -96,7 +96,7 @@ public class OptionCarouselController : MonoBehaviour
             else
             {
                 displayText.text = selectedOption;
-                displayText.color = Color.cyan; // আনলক থাকলে সায়ান কালার দেখাবে
+                displayText.color = Color.cyan; // Shows cyan color if unlocked
             }
         }
 

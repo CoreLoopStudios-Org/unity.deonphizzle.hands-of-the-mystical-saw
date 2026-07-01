@@ -8,7 +8,7 @@ public class GlobalPointsUI : MonoBehaviour
 
     private void Awake()
     {
-        // নিজে থেকেই TextMeshPro কম্পোনেন্টটা খুঁজে নেবে
+        // Automatically find the TextMeshPro component
         myText = GetComponent<TextMeshProUGUI>(); 
     }
 
@@ -16,7 +16,7 @@ public class GlobalPointsUI : MonoBehaviour
     {
         UpdatePointDisplay();
         
-        // DataManager এর সাথে কানেকশন (পয়েন্ট চেঞ্জ হলেই আপডেট হবে)
+        // Connection to DataManager (updates when point changes)
         if (DataManager.Instance != null)
         {
             DataManager.Instance.OnPointsUpdated += UpdatePointDisplay;

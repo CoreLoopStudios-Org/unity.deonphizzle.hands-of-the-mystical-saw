@@ -1,18 +1,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// 🌟 মোডগুলোকে ডিফাইন করার জন্য এনাম (Enum)
+// 🌟 Enum to define modes
 public enum GameMode { Modern, Classic }
 
 public class StoneServer : MonoBehaviour
 {
-    // Singleton প্যাটার্ন: যাতে যেকোনো সিন থেকে ডাটা পাঠানো যায়
+    // Singleton pattern: to send data from any scene
     public static StoneServer Instance;
 
-    // লাইভ জেনারেট হওয়া পাথরের লিস্ট
+    // List of live generated stones
     public List<StoneBlueprint> liveStonesList = new List<StoneBlueprint>();
 
-    // 🌟 নতুন: প্লেয়ার কোন মোড সিলেক্ট করেছে তা সার্ভারে সেভ থাকবে
+    // 🌟 NEW: The mode the player selected will be saved on the server
     public GameMode ChosenMode
     {
         get
@@ -49,7 +49,7 @@ public class StoneServer : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // এক সিন থেকে অন্য সিনে গেলেও ডাটা মুছবে না
+            DontDestroyOnLoad(gameObject); // Going from one scene to another will not delete the data
         }
         else
         {
@@ -57,7 +57,7 @@ public class StoneServer : MonoBehaviour
         }
     }
 
-    // Predictor Mode থেকে পাথর জেনারেট হলে এই ফাংশন কল করে ডাটা পাঠাতে হবে
+    // If stones are generated from Predictor Mode, call this function and send data
     public void AddNewGeneratedStone(StoneBlueprint newStone)
     {
         liveStonesList.Add(newStone);

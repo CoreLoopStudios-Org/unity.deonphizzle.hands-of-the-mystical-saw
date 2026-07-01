@@ -8,7 +8,7 @@ public class SimpleTorch : MonoBehaviour
 
     void Start()
     {
-        // গেম শুরুর সময় লাইট অফ থাকবে কিন্তু পজিশন নড়বে না
+        // Light will be off at game start but position will not move
         SetState(false);
     }
 
@@ -24,7 +24,7 @@ public class SimpleTorch : MonoBehaviour
         if (torchLight != null) 
         {
             torchLight.enabled = state;
-            // লাইট গেমে না দেখা গেলে এটি ফোর্স রেন্ডার করবে
+            // This will force render if the light is not visible in the game
             torchLight.renderMode = LightRenderMode.ForcePixel; 
             torchLight.gameObject.SetActive(state);
         }

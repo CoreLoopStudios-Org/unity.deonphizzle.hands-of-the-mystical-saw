@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro; // 🌟 TextMeshPro এর জন্য
+using TMPro; // 🌟 for TextMeshPro
 
 public class MainMenuController : MonoBehaviour
 {

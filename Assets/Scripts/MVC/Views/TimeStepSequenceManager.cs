@@ -15,7 +15,7 @@ public class TimeStepSequenceManager : MonoBehaviour
     public static TimeStepSequenceManager Instance;
 
     [Header("--- Setup & Limits ---")]
-    public int maxSteps = 5; // আমাদের মোট প্যাটার্ন ৫টি, তাই ৫-ই হবে সর্বোচ্চ
+    public int maxSteps = 5; // We have 5 patterns in total, so 5th will be max
     private float totalLoopDuration = 0f;
     private float remainingTime = 0f;
 
@@ -47,12 +47,12 @@ public class TimeStepSequenceManager : MonoBehaviour
         if (timeStepSlider != null)
         {
             timeStepSlider.interactable = true;
-            timeStepSlider.minValue = 1; // 🌟 0 সেভ করা যাবে না, সর্বনিম্ন 1s
+            timeStepSlider.minValue = 1; // 🌟 0 cannot be saved, minimum 1s
             
-            // 🌟 ফিক্স: স্লাইডারের সর্বোচ্চ ভ্যালু একদম হুবহু রিমেইনিং টাইমের সমান হবে
+            // 🌟 Fix: Slider's maximum value will be exactly equal to remaining time
             timeStepSlider.maxValue = remainingTime; 
             
-            // 🌟 ফিক্স: ডিফল্টভাবে স্লাইডারটি টেনে একদম ফুল (Full) টাইমে রাখা থাকবে
+            // 🌟 Fix: By default the slider will be kept at Full time
             timeStepSlider.value = remainingTime; 
         }
 
@@ -87,7 +87,7 @@ public class TimeStepSequenceManager : MonoBehaviour
 
         float timeToSave = timeStepSlider.value;
         
-        // যদি এটি শেষ প্যাটার্ন হয় (৫ম প্যাটার্ন), তবে এটি জোর করে বাকি সবটুকু সময় নিয়ে নেবে!
+        // If this is the last pattern (the 5th pattern), it will force all the remaining time!
         if (savedSteps.Count == maxSteps - 1)
         {
             timeToSave = remainingTime; 
@@ -104,33 +104,33 @@ public class TimeStepSequenceManager : MonoBehaviour
         newStep.movementPattern = currentPattern;
         savedSteps.Add(newStep);
 
-        // বাকি সময় কমানো হলো
+        // Remaining time is reduced
         remainingTime -= timeToSave;
         
-        // 🌟 স্লাইডার আপডেট ও লক করার লজিক
+        // 🌟 Logic to update and lock the slider
         if (remainingTime > 0 && savedSteps.Count < maxSteps)
         {
-            // যদি ৪টি প্যাটার্ন সেভ হয়ে গিয়ে থাকে (মানে ৫ম বা শেষ প্যাটার্নটি বাকি)
+            // if 4 patterns have been saved (ie 5th or last pattern left)
             if (savedSteps.Count == maxSteps - 1)
             {
                 timeStepSlider.minValue = remainingTime;
                 timeStepSlider.maxValue = remainingTime;
                 timeStepSlider.value = remainingTime;
-                timeStepSlider.interactable = false; // 🌟 শেষ প্যাটার্নের জন্য স্লাইডার লক!
+                timeStepSlider.interactable = false; // 🌟 Slider lock for last pattern!
             }
             else
             {
                 timeStepSlider.minValue = 1;
-                // 🌟 ফিক্স: স্লাইডারের সর্বোচ্চ লিমিট এখন বাকি থাকা সময়ের সমান!
+                // 🌟 FIX: Slider max limit is now equal to remaining time!
                 timeStepSlider.maxValue = remainingTime;
-                // 🌟 ফিক্স: স্লাইডারের হ্যান্ডেলটি অটোমেটিক বাকি থাকা সর্বোচ্চ সময়ে গিয়ে বসে থাকবে!
+                // 🌟 FIX: Slider handle would automatically go to max remaining time!
                 timeStepSlider.value = remainingTime; 
                 timeStepSlider.interactable = true;
             }
         }
         else
         {
-            // সময় একদম ০ হয়ে গেলে স্লাইডার অফ
+            //Slider off when time is 0
             timeStepSlider.minValue = 0;
             timeStepSlider.maxValue = 0;
             timeStepSlider.value = 0;
@@ -141,7 +141,7 @@ public class TimeStepSequenceManager : MonoBehaviour
         RefreshCarousel();
         UpdateSliderText();
 
-        // ৫টি মুভমেন্ট শেষ হলে বা সময় শেষ হলে সেভ বাটন লক
+        // Save button lock after 5 movements or timeout
         if (remainingTime <= 0 || savedSteps.Count >= maxSteps)
         {
             if (saveButton != null) saveButton.interactable = false;

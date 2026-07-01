@@ -16,7 +16,7 @@ public class StoneSpawner : MonoBehaviour
 
     [Header("--- Surface Details (Anchors) ---")]
     public GameObject anchorPrefab; 
-    // 🛑 Crack Material রিমুভ করা হয়েছে
+    // 🛑 Crack Material Removed
 
     private GameObject currentStoneInstance;
     private GameObject currentJadeCore; 
@@ -37,22 +37,22 @@ public class StoneSpawner : MonoBehaviour
         if (currentStoneInstance != null) Destroy(currentStoneInstance);
         if (currentJadeCore != null) Destroy(currentJadeCore);
 
-        // ১. মেইন পাথর স্পন
+        // 1. Main stone spawn
         currentStoneInstance = Instantiate(stonePrefab, spawnPoint.position, spawnPoint.rotation);
         
-        // পাথরের সাইজ
+        // The size of the stone
         float scaleMultiplier = GlobalStoneData.CurrentStone.StoneSize switch { StoneSizeType.Small => 0.5f, StoneSizeType.Large => 1.0f, _ => 0.75f };
         currentStoneInstance.transform.localScale = Vector3.one * scaleMultiplier;
 
         ApplyRandomStoneMaterial();
         
-        // ২. রোটেশন এবং ফিজিক্স
+        // 2. Rotation and Physics
         ApplyBlueprintPhysics(GlobalStoneData.CurrentBlueprint);
         
-        // ৩. ভেতরের জেড কোর
+        // 3. The inner jade core
         SpawnInnerJadeCore(GlobalStoneData.CurrentStone.JadeCount, GlobalStoneData.CurrentBlueprint.jade_core.color_rating);
 
-        // ৪. শুধুমাত্র অ্যাঙ্কর স্পন (Cracks রিমুভ করা হয়েছে)
+        // 4. Anchor Spawn Only (Cracks Removed)
         int anchorCount = GlobalStoneData.CurrentBlueprint.anchor_network?.point_count ?? 4;
         SpawnAnchorsSimple(anchorCount);
         
@@ -79,7 +79,7 @@ public class StoneSpawner : MonoBehaviour
             jadeRenderer.material = newJadeMat;
         }
         
-        // ভেতরের জেডের সব ফিজিক্স ডিলিট করা হলো
+        // All physics in inner Z are deleted
         foreach (Collider col in currentJadeCore.GetComponentsInChildren<Collider>()) Destroy(col);
         if (currentJadeCore.GetComponent<Rigidbody>() != null) Destroy(currentJadeCore.GetComponent<Rigidbody>());
         if (currentJadeCore.GetComponent<StoneRotator>() != null) Destroy(currentJadeCore.GetComponent<StoneRotator>());
@@ -118,7 +118,7 @@ public class StoneSpawner : MonoBehaviour
     }
 
     // ==========================================
-    // 🌟 সিম্পল ম্যাথ লজিক (Raycast ছাড়া - Inside the stone)
+    // 🌟 Simple Math Logic (Without Raycast - Inside the stone)
     // ==========================================
 
     private void SpawnAnchorsSimple(int count)
@@ -127,7 +127,7 @@ public class StoneSpawner : MonoBehaviour
 
         Renderer rend = currentStoneInstance.GetComponentInChildren<Renderer>();
         
-        // ব্যাসার্ধ (Radius) যাতে অ্যাঙ্করগুলো পাথরের ভেতরে তৈরি হয়
+        // Radius that the anchors are built into the rock
         float radius = rend != null ? Mathf.Min(rend.bounds.extents.x, rend.bounds.extents.y, rend.bounds.extents.z) * 0.6f : 0.3f;
         Vector3 center = rend != null ? rend.bounds.center : currentStoneInstance.transform.position;
 
@@ -142,7 +142,7 @@ public class StoneSpawner : MonoBehaviour
     }
 }
 
-// 🛑 StoneRotator ক্লাস
+// 🛑 StoneRotator class
 public class StoneRotator : MonoBehaviour
 {
     public float speed;
@@ -195,22 +195,22 @@ public class StoneRotator : MonoBehaviour
 //         if (currentStoneInstance != null) Destroy(currentStoneInstance);
 //         if (currentJadeCore != null) Destroy(currentJadeCore);
 //
-//         // ১. মেইন পাথর স্পন
+// // 1. Main stone spawn
 //         currentStoneInstance = Instantiate(stonePrefab, spawnPoint.position, spawnPoint.rotation);
 //         
-//         // 🌟 ফিক্স ১: পাথরের সাইজ আগের চেয়ে একটু ছোট করা হলো
+// // 🌟 Fix 1: The size of the stone is slightly smaller than before
 //         float scaleMultiplier = GlobalStoneData.CurrentStone.StoneSize switch { StoneSizeType.Small => 0.5f, StoneSizeType.Large => 1.0f, _ => 0.75f };
 //         currentStoneInstance.transform.localScale = Vector3.one * scaleMultiplier;
 //
 //         ApplyRandomStoneMaterial();
 //         
-//         // ২. রোটেশন এবং ফিজিক্স
+// // 2. Rotation and Physics
 //         ApplyBlueprintPhysics(GlobalStoneData.CurrentBlueprint);
 //         
-//         // ৩. ভেতরের জেড কোর
+// // 3. The inner jade core
 //         SpawnInnerJadeCore(GlobalStoneData.CurrentStone.JadeCount, GlobalStoneData.CurrentBlueprint.jade_core.color_rating);
 //
-//         // ৪. সিম্পল ম্যাথ ব্যবহার করে অ্যাঙ্কর ও ফাটল স্পন
+// // 4. Anchor and crack spawn using simple math
 //         int anchorCount = GlobalStoneData.CurrentBlueprint.anchor_network?.point_count ?? 4;
 //         SpawnAnchorsSimple(anchorCount);
 //         
@@ -239,7 +239,7 @@ public class StoneRotator : MonoBehaviour
 //             jadeRenderer.material = newJadeMat;
 //         }
 //         
-//         // ভেতরের জেডের সব ফিজিক্স ডিলিট করা হলো
+// // Deleted all physics of the inner jade
 //         foreach (Collider col in currentJadeCore.GetComponentsInChildren<Collider>()) Destroy(col);
 //         if (currentJadeCore.GetComponent<Rigidbody>() != null) Destroy(currentJadeCore.GetComponent<Rigidbody>());
 //         if (currentJadeCore.GetComponent<StoneRotator>() != null) Destroy(currentJadeCore.GetComponent<StoneRotator>());
@@ -278,7 +278,7 @@ public class StoneRotator : MonoBehaviour
 //     }
 //
 //     // ==========================================
-//     // 🌟 সিম্পল ম্যাথ লজিক (Raycast ছাড়া - Inside the stone)
+// // 🌟 Simple Math Logic (Without Raycast - Inside the stone)
 //     // ==========================================
 //
 //     private void SpawnAnchorsSimple(int count)
@@ -287,7 +287,7 @@ public class StoneRotator : MonoBehaviour
 //
 //         Renderer rend = currentStoneInstance.GetComponentInChildren<Renderer>();
 //         
-//         // 🌟 ফিক্স ২: ব্যাসার্ধ (Radius) অনেক কমানো হলো (1.05f থেকে 0.6f) যাতে অ্যাঙ্করগুলো পাথরের ভেতরে তৈরি হয়
+// // 🌟 Fix 2: Radius reduced a lot (from 1.05f to 0.6f) so anchors are built inside rocks
 //         float radius = rend != null ? Mathf.Min(rend.bounds.extents.x, rend.bounds.extents.y, rend.bounds.extents.z) * 0.6f : 0.3f;
 //         Vector3 center = rend != null ? rend.bounds.center : currentStoneInstance.transform.position;
 //
@@ -310,7 +310,7 @@ public class StoneRotator : MonoBehaviour
 //
 //         Renderer rend = currentStoneInstance.GetComponentInChildren<Renderer>();
 //         
-//         // 🌟 ফিক্স ৩: ফাটলগুলোকেও পাথরের ভেতরে ঢোকানো হলো (Radius * 0.65f)
+// // 🌟 Fix 3: Cracks are also inserted into the stone (Radius * 0.65f)
 //         float radius = rend != null ? Mathf.Min(rend.bounds.extents.x, rend.bounds.extents.y, rend.bounds.extents.z) * 0.65f : 0.35f;
 //
 //         for (int i = 0; i < crackCount; i++)
@@ -343,7 +343,7 @@ public class StoneRotator : MonoBehaviour
 //     }
 // }
 //
-// // 🛑 StoneRotator ক্লাস
+// // 🛑 StoneRotator class
 // public class StoneRotator : MonoBehaviour
 // {
 //     public float speed;

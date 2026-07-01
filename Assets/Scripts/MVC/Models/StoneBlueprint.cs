@@ -36,16 +36,16 @@ public class JadeCore
 public class StoneBlueprint
 {
     // ==========================================
-    // 🌟 নতুন ডাটা (Stone Market UI এর জন্য)
+    // 🌟 new data (for Stone Market UI)
     // ==========================================
-    public string stone_uid;         // পাথরের ইউনিক আইডি (সার্ভার থেকে আসবে)
-    public int challenge_points;     // কার্ডে দেখানোর জন্য (যেমন: 85000)
-    public int total_weight_kg;      // কার্ডে দেখানোর জন্য (যেমন: 250)
-    public int stone_icon_index;     // কোন ছবিটা দেখাবে (0, 1, 2...)
+    public string stone_uid;         //Unique ID of the stone (will come from the server)
+    public int challenge_points;     // to show on card (eg: 85000)
+    public int total_weight_kg;      // to show on card (eg: 250)
+    public int stone_icon_index;     // Which image to display (0, 1, 2...)
     public string stone_size_label;
     // ==========================================
 
-    // আগের কোর ডাটাগুলো
+    // Previous core data
     public PhysicsAndMaterial physics_and_material;
     public JadeCore jade_core;
     public RotationSystem rotation_system;
@@ -53,7 +53,7 @@ public class StoneBlueprint
     public string adversity_level;
     
     // ==========================================
-    // 🌟 নতুন ডেটা: Predictor-এর GDD Rules (Phase 1)
+    // 🌟 New Data: Predictor's GDD Rules (Phase 1)
     // ==========================================
     public StoneChallengeData predictor_challenge_data;
     

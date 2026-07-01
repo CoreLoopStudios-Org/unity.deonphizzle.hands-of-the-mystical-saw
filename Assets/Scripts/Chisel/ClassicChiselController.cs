@@ -30,11 +30,11 @@ public class ClassicChiselController : MonoBehaviour
     public Vector3 baseRotationAxis = Vector3.right; 
     private int baseRotationDirection = 0; 
 
-    // 🌟 নতুন মুভমেন্ট মোড প্যানেল
+    // 🌟 New movement mode panel
     public enum MovementMode { Hold_Last_Position, Return_To_Center }
 
     [Header("--- JOYSTICK BEHAVIOR MODE ---")]
-    [Tooltip("Hold Last Position: জয়স্টিক ছেড়ে দিলে চিজেল সেখানেই দাঁড়িয়ে থাকবে।\nReturn To Center: জয়স্টিক ছাড়লে চিজেল নিজে থেকে সোজা হয়ে যাবে।")]
+    [Tooltip("Hold Last Position: When you release the joystick, the chisel will stay there.\nReturn To Center: When you release the joystick, the chisel will straighten itself.")]
     public MovementMode joystickMode = MovementMode.Hold_Last_Position;
 
     [Header("--- Head Aim Settings (Joystick) ---")]
@@ -49,14 +49,14 @@ public class ClassicChiselController : MonoBehaviour
     public bool invertVertical = true;   
     public bool invertHorizontal = true; 
 
-    // 🌟 ড্রপডাউন কন্ট্রোল প্যানেল
+    // 🌟 dropdown control panel
     public enum ControlAxis { None, X, Y, Z, Negative_X, Negative_Y, Negative_Z }
 
     [Header("--- EASY ADJUSTMENT PANEL ---")]
-    [Tooltip("ডানে-বামে ঘোরার জন্য জয়স্টিক কোন অক্ষে কাজ করবে?")]
+    [Tooltip("On which axis will the joystick act for left-right rotation?")]
     public ControlAxis rootTurnAxis = ControlAxis.X; 
     
-    [Tooltip("ওপরে-নিচে নামার জন্য জয়স্টিক কোন অক্ষে কাজ করবে?")]
+    [Tooltip("On which axis will the joystick work for up-down?")]
     public ControlAxis tiltTurnAxis = ControlAxis.Z; 
 
     [Header("--- Strike Settings (Hit) ---")]
@@ -79,7 +79,7 @@ public class ClassicChiselController : MonoBehaviour
     private Vector3 initialExtendLocalPos;
     private bool isStriking = false;
 
-    // স্ক্রু-লক প্রোটেকশনের জন্য পিওর বেসলাইন কোয়াটার্নিয়ন মেমোরি
+    // Pure baseline quaternion memory for screw-lock protection
     private Quaternion initialRootRotation;
     private Quaternion initialTiltRotation;
 
@@ -87,7 +87,7 @@ public class ClassicChiselController : MonoBehaviour
     {
         if (extendBone != null) initialExtendLocalPos = extendBone.localPosition;
         
-        // এডিটরের ডিফল্ট কোয়াটার্নিয়ন ফ্রেম মেমোরিতে ফিক্সড লক করা হচ্ছে (নো মচকানো!)
+        // Fixed locking the editor's default quaternion frame to memory (no warping!).
         if (rootBone != null) initialRootRotation = rootBone.localRotation;
         if (tiltBone != null) initialTiltRotation = tiltBone.localRotation;
     }
@@ -136,10 +136,10 @@ public class ClassicChiselController : MonoBehaviour
         if (invertHorizontal) joyX = -joyX;
         if (invertVertical) joyY = -joyY;
 
-        // 🌟 জয়েস্টিকের নতুন মোড লজিক
+        // 🌟 Joystick's new mode logic
         if (joystickMode == MovementMode.Hold_Last_Position)
         {
-            // মোড ১: যেখানে ছাড়বেন, সেখানেই দাঁড়িয়ে থাকবে এবং সেখান থেকেই শুরু করবে
+            // Mode 1: Stop where you left off and start from there
             if (Mathf.Abs(joyX) > 0.05f)
             {
                 currentAimSide += joyX * headAimSpeed * Time.deltaTime;
@@ -153,7 +153,7 @@ public class ClassicChiselController : MonoBehaviour
         }
         else if (joystickMode == MovementMode.Return_To_Center)
         {
-            // মোড ২: জয়স্টিক ছাড়লে নিজে থেকে স্প্রিংয়ের মতো সেন্টারে ফিরে আসবে
+            // Mode 2: Joystick will automatically spring back to center when released
             float targetSide = joyX >= 0 ? joyX * maxTiltSide : -joyX * minTiltSide;
             float targetUp = joyY >= 0 ? joyY * maxTiltUp : -joyY * minTiltUp;
 
@@ -161,7 +161,7 @@ public class ClassicChiselController : MonoBehaviour
             currentAimUp = Mathf.Lerp(currentAimUp, targetUp, Time.deltaTime * (headAimSpeed / 5f));
         }
 
-        // 🌟 ড্রপডাউন মেনু থেকে এক্সিস নিয়ে কোয়াটার্নিয়ন স্ক্রু-লক মাল্টিপ্লিকেশন!
+        // 🌟 Quaternion screw-lock multiplication with axis from dropdown menu!
         if (rootBone != null)
         {
             Vector3 rAxis = GetAxisVector(rootTurnAxis);
@@ -175,7 +175,7 @@ public class ClassicChiselController : MonoBehaviour
         }
     }
 
-    // ড্রপডাউন মেনুকে ইউনিটির ভেক্টরে কনভার্ট করার ইঞ্জিন
+    // Engine to convert dropdown menus to vectors in Unity
     private Vector3 GetAxisVector(ControlAxis axis)
     {
         switch (axis)
@@ -190,7 +190,7 @@ public class ClassicChiselController : MonoBehaviour
         }
     }
 
-    // --- Strike ও UI লজিক হুবহু অক্ষত রাখা হলো ---
+    // --- Strike and UI logic are kept completely intact ---
     public void RotateBaseLeft() { baseRotationDirection = -1; }
     public void RotateBaseRight() { baseRotationDirection = 1; }
     public void StopBaseRotation() { baseRotationDirection = 0; }

@@ -4,23 +4,23 @@ using TMPro;
 public class ToolsManager : MonoBehaviour
 {
     [Header("Top Bar UI")]
-    public TextMeshProUGUI pointsText; // 🌟 DataManager থেকে পাওয়া মোট পয়েন্ট এখানে বসবে
+    public TextMeshProUGUI pointsText; // 🌟 Total points from DataManager will sit here
 
     private void OnEnable()
     {
-        // প্যানেলটি ওপেন হলেই পয়েন্ট আপডেট হয়ে যাবে
+        // Points will be updated only when the panel is open
         UpdatePointsUI();
     }
 
     public void UpdatePointsUI()
     {
-        // DataManager আছে কি না তা চেক করে নেওয়া
+        // Check if DataManager exists
         if (DataManager.Instance == null) return;
 
-        // 🌟 DataManager থেকে পয়েন্ট এনে Tools Panel-এর টপ বারে বসানো
+        // 🌟 Bringing points from DataManager and placing them on the top bar of the Tools Panel
         if (pointsText != null) 
         {
-            // তুমি চাইলে কমা সহ দেখাতে চাইলে ToString("N0") দিতে পারো, অথবা শুধু ToString()
+            // You can return ToString("N0") if you want to display with commas, or just ToString()
             pointsText.text = DataManager.Instance.totalPoints.ToString(); 
         }
     }

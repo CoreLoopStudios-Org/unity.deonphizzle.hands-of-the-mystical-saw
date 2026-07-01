@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Threading.Tasks;
 using TMPro;
 
-// --- তোমার আগের ENUMS (অক্ষত রাখা হলো) ---
+// --- Your previous ENUMS (left intact) ---
 public enum StoneSize { Small, Medium, Large }
 public enum StoneDensity { Light, Normal, Heavy }
 public enum StoneStress { Low, Medium, High }
@@ -34,8 +34,8 @@ public class PredictorUIManager : MonoBehaviour
     public TextMeshProUGUI adversityText; 
 
     [Header("--- Wager UI (Numpad) ---")]
-    public TextMeshProUGUI wagerDisplayText; // ডিসপ্লেতে দেখানোর জন্য
-    private string currentWagerString = "";  // ব্যাকগ্রাউন্ডে নাম্বার সেভ রাখার জন্য
+    public TextMeshProUGUI wagerDisplayText; // to show on the display
+    private string currentWagerString = "";  // To save numbers in the background
 
     [Header("--- System Status ---")]
     public bool isGenerating = false;
@@ -57,21 +57,21 @@ public class PredictorUIManager : MonoBehaviour
     
     private void Awake() => Instance = this;
 
-    // 🌟 গেম শুরুর সময় আলাদা টেক্সটটিতে ডিফল্টভাবেই "Generating..." লেখা থাকবে
+    // 🌟 The separate text will read "Generating..." by default when starting the game
     private void Start()
     {
         if (statusText != null) statusText.text = "Generating...";
         if (rotationSpeedNumText != null) rotationSpeedNumText.text = Mathf.RoundToInt(selectedSpeed).ToString();
         
-        // 🌟 শুরুতে অ্যাংকরের ভ্যালু UI-তে দেখানোর জন্য
+        // 🌟 Initially anchor's value to show in UI
         if (anchorPointsText != null) anchorPointsText.text = selectedAnchors.ToString();
 
-        // 🌟 শুরুতে ওয়েজার ডিসপ্লেতে 0 দেখানোর জন্য
+        // 🌟 to initially show 0 on the wager display
         if (wagerDisplayText != null) wagerDisplayText.text = "0";
     }
 
     // ==========================================
-    // 🌟 NUMPAD LOGIC (নতুন)
+    // 🌟 NUMPAD LOGIC (new)
     // ==========================================
     
     public void OnNumpadNumberPressed(string number)
@@ -140,7 +140,7 @@ public class PredictorUIManager : MonoBehaviour
         if (statusText != null) statusText.text = "Generating...";
     }
     
-    // পুরানো ম্যানুয়াল আপডেট মেথড
+    // old manual update method
     public void UpdateManualSelection(string category, string value)
     {
         try
@@ -231,7 +231,7 @@ public class PredictorUIManager : MonoBehaviour
         // ==========================================
         if (TimeStepSequenceManager.Instance != null && TimeStepSequenceManager.Instance.savedSteps.Count > 0)
         {
-            // UI থেকে সেভ করা সম্পূর্ণ সিকোয়েন্স লিস্টটা মেইন ডাটাবেসে ঢুকিয়ে দেওয়া হলো
+            // The complete sequence list saved from the UI is inserted into the main database
             newChallenge.movementSequence = new System.Collections.Generic.List<TimeStepData>(TimeStepSequenceManager.Instance.savedSteps);
             Debug.Log($"<color=green>✅ Packed {newChallenge.movementSequence.Count} steps into StoneChallengeData!</color>");
         }
@@ -298,7 +298,7 @@ public class PredictorUIManager : MonoBehaviour
         else if (durationSeconds <= 60f) selectedDuration = StoneChallengeData.LoopDuration.Advanced_60s;
         else selectedDuration = StoneChallengeData.LoopDuration.Expert_120s;
 
-        // 🌟 NEW: নতুন মেকানিজমে ডায়ালের সেকেন্ড পাঠিয়ে দেওয়া হলো!
+        // 🌟 NEW: Dial seconds sent to new mechanism!
         if (TimeStepSequenceManager.Instance != null)
         {
             TimeStepSequenceManager.Instance.ResetSequence(durationSeconds);
@@ -308,7 +308,7 @@ public class PredictorUIManager : MonoBehaviour
     }
     
     // ==========================================
-    // 🌟 THE MAGIC UPDATE (ক্যারোজেলের জন্য আসল লজিক)
+    // 🌟 THE MAGIC UPDATE (the original logic for the carousel)
     // ==========================================
     public void SetMovementPatternFromCarousel(string patternName)
     {

@@ -1,15 +1,15 @@
 using UnityEngine;
 using System;
-using StoneCutter.Sdk; // SDK যুক্ত করা হলো
+using StoneCutter.Sdk; // Added the SDK
 
 [CreateAssetMenu(fileName = "NewStoneModel", menuName = "Game Models/Current Stone Model")]
 public class CurrentStoneModel : ScriptableObject
 {
     [Header("Active SDK Stone")]
-    public StoneData activeSdkStone; // SDK-এর ক্লাস
+    public StoneData activeSdkStone; // SDK's class
 
     [Header("Parsed Game Blueprint")]
-    public StoneBlueprint parsedBlueprint; // আমাদের গেমের ডিটেইলস
+    public StoneBlueprint parsedBlueprint; // Details of our game
 
     public Action OnStoneDataUpdated;
 
@@ -17,7 +17,7 @@ public class CurrentStoneModel : ScriptableObject
     {
         activeSdkStone = newData;
         
-        // SDK-এর jsonContext থেকে আমাদের গেমের ব্লুপ্রিন্ট বের করে আনছি!
+        // Extracting our game blueprint from the SDK's jsonContext !
         if (!string.IsNullOrEmpty(newData.JsonContext))
         {
             parsedBlueprint = JsonUtility.FromJson<StoneBlueprint>(newData.JsonContext);

@@ -10,12 +10,12 @@ public class ToolController : MonoBehaviour
     public float zOffset = 8f; 
 
     [Header("Movement Boundaries (Inspector)")]
-    public float minX = -5f; // বামে কতটুকু যাবে
-    public float maxX = 5f;  // ডানে কতটুকু যাবে
-    public float minY = -2f; // নিচে কতটুকু যাবে
-    public float maxY = 5f;  // উপরে কতটুকু যাবে
-    public float minZ = 0f;  // পেছনে কতটুকু আসবে
-    public float maxZ = 10f; // সামনে কতটুকু যাবে
+    public float minX = -5f; // How far left to go
+    public float maxX = 5f;  // How far to the right to go
+    public float minY = -2f; // How far down to go
+    public float maxY = 5f;  // How far up will go
+    public float minZ = 0f;  // How far back will come
+    public float maxZ = 10f; // How far forward
 
     [Header("Dynamic Depth Settings")]
     public float forwardDistance = 1.5f; 
@@ -51,7 +51,7 @@ public class ToolController : MonoBehaviour
         startPosition = transform.position;
         startRotation = transform.rotation;
         
-        // গেম শুরুর সাথে সাথে কাজ করার জন্য
+        // To work with game start
         isWorking = true;
         isSelected = true; 
         
@@ -60,15 +60,15 @@ public class ToolController : MonoBehaviour
 
     void Update()
     {
-        // 🌟 টর্চ জ্বললে করাত কোনো কাজ করবে না, সিলেক্ট হবে না এবং সাথে সাথে আগের জায়গায় ফিরে যাবে!
+        // 🌟 When the torch is lit, the saw will not do anything, will not be selected and will immediately return to the previous position!
         if (StoneSpinController.GlobalTorchActive)
         {
-            isSelected = false; // জোর করে করাত ডি-সিলেক্ট করে দেওয়া হলো
+            isSelected = false; // Force the saw to be de-selected
             ReturnToStart();
             return;
         }
 
-        // টুল সিলেক্ট করা থাকলে এবং মাউস চাপলে কাজ করবে
+        // Will work if the tool is selected and the mouse is pressed
         if (isSelected && Input.GetMouseButton(0))
         {
             MoveToolToMouse();
@@ -126,7 +126,7 @@ public class ToolController : MonoBehaviour
                 targetPos.z = startPosition.z + forwardDistance; 
             }
 
-            // পজিশন লিমিট বা Clamp করা হচ্ছে
+            // Clamping the position limit
             targetPos.x = Mathf.Clamp(targetPos.x, minX, maxX);
             targetPos.y = Mathf.Clamp(targetPos.y, minY, maxY);
             targetPos.z = Mathf.Clamp(targetPos.z, minZ, maxZ);
@@ -161,29 +161,29 @@ public class ToolController : MonoBehaviour
         }
     }
 
-    // যখন টুল কোনো কিছুর সাথে ধাক্কা খাবে বা ভেতরে ঢুকবে
+    // When the tool collides with or enters something
     void OnTriggerEnter(Collider other)
     {
-        // টুল সিলেক্টেড এবং ওয়ার্কিং মোডে থাকতে হবে
+        // Tool must be selected and in working mode
         if (isSelected && isWorking)
         {
-            // ১. যদি টুল পাথরের গায়ে লাগে, তবে স্ট্রাইক কাউন্ট ১ বাড়বে
+            // 1. If the tool hits the stone, the strike count increases by 1
             if (other.CompareTag("Stone"))
             {
-                // পাথর থেকে জেনারেটর স্ক্রিপ্টটি খুঁজে বের করা
+                // Finding the generator script from stone
                 StoneGenerator stoneGen = other.GetComponent<StoneGenerator>();
                 if (stoneGen != null)
                 {
-                    // জেনারেটরকে জানিয়ে দেওয়া যে একটি স্ট্রাইক হয়েছে
+                    // Notify the generator that a strike has occurred
                     stoneGen.RegisterToolStrike();
                 }
             }
             
-            // ২. যদি টুল পাথরের ভেতরের অ্যাঙ্করের গায়ে লাগে, সেটি অ্যাঙ্কর নিজেই হ্যান্ডেল করবে।
+            // 2. If the tool hits the anchor inside the rock, the anchor itself will handle it.
         }
     }
 
-    // (ভবিষ্যতে কাটার প্রয়োজন হলে এটি ব্যবহার করতে পারবেন)
+    // (can use this if you need to cut in the future)
     private void SliceObject(GameObject targetStone)
     {
         Vector3 slicePosition = transform.position;
@@ -203,7 +203,7 @@ public class ToolController : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("EzySlice কাটতে ব্যর্থ হয়েছে!");
+            Debug.LogWarning("Failed to cut EzySlice!");
         }
     }
 
@@ -216,4 +216,4 @@ public class ToolController : MonoBehaviour
         slicedObject.tag = cuttableTag; 
         rb.AddExplosionForce(50f, transform.position, 1f);
     }
-} // <-- এই ব্র্যাকেটটি আপনার আগের কোডে মিসিং ছিল!
+} // <-- This bracket was missing in your previous code!

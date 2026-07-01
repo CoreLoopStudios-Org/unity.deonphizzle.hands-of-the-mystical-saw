@@ -37,10 +37,10 @@ public class StoneSpinController : MonoBehaviour
     // ==========================================
     // 🌟 NEW: Sequence Timer Variables
     // ==========================================
-    private float globalTimer = 0f;          // পুরো লুপের জন্য টাইমার
-    private float stepTimer = 0f;            // বর্তমান স্টেপের জন্য টাইমার
-    private int currentStepIndex = 0;        // এখন কত নাম্বার স্টেপে আছে
-    private string activePattern = "Static"; // বর্তমানে কোন মুভমেন্ট চলছে
+    private float globalTimer = 0f;          // Timer for the whole loop
+    private float stepTimer = 0f;            // Timer for current step
+    private int currentStepIndex = 0;        // How many numbers are in the step now?
+    private string activePattern = "Static"; // No movement currently in progress
 
     void Start()
     {
@@ -89,7 +89,7 @@ public class StoneSpinController : MonoBehaviour
         {
             currentSpeed = predictorData.manualSpeedSlider;
             
-            // 🌟 NEW: যদি নতুন Sequence List থাকে, তবে প্রথম স্টেপটা লোড করো
+            // 🌟 NEW: If there is a new Sequence List, load the first step
             if (predictorData.movementSequence != null && predictorData.movementSequence.Count > 0)
             {
                 currentStepIndex = 0;
@@ -99,7 +99,7 @@ public class StoneSpinController : MonoBehaviour
             }
             else
             {
-                // পুরানো সিঙ্গেল মুভমেন্ট সিস্টেম (ব্যাকআপ)
+                // old single movement system (backup)
                 activePattern = GetLegacyPatternString(predictorData);
             }
         }
@@ -126,8 +126,8 @@ public class StoneSpinController : MonoBehaviour
         {
             if (isPredictorMode && predictorData != null) 
             {
-                HandleSequenceTimer(); // 🌟 NEW: টাইমার চেক করবে
-                ApplyPredictorMovement(); // মুভমেন্ট চালাবে
+                HandleSequenceTimer(); // 🌟 NEW: will check the timer
+                ApplyPredictorMovement(); // will execute the movement
             }
             else 
             {
@@ -150,23 +150,23 @@ public class StoneSpinController : MonoBehaviour
     // ==========================================
     private void HandleSequenceTimer()
     {
-        // যদি লিস্ট না থাকে, তবে কিছুই করার দরকার নেই (পুরানো সিস্টেম চলবে)
+        // If there is no list, nothing needs to be done (old system will run)
         if (predictorData.movementSequence == null || predictorData.movementSequence.Count == 0) return;
 
-        stepTimer -= Time.deltaTime; // টাইমার কমানো হচ্ছে
+        stepTimer -= Time.deltaTime; // Decrementing the timer
 
-        // বর্তমান স্টেপের সময় শেষ হলে
+        // When the current step times out
         if (stepTimer <= 0)
         {
-            currentStepIndex++; // পরের স্টেপে যাও
+            currentStepIndex++; // Go to next step
 
-            // যদি লিস্ট শেষ হয়ে যায়, তাহলে আবার প্রথম থেকে শুরু করো (লুপ)
+            // if the list is finished, start again from the beginning (loop)
             if (currentStepIndex >= predictorData.movementSequence.Count)
             {
                 currentStepIndex = 0;
             }
 
-            // নতুন স্টেপের ডাটা সেট করা
+            // Set the new step's data
             stepTimer = predictorData.movementSequence[currentStepIndex].duration;
             activePattern = predictorData.movementSequence[currentStepIndex].movementPattern;
             
@@ -176,14 +176,14 @@ public class StoneSpinController : MonoBehaviour
 
     void ApplyPredictorMovement()
     {
-        globalTimer += Time.deltaTime; // মুভমেন্ট স্মুথ রাখার জন্য গ্লোবাল টাইমার
+        globalTimer += Time.deltaTime; // Global timer to keep movement smooth
         Vector3 currentTargetPosition = originalPosition;
         float moveSpeed = predictorData.manualSpeedSlider > 0 ? predictorData.manualSpeedSlider * 0.1f : 1f;
         float rotSpeed = predictorData.manualSpeedSlider > 0 ? predictorData.manualSpeedSlider : 20f;
         
         bool shouldUpdatePosition = false; 
 
-        // 🌟 NEW: এখন activePattern অনুযায়ী মুভমেন্ট হবে (Enum এর বদলে String দিয়ে চেক)
+        // 🌟 NEW: Now movement according to activePattern (check with String instead of Enum)
         if (activePattern == "Oscillation")
         {
             float offset = Mathf.Sin(globalTimer * moveSpeed) * 2f; 
@@ -206,9 +206,9 @@ public class StoneSpinController : MonoBehaviour
             float chaoticY = (Mathf.PerlinNoise(0, globalTimer) - 0.5f) * rotSpeed;
             targetStone.Rotate(new Vector3(chaoticX, chaoticY, 0) * Time.deltaTime);
         }
-        // "Static" হলে পাথর এক জায়গায় দাঁড়িয়ে থাকবে
+        // If "Static" the stone will stay in one place
 
-        // 🌟 স্মুথ জিটার লজিক (Adversity)
+        // 🌟 Smooth Jitter Logic (Adversity)
         if (predictorData.jitterAmount > 0)
         {
             float jitterStr = predictorData.jitterAmount * 0.015f; 
@@ -225,7 +225,7 @@ public class StoneSpinController : MonoBehaviour
         }
     }
 
-    // ব্যাকআপ মেথড: যদি প্লেয়ার পুরনো UI দিয়ে মুভমেন্ট সেট করে থাকে
+    // Backup method: if player has movement set with old UI
     private string GetLegacyPatternString(StoneChallengeData data)
     {
         if (data.coreMovement == StoneChallengeData.MovementType.Oscillation) return "Oscillation";

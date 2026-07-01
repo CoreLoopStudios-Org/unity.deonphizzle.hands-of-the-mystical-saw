@@ -10,7 +10,7 @@ public class StoneMarketManager : MonoBehaviour
     [Header("Server Dummy Data")]
     public List<StoneDataSO> availableStones;
 
-    private void Start() // 🌟 OnEnable এর বদলে Start দিলাম
+    private void Start() // 🌟 I gave Start instead of OnEnable
     {
         Debug.Log("🚀 StoneMarketManager is starting...");
         GenerateMarketCards();
@@ -29,7 +29,7 @@ public class StoneMarketManager : MonoBehaviour
             return;
         }
 
-        // আগের কার্ডগুলো মুছে ফেলা
+        // Delete previous cards
         foreach (Transform child in contentPanel)
         {
             Destroy(child.gameObject);
@@ -37,7 +37,7 @@ public class StoneMarketManager : MonoBehaviour
 
         int totalSpawned = 0;
 
-        // ১. ডামি পাথর স্পন করা (Scriptable Objects থেকে)
+        // 1. Spawning Dummy Stones (from Scriptable Objects)
         if (availableStones != null && availableStones.Count > 0)
         {
             foreach (var stoneSO in availableStones)
@@ -55,7 +55,7 @@ public class StoneMarketManager : MonoBehaviour
             }
         }
 
-        // ২. 🌟 লাইভ পাথর স্পন করা (Predictor Mode থেকে আসা Local Server ডাটা)
+        // 2. 🌟 Live stone spawning (Local Server data from Predictor Mode)
         if (StoneServer.Instance != null && StoneServer.Instance.liveStonesList.Count > 0)
         {
             foreach (var liveStone in StoneServer.Instance.liveStonesList)
@@ -67,7 +67,7 @@ public class StoneMarketManager : MonoBehaviour
 
                 if (uiScript != null)
                 {
-                    // লাইভ ব্লুপ্রিন্ট ডাটা পাঠানোর জন্য নতুন ফাংশন
+                    // New function to send live blueprint data
                     uiScript.SetupLiveStone(liveStone); 
                     totalSpawned++;
                 }

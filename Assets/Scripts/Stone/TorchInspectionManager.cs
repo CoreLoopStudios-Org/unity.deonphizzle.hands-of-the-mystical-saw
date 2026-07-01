@@ -23,10 +23,10 @@ public class TorchInspectionManager : MonoBehaviour
     public Transform torchTransform; 
 
     [Header("--- Materials (4 States) ---")]
-    public Material dryMaterial;      // টর্চ অফ, পাথর শুকনো
-    public Material wetMaterial;      // টর্চ অফ, পাথর ভেজা
-    public Material dryXRayMaterial;  // টর্চ অন, পাথর শুকনো (আপনার আগের X-Ray)
-    public Material wetXRayMaterial;  // টর্চ অন, পাথর ভেজা (নতুন X-Ray)
+    public Material dryMaterial;      // Torch off, stone dry
+    public Material wetMaterial;      // Torch off, stone wet
+    public Material dryXRayMaterial;  // Torch on, stone dry (your previous X-Ray)
+    public Material wetXRayMaterial;  // torch on, stone wet (new X-Ray)
 
     private void Awake()
     {
@@ -35,7 +35,7 @@ public class TorchInspectionManager : MonoBehaviour
 
     private void Start()
     {
-        // 🌟 স্প্রে বাটন সবসময় অন থাকবে (টর্চের উপর নির্ভরশীল নয়)
+        // 🌟 Spray button will always be on (not dependent on torch)
         if (sprayWaterButton != null) sprayWaterButton.interactable = true;
 
         if (visibilityPercentageText == null || estimatedValueText == null)
@@ -70,7 +70,7 @@ public class TorchInspectionManager : MonoBehaviour
 
     private void Update()
     {
-        // টর্চ অন থাকলে বর্তমান ম্যাটেরিয়ালে টর্চের পজিশন পাঠাবে
+        // Send torch position to current material if torch is on
         if (isTorchActive && torchTransform != null)
         {
             GameObject liveStone = GameObject.FindGameObjectWithTag("Stone");
@@ -86,7 +86,7 @@ public class TorchInspectionManager : MonoBehaviour
     }
 
     // ==========================================
-    // 🔦 টর্চ লজিক
+    // 🔦 Torch logic
     private void ToggleJadeGlow(bool active)
     {
         GameObject liveStone = GameObject.FindGameObjectWithTag("Stone");
@@ -119,7 +119,7 @@ public class TorchInspectionManager : MonoBehaviour
         UpdateStoneMaterial();
         ToggleJadeGlow(false);
 
-        // টর্চ অফ করার পর টর্চের পজিশন দূরে সরিয়ে দেওয়া (যাতে এক্স-রে গ্লিচ না হয়)
+        // offset torch position after torch off (to avoid x-ray glitches)
         GameObject liveStone = GameObject.FindGameObjectWithTag("Stone");
         if (liveStone != null)
         {
@@ -140,7 +140,7 @@ public class TorchInspectionManager : MonoBehaviour
     }
 
     // ==========================================
-    // 💦 স্প্রে লজিক (টর্চ থেকে সম্পূর্ণ আলাদা)
+    // 💦 spray logic (completely separate from torch)
     // ==========================================
     public void ApplyWaterFromButton()
     {
@@ -149,7 +149,7 @@ public class TorchInspectionManager : MonoBehaviour
 
         if (waterParticleEffect != null) waterParticleEffect.Play();
 
-        // একবার পানি দিলে বাটন অফ হয়ে যাবে
+        // Once the water is applied, the button will turn off
         if (sprayWaterButton != null) sprayWaterButton.interactable = false;
 
         UpdateStoneMaterial();
@@ -157,7 +157,7 @@ public class TorchInspectionManager : MonoBehaviour
     }
 
     // ==========================================
-    // 🎨 ম্যাটেরিয়াল চেঞ্জ লজিক
+    // 🎨 material change logic
     // ==========================================
     private void UpdateStoneMaterial()
     {
@@ -171,12 +171,12 @@ public class TorchInspectionManager : MonoBehaviour
 
         if (isTorchActive)
         {
-            // 🌟 টর্চ অন থাকলে: ভেজা হলে নতুন X-Ray, শুকনো হলে আগের X-Ray
+            // 🌟 If torch is on: new X-Ray if wet, previous X-Ray if dry
             targetMaterial = isStoneWet ? wetXRayMaterial : dryXRayMaterial;
         }
         else
         {
-            // 🌟 টর্চ অফ থাকলে: ভেজা হলে Wet ম্যাটেরিয়াল, শুকনো হলে Dry ম্যাটেরিয়াল
+            // 🌟 With torch off: Wet material if wet, Dry material if dry
             targetMaterial = isStoneWet ? wetMaterial : dryMaterial;
         }
 
@@ -187,7 +187,7 @@ public class TorchInspectionManager : MonoBehaviour
     }
 
     // ==========================================
-    // 📊 ইন্সপেকশন লজিক
+    // 📊 Inspection logic
     // ==========================================
     public void InspectStone()
     {

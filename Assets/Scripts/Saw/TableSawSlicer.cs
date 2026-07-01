@@ -7,7 +7,7 @@ public class TableSawSlicer : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        // পাথর ব্লেডে লাগলেই কাটবে
+        // The stone will cut when it hits the blade
         if (other.CompareTag("Stone"))
         {
             SliceStone(other.gameObject);
@@ -16,10 +16,10 @@ public class TableSawSlicer : MonoBehaviour
 
     private void SliceStone(GameObject target)
     {
-        // ব্লেডের পজিশন এবং রোটেশন অনুযায়ী কাটার প্লেন
+        // Cutting plane according to blade position and rotation
         Vector3 planePoint = transform.position;
         
-        // 🌟 ব্লেড যদি সোজা না কাটে, তবে transform.up এর বদলে transform.right বা transform.forward দিয়ে চেক করবে
+        // 🌟 If the blade doesn't cut straight, check with transform.right or transform.forward instead of transform.up
         Vector3 planeNormal = transform.up; 
 
         SlicedHull hull = target.Slice(planePoint, planeNormal);
@@ -29,9 +29,9 @@ public class TableSawSlicer : MonoBehaviour
             GameObject upperHull = hull.CreateUpperHull(target, crossSectionMaterial);
             GameObject lowerHull = hull.CreateLowerHull(target, crossSectionMaterial);
 
-            // --- 🌟 তোমার আগের স্ক্রিপ্টের জাদুকরী লজিক ---
+            // --- 🌟 magic logic from your previous script ---
             
-            // ১. মূল পাথরটাকে জায়গাতেই স্থির রাখা (শুধু মেশ আপডেট করা)
+            // 1. Keeping the keystone in place (updating the mesh only)
             Mesh newMesh = upperHull.GetComponent<MeshFilter>().sharedMesh;
             Material[] newMaterials = upperHull.GetComponent<MeshRenderer>().sharedMaterials;
 
@@ -44,10 +44,10 @@ public class TableSawSlicer : MonoBehaviour
                 targetCollider.sharedMesh = null;
                 targetCollider.sharedMesh = newMesh;
                 targetCollider.enabled = false;
-                targetCollider.enabled = true; // কলিশন রিফ্রেশ করা
+                targetCollider.enabled = true; // Refresh the collision
             }
 
-            // ২. পাথরের গায়ে থাকা অ্যাঙ্কর (Anchor) গুলো ঠিকমতো ফেলা
+            // 2. The anchors on the stone should be dropped properly
             for (int i = target.transform.childCount - 1; i >= 0; i--)
             {
                 Transform child = target.transform.GetChild(i);
@@ -61,9 +61,9 @@ public class TableSawSlicer : MonoBehaviour
                 }
             }
 
-            Destroy(upperHull); // বাড়তি অংশ ডিলিট করে দেওয়া
+            Destroy(upperHull); // Delete the extra part
 
-            // ৩. শুধু নিচের টুকরোটাকে ফিজিক্স দিয়ে ফেলে দেওয়া
+            // 3. Just dropping the bottom piece with physics
             SetupSlicedComponent(lowerHull, target.layer);
         }
     }
@@ -75,12 +75,12 @@ public class TableSawSlicer : MonoBehaviour
         collider.convex = true;
 
         slicedObject.layer = originalLayer;
-        slicedObject.tag = "Untagged"; // যাতে এই টুকরোটা আবার ব্লেডে লেগে না কাটে
+        slicedObject.tag = "Untagged"; // so that this piece doesn't cut back on the blade
 
-        // একটু ধাক্কা দিয়ে ফেলে দেওয়া
+        // throw away with a little push
         rb.AddExplosionForce(100f, slicedObject.transform.position, 5f);
 
-        // 🌟 ২ সেকেন্ড পর হাওয়ায় মিলিয়ে যাবে!
+        // 🌟 Disappears into the air after 2 seconds!
         Destroy(slicedObject, 2f);
     }
 }

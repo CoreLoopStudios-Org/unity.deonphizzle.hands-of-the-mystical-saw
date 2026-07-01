@@ -30,7 +30,7 @@ public class DremelToolController : MonoBehaviour
     public Transform upDownBone; 
     public Transform extendBone; 
     public Transform dremelTip;  
-    [Tooltip("আপনার পুরো ড্রামেল মডেলটি এখানে দিন যাতে সে নিজেকে নিজে কলিশন না করে (Ignore Self)")]
+    [Tooltip("Put your entire Dremel model here so it doesn't collide with itself (Ignore Self)")]
     public GameObject toolRoot; 
 
     private AudioSource localAudioSource;
@@ -43,7 +43,7 @@ public class DremelToolController : MonoBehaviour
     [Tooltip("Define the axis that moves the dremel straight towards the stone (e.g., X:1, Y:0, Z:0)")]
     public Vector3 manualMoveAxis = Vector3.forward; 
     public float manualMoveSpeed = 2f; 
-    [Tooltip("ড্রামেল মাথার কতটুকু সামনে কলিশন হবে (0 মানে একদম মাথায়)")]
+    [Tooltip("How far in front of the dremel head will the collision occur (0 means right at the head)")]
     public float collisionOffset = 0.05f;
     
     [Tooltip("How far the tool can move FORWARD from its starting position")]
@@ -304,7 +304,7 @@ public class DremelToolController : MonoBehaviour
 
         if (rootBone != null)
         {
-            // 🌟 FIX: এখন Root Bone তার X-axis বরাবর ঘুরবে
+            // 🌟 FIX: Now the Root Bone will rotate along its X-axis
             rootBone.localRotation = initialRootRotation * Quaternion.Euler(currentAimSide, 0, 0);
         }
 

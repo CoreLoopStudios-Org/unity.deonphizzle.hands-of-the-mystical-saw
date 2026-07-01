@@ -1,20 +1,20 @@
 using UnityEngine;
 
-// [System.Serializable] দেওয়ার মানে হলো এই ক্লাসটিকে খুব সহজেই JSON-এ কনভার্ট করা যাবে
+// Giving [System.Serializable] means this class can be easily converted to JSON
 [System.Serializable]
 public class UserProfileData
 {
     public string userId;
     public string userName;
-    public string avatarUrl;      // সার্ভার থেকে ছবির লিংক আসবে
+    public string avatarUrl;      // The image link will come from the server
     public int totalPoints;
-    public int currentTier;       // যেমন: 5
-    public int currentPoints;     // যেমন: 12897
-    public int maxPointsForTier;  // যেমন: 20000 (স্লাইডারের জন্য লাগবে)
+    public int currentTier;       // eg: 5
+    public int currentPoints;     // eg: 12897
+    public int maxPointsForTier;  // eg: 20000 (used for slider)
     
-    public int stonesPlayed;      // যেমন: 1245
-    public int perfectCuts;       // যেমন: 426
-    public int failedCuts;        // যেমন: 127
+    public int stonesPlayed;      // eg: 1245
+    public int perfectCuts;       // eg: 426
+    public int failedCuts;        // eg: 127
     
-    public string tierStatus;     // যেমন: "Master"
+    public string tierStatus;     // eg: "Master"
 }

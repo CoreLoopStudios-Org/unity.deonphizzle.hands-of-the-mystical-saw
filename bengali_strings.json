@@ -1,0 +1,1936 @@
+{
+  "Assets/Scripts\\HammerAction.cs": [
+    {
+      "line": 11,
+      "text": "// 🌟 জাদুকরী লাইন: টর্চ অন থাকলে নিচের কোনো ক্লিক বা হাতুড়ির কোড কাজ করবে না!"
+    },
+    {
+      "line": 14,
+      "text": "// মাউস ক্লিক করলে বা হাতুড়ি বাটনে ক্লিক করলে"
+    },
+    {
+      "line": 22,
+      "text": "// যদি পাথরটিতে (Stone_1 বা Stone ট্যাগ যুক্ত) আঘাত লাগে"
+    },
+    {
+      "line": 33,
+      "text": "// ১. GameManager কে জানানো"
+    },
+    {
+      "line": 39,
+      "text": "// ২. অরিজিনাল পাথরটি লুকিয়ে ফেলা"
+    },
+    {
+      "line": 42,
+      "text": "// ৩. ভাঙা পাথরের টুকরোগুলো সেই জায়গায় তৈরি করা"
+    },
+    {
+      "line": 48,
+      "text": "// ৪. প্রতিটি টুকরোকে ছিটকে দেওয়ার জন্য বল প্রয়োগ করা"
+    },
+    {
+      "line": 54,
+      "text": "// ৫. ৩ সেকেন্ড পর টুকরোগুলো মুছে ফেলা"
+    }
+  ],
+  "Assets/Scripts\\JadeCuttingGame.cs": [
+    {
+      "line": 55,
+      "text": "SetStatusText(\"পছন্দ করুন: সরাসরি আঘাত, ড্রেমেল নাকি করাত?\");"
+    },
+    {
+      "line": 76,
+      "text": "GameOver(\"সময় শেষ!\");"
+    },
+    {
+      "line": 93,
+      "text": "// 🌟 জাদুকরী লক: গ্লোবাল ভেরিয়েবল আপডেট করে পুরো গেমকে জানিয়ে দেওয়া"
+    },
+    {
+      "line": 135,
+      "text": "// 🌟 জাদুকরী লক: টর্চ অন থাকলে কোনো টুলস অ্যাক্টিভ হবে না!"
+    },
+    {
+      "line": 159,
+      "text": "// 🌟 জাদুকরী লক: টর্চ অন থাকলে কোনো আঘাত কাজ করবে না!"
+    },
+    {
+      "line": 169,
+      "text": "SetStatusText(toolTag + \" দিয়ে চমৎকার কাট!\");"
+    },
+    {
+      "line": 174,
+      "text": "SetStatusText(toolTag + \" আঘাত ব্যর্থ!\");"
+    },
+    {
+      "line": 176,
+      "text": "if (isShattered) GameOver(\"পাথরটি পুরোপুরি ভেঙে গেছে!\");"
+    },
+    {
+      "line": 178,
+      "text": "Debug.Log(toolTag + \" দিয়ে পাথর কাটা হচ্ছে!\");"
+    },
+    {
+      "line": 181,
+      "text": "// --- UI আপডেট মেথডসমূহ ---"
+    }
+  ],
+  "Assets/Scripts\\moveAtDirection.cs": [
+    {
+      "line": 11,
+      "text": "// 🌟 ম্যাজিক শেকল: টর্চ জ্বললে এই হাতুড়ি এক চুলও সামনে এগোবে না!"
+    }
+  ],
+  "Assets/Scripts\\StrikeSystem.cs": [
+    {
+      "line": 9,
+      "text": "public Image barImage;    // UI ইমেজ"
+    },
+    {
+      "line": 10,
+      "text": "public Color activeColor; // এই বারটি পূর্ণ হলে যে রঙ হবে"
+    },
+    {
+      "line": 15,
+      "text": "public Color normalColor = Color.white; // শুরুতে বা রিসেট অবস্থায় যে রঙ থাকবে"
+    },
+    {
+      "line": 19,
+      "text": "// ১. স্ট্রাইক অ্যাড করা (ডাইনামিক কালারসহ)"
+    },
+    {
+      "line": 24,
+      "text": "// ইন্সপেক্টরে সেট করা নির্দিষ্ট রঙটি অ্যাপ্লাই করা"
+    },
+    {
+      "line": 28,
+      "text": "// সব স্ট্রাইক পূর্ণ হলে True পাঠাবে (Game Over)"
+    },
+    {
+      "line": 34,
+      "text": "// ২. নতুন ক্যানভাসের জন্য ডাইনামিকভাবে সেটআপ করা"
+    },
+    {
+      "line": 42,
+      "text": "// যদি কালার লিস্ট ছোট হয় তবে ডিফল্ট লাল রঙ দেবে"
+    },
+    {
+      "line": 49,
+      "text": "// ৩. রিসেট করা"
+    }
+  ],
+  "Assets/Scripts\\Chisel\\ChiselController.cs": [
+    {
+      "line": 13,
+      "text": "[Tooltip(\"বাটালির বেস সবসময় খাড়া (Upright) থাকবে কি না\")]"
+    },
+    {
+      "line": 20,
+      "text": "// 🌟 নতুন যোগ করা হয়েছে: হাতুড়ির মতো ইফেক্ট এবং সাউন্ড সেটিংস 🌟"
+    },
+    {
+      "line": 25,
+      "text": "[Tooltip(\"প্রথম ইফেক্ট (যেমন: Sparks)\")]"
+    },
+    {
+      "line": 28,
+      "text": "[Tooltip(\"পাথরে আঘাত করার প্রধান সাউন্ড\")]"
+    },
+    {
+      "line": 32,
+      "text": "[Tooltip(\"দ্বিতীয় ইফেক্ট (যেমন: Dust বা Smoke)\")]"
+    },
+    {
+      "line": 35,
+      "text": "[Tooltip(\"দ্বিতীয় ইফেক্টের সাউন্ড (যেমন: পাথর ভাঙার শব্দ - ঐচ্ছিক)\")]"
+    },
+    {
+      "line": 101,
+      "text": "// 🌟 প্রথম ইফেক্ট ও সাউন্ড স্পন করা 🌟"
+    },
+    {
+      "line": 113,
+      "text": "// 🌟 দ্বিতীয় ইফেক্ট ও সাউন্ড স্পন করা 🌟"
+    }
+  ],
+  "Assets/Scripts\\Chisel\\ClassicChiselController.cs": [
+    {
+      "line": 32,
+      "text": "// 🌟 নতুন মুভমেন্ট মোড প্যানেল"
+    },
+    {
+      "line": 36,
+      "text": "[Tooltip(\"Hold Last Position: জয়স্টিক ছেড়ে দিলে চিজেল সেখানেই দাঁড়িয়ে থাকবে।\\nReturn To Center: জয়স্টিক ছাড়লে চিজেল নিজে থেকে সোজা হয়ে যাবে।\")]"
+    },
+    {
+      "line": 51,
+      "text": "// 🌟 ড্রপডাউন কন্ট্রোল প্যানেল"
+    },
+    {
+      "line": 55,
+      "text": "[Tooltip(\"ডানে-বামে ঘোরার জন্য জয়স্টিক কোন অক্ষে কাজ করবে?\")]"
+    },
+    {
+      "line": 58,
+      "text": "[Tooltip(\"ওপরে-নিচে নামার জন্য জয়স্টিক কোন অক্ষে কাজ করবে?\")]"
+    },
+    {
+      "line": 81,
+      "text": "// স্ক্রু-লক প্রোটেকশনের জন্য পিওর বেসলাইন কোয়াটার্নিয়ন মেমোরি"
+    },
+    {
+      "line": 89,
+      "text": "// এডিটরের ডিফল্ট কোয়াটার্নিয়ন ফ্রেম মেমোরিতে ফিক্সড লক করা হচ্ছে (নো মচকানো!)"
+    },
+    {
+      "line": 138,
+      "text": "// 🌟 জয়েস্টিকের নতুন মোড লজিক"
+    },
+    {
+      "line": 141,
+      "text": "// মোড ১: যেখানে ছাড়বেন, সেখানেই দাঁড়িয়ে থাকবে এবং সেখান থেকেই শুরু করবে"
+    },
+    {
+      "line": 155,
+      "text": "// মোড ২: জয়স্টিক ছাড়লে নিজে থেকে স্প্রিংয়ের মতো সেন্টারে ফিরে আসবে"
+    },
+    {
+      "line": 163,
+      "text": "// 🌟 ড্রপডাউন মেনু থেকে এক্সিস নিয়ে কোয়াটার্নিয়ন স্ক্রু-লক মাল্টিপ্লিকেশন!"
+    },
+    {
+      "line": 177,
+      "text": "// ড্রপডাউন মেনুকে ইউনিটির ভেক্টরে কনভার্ট করার ইঞ্জিন"
+    },
+    {
+      "line": 192,
+      "text": "// --- Strike ও UI লজিক হুবহু অক্ষত রাখা হলো ---"
+    }
+  ],
+  "Assets/Scripts\\Dramel\\DremelControlle.cs": [
+    {
+      "line": 32,
+      "text": "[Tooltip(\"আপনার পুরো ড্রামেল মডেলটি এখানে দিন যাতে সে নিজেকে নিজে কলিশন না করে (Ignore Self)\")]"
+    },
+    {
+      "line": 45,
+      "text": "[Tooltip(\"ড্রামেল মাথার কতটুকু সামনে কলিশন হবে (0 মানে একদম মাথায়)\")]"
+    },
+    {
+      "line": 306,
+      "text": "// 🌟 FIX: এখন Root Bone তার X-axis বরাবর ঘুরবে"
+    }
+  ],
+  "Assets/Scripts\\Hammer\\NewHammerController.cs": [
+    {
+      "line": 44,
+      "text": "// 🟢 FIX 2: হাতুড়িটি ১০ থেকে -১০০ তে ঘোরার জন্য নির্দিষ্ট অপশন"
+    },
+    {
+      "line": 45,
+      "text": "[Tooltip(\"আঘাত করার আগে হাতুড়ি কত ডিগ্রিতে পেছনে যাবে (যেমন: -180)\")]"
+    },
+    {
+      "line": 47,
+      "text": "[Tooltip(\"পাথরে আঘাত করার সময় ঠিক কত ডিগ্রিতে গিয়ে থামবে (যেমন: -20)\")]"
+    }
+  ],
+  "Assets/Scripts\\MVC\\Controllers\\MainMenuController.cs": [
+    {
+      "line": 2,
+      "text": "using TMPro; // 🌟 TextMeshPro এর জন্য"
+    }
+  ],
+  "Assets/Scripts\\MVC\\Controllers\\PredictorMotionController.cs": [
+    {
+      "line": 5,
+      "text": "//     public CurrentStoneModel currentStoneModel; // 🌟 তোমার MVC স্ক্রিপ্টেবল অবজেক্ট"
+    },
+    {
+      "line": 11,
+      "text": "//     // পাথরের আদি পজিশন মনে রাখার জন্য"
+    },
+    {
+      "line": 23,
+      "text": "//         // 🌟 PlayerPrefs এর বদলে তোমার ScriptableObject থেকে ডেটা নিচ্ছি"
+    },
+    {
+      "line": 42,
+      "text": "//         // প্রতিটি ফ্রেমের শুরুতে পাথরকে তার বেস পজিশনে নিয়ে আসবো (যাতে Jitter বা Oscillation লিমিট ক্রস না করে)"
+    },
+    {
+      "line": 46,
+      "text": "//         // 🌟 ১. Core Movement (পাথরের পজিশন পরিবর্তন)"
+    },
+    {
+      "line": 52,
+      "text": "//             // ডানে-বামে দোল খাবে (Ping-Pong)"
+    },
+    {
+      "line": 58,
+      "text": "//             // আস্তে আস্তে সরে যাবে এবং originalPosition আপডেট হবে"
+    },
+    {
+      "line": 64,
+      "text": "//         // 🌟 ২. Rotational Pattern & The \"BAIT TRAP\""
+    },
+    {
+      "line": 68,
+      "text": "//         // 😈 Bait Pattern Logic: সময়ের অর্ধেক পার হলে হঠাৎ উল্টো দিকে দ্বিগুণ স্পিডে ঘুরবে!"
+    },
+    {
+      "line": 74,
+      "text": "//                 rotSpeed = -rotSpeed * 1.5f; // ধোঁকা! ডিরেকশন রিভার্স এবং স্পিড আপ!"
+    },
+    {
+      "line": 90,
+      "text": "//         // 🌟 ৩. Adversity: Jitter (পাথর কাঁপুনি)"
+    },
+    {
+      "line": 94,
+      "text": "//             // Jitter value অনুযায়ী রেন্ডম পজিশন শিফট (থরথর করে কাঁপবে)"
+    },
+    {
+      "line": 100,
+      "text": "//         // ফাইনাল পজিশন অ্যাপ্লাই করা"
+    }
+  ],
+  "Assets/Scripts\\MVC\\Controllers\\ProfileManager.cs": [
+    {
+      "line": 10,
+      "text": "// 🌟 প্রোগ্রেস বারের পয়েন্ট (যেমন: 12897 / 20000)"
+    },
+    {
+      "line": 13,
+      "text": "// 🌟 মোট পয়েন্ট (যেমন: 45000) দেখানোর জন্য"
+    },
+    {
+      "line": 36,
+      "text": "// 🌟 জাদুকরী লাইন:"
+    },
+    {
+      "line": 37,
+      "text": "// কাটিং সিন থেকে জেতা পয়েন্টটা মেমোরি থেকে টেনে আনবে।"
+    },
+    {
+      "line": 38,
+      "text": "// যদি মেমোরিতে কিছু না থাকে (ফার্স্ট টাইম প্লে), তাহলে তোমার DataManager এর ডিফল্ট 45000 নিয়ে নেবে।"
+    },
+    {
+      "line": 47,
+      "text": "// টিয়ার প্রোগ্রেস ডাটা"
+    },
+    {
+      "line": 51,
+      "text": "// 🌟 আপডেট: এখন মেমোরি থেকে লেটেস্ট পয়েন্ট নেবে"
+    },
+    {
+      "line": 65,
+      "text": "// Null চেক করে সাধারণ টেক্সট আপডেট"
+    },
+    {
+      "line": 68,
+      "text": "// প্রোগ্রেস বারের টেক্সট"
+    },
+    {
+      "line": 71,
+      "text": "// 🌟 আপডেট: N0 দেওয়ার কারণে ৪৫,০০০ কমা সহ সুন্দর করে আসবে"
+    },
+    {
+      "line": 74,
+      "text": "// স্লাইডার আপডেট"
+    },
+    {
+      "line": 84,
+      "text": "// লুপ চালিয়ে ৩টি জায়গাতেই একই Tier টেক্সট বসিয়ে দেওয়া"
+    },
+    {
+      "line": 93,
+      "text": "// Tier অনুযায়ী ব্যাজ (Image) আপডেট করা"
+    },
+    {
+      "line": 112,
+      "text": "// 🌟 Inspector-এ ব্যাজ সেট করার জন্য কাস্টম ক্লাস"
+    }
+  ],
+  "Assets/Scripts\\MVC\\Controllers\\RotationController.cs": [
+    {
+      "line": 13,
+      "text": "[Tooltip(\"UI অ্যারো ঠিক জায়গায় না গেলে এখানে ভ্যালু পরিবর্তন করে ঠিক করুন (যেমন: 90, -90, 45 ইত্যাদি)\")]"
+    },
+    {
+      "line": 16,
+      "text": "// 🌟 Quaternion-এর বদলে Float ব্যবহার করছি যাতে সে Shortest-Path না খোঁজে!"
+    },
+    {
+      "line": 25,
+      "text": "// শুরুতে বর্তমান রোটেশন সেট করে নেওয়া হচ্ছে"
+    },
+    {
+      "line": 37,
+      "text": "// 🌟 Mathf.Lerp ব্যবহার করার ফলে সে সবসময় সিরিয়ালি ঘুরবে (Clockwise / Anti-Clockwise)"
+    },
+    {
+      "line": 44,
+      "text": "// 3D অবজেক্টটিও একইভাবে ঘুরবে"
+    },
+    {
+      "line": 55,
+      "text": "// 🌟 কাস্টম UI রোটেশন লজিক (আপনার ডিজাইনের জন্য)"
+    },
+    {
+      "line": 59,
+      "text": "// ১৮০ এর জন্য কাঁটাকে সঠিক জায়গায় নিতে এক্সট্রা ৯০ যোগ করা হলো (২৭০ ডিগ্রি)"
+    },
+    {
+      "line": 68,
+      "text": "// 🌟 ফিক্স: ৪৫ ডিগ্রির জন্য কাঁটাকে উল্টোদিকে (-৪৫) যাওয়ার লজিক"
+    },
+    {
+      "line": 76,
+      "text": "// UI-এর জন্য টার্গেট রোটেশন Float ভ্যালু (অফসেট সহ)"
+    },
+    {
+      "line": 79,
+      "text": "// 3D অবজেক্টের জন্য টার্গেট রোটেশন Float ভ্যালু"
+    },
+    {
+      "line": 83,
+      "text": "// 🌟 প্রেডিক্টর ডেটাবেস আপডেট"
+    },
+    {
+      "line": 89,
+      "text": "// স্ট্যাটাস আপডেট করে Generating করে দেওয়া হলো"
+    }
+  ],
+  "Assets/Scripts\\MVC\\Controllers\\SceneSwitcher.cs": [
+    {
+      "line": 1,
+      "text": "using UnityEngine.SceneManagement; // সিন লোড করার জন্য অবশ্যই লাগবে"
+    },
+    {
+      "line": 5,
+      "text": "// এই ফাংশনটি দিয়ে যেকোনো সিন লোড করা যাবে"
+    },
+    {
+      "line": 12,
+      "text": "// গেম থেকে বের হওয়ার জন্য"
+    }
+  ],
+  "Assets/Scripts\\MVC\\Controllers\\StoneMarketManager.cs": [
+    {
+      "line": 12,
+      "text": "private void Start() // 🌟 OnEnable এর বদলে Start দিলাম"
+    },
+    {
+      "line": 31,
+      "text": "// আগের কার্ডগুলো মুছে ফেলা"
+    },
+    {
+      "line": 39,
+      "text": "// ১. ডামি পাথর স্পন করা (Scriptable Objects থেকে)"
+    },
+    {
+      "line": 57,
+      "text": "// ২. 🌟 লাইভ পাথর স্পন করা (Predictor Mode থেকে আসা Local Server ডাটা)"
+    },
+    {
+      "line": 69,
+      "text": "// লাইভ ব্লুপ্রিন্ট ডাটা পাঠানোর জন্য নতুন ফাংশন"
+    }
+  ],
+  "Assets/Scripts\\MVC\\Controllers\\ToolsManager.cs": [
+    {
+      "line": 6,
+      "text": "public TextMeshProUGUI pointsText; // 🌟 DataManager থেকে পাওয়া মোট পয়েন্ট এখানে বসবে"
+    },
+    {
+      "line": 10,
+      "text": "// প্যানেলটি ওপেন হলেই পয়েন্ট আপডেট হয়ে যাবে"
+    },
+    {
+      "line": 16,
+      "text": "// DataManager আছে কি না তা চেক করে নেওয়া"
+    },
+    {
+      "line": 19,
+      "text": "// 🌟 DataManager থেকে পয়েন্ট এনে Tools Panel-এর টপ বারে বসানো"
+    },
+    {
+      "line": 22,
+      "text": "// তুমি চাইলে কমা সহ দেখাতে চাইলে ToString(\"N0\") দিতে পারো, অথবা শুধু ToString()"
+    }
+  ],
+  "Assets/Scripts\\MVC\\Controllers\\WinLoseManager.cs": [
+    {
+      "line": 90,
+      "text": "// 🌟 আপডেট করা ফাংশন: মেইন মেনুতে রিডাইরেক্ট করে প্যানেল খোলার জন্য"
+    },
+    {
+      "line": 95,
+      "text": "// 🌟 সিগন্যাল সেভ করা হচ্ছে"
+    },
+    {
+      "line": 99,
+      "text": "// মেইন মেনু লোড করা হচ্ছে"
+    }
+  ],
+  "Assets/Scripts\\MVC\\Models\\CurrentStoneModel.cs": [
+    {
+      "line": 2,
+      "text": "using StoneCutter.Sdk; // SDK যুক্ত করা হলো"
+    },
+    {
+      "line": 8,
+      "text": "public StoneData activeSdkStone; // SDK-এর ক্লাস"
+    },
+    {
+      "line": 11,
+      "text": "public StoneBlueprint parsedBlueprint; // আমাদের গেমের ডিটেইলস"
+    },
+    {
+      "line": 19,
+      "text": "// SDK-এর jsonContext থেকে আমাদের গেমের ব্লুপ্রিন্ট বের করে আনছি!"
+    }
+  ],
+  "Assets/Scripts\\MVC\\Models\\DataManager.cs": [
+    {
+      "line": 7,
+      "text": "// 🌟 এই সেই জাদুকরী লাইন যেটা মিসিং থাকার কারণে এরর দিচ্ছিল!"
+    },
+    {
+      "line": 36,
+      "text": "// মেমোরি থেকে ডাটা আনবে"
+    },
+    {
+      "line": 40,
+      "text": "// 🌟 পয়েন্ট যোগ করার ফাংশন"
+    },
+    {
+      "line": 47,
+      "text": "// 🌟 পয়েন্ট খরচ করার ফাংশন"
+    },
+    {
+      "line": 59,
+      "text": "// 🌟 ডাটা সেভ এবং সবাইকে সিগন্যাল দেওয়া"
+    },
+    {
+      "line": 65,
+      "text": "// সিগন্যাল ফায়ার করা (যাতে GlobalPointsUI আপডেট হয়ে যায়)"
+    },
+    {
+      "line": 74,
+      "text": "// Inspector-এ চেঞ্জ করলে লাইভ আপডেট হবে"
+    }
+  ],
+  "Assets/Scripts\\MVC\\Models\\StoneBlueprint.cs": [
+    {
+      "line": 38,
+      "text": "// 🌟 নতুন ডাটা (Stone Market UI এর জন্য)"
+    },
+    {
+      "line": 40,
+      "text": "public string stone_uid;         // পাথরের ইউনিক আইডি (সার্ভার থেকে আসবে)"
+    },
+    {
+      "line": 41,
+      "text": "public int challenge_points;     // কার্ডে দেখানোর জন্য (যেমন: 85000)"
+    },
+    {
+      "line": 42,
+      "text": "public int total_weight_kg;      // কার্ডে দেখানোর জন্য (যেমন: 250)"
+    },
+    {
+      "line": 43,
+      "text": "public int stone_icon_index;     // কোন ছবিটা দেখাবে (0, 1, 2...)"
+    },
+    {
+      "line": 47,
+      "text": "// আগের কোর ডাটাগুলো"
+    },
+    {
+      "line": 55,
+      "text": "// 🌟 নতুন ডেটা: Predictor-এর GDD Rules (Phase 1)"
+    }
+  ],
+  "Assets/Scripts\\MVC\\Models\\StoneChallengeData.cs": [
+    {
+      "line": 7,
+      "text": "public string predictorId;            // কে বানিয়েছে"
+    },
+    {
+      "line": 8,
+      "text": "public int deterministicSeed;         // Seed Lock (যাতে রিপ্লে সব সময় সেম থাকে)"
+    },
+    {
+      "line": 9,
+      "text": "public float reputationScore;         // Predictor-এর Reputation & Ranking"
+    },
+    {
+      "line": 12,
+      "text": "public SkillTier minimumSkillRequired; // কোন স্কিলের প্লেয়ার এটা খেলতে পারবে (Initiate - Mythic)"
+    },
+    {
+      "line": 13,
+      "text": "public float difficultyMultiplier;     // কঠিন লেভেলের জন্য রিওয়ার্ড মাল্টিপ্লায়ার"
+    },
+    {
+      "line": 23,
+      "text": "public float manualSpeedSlider;        // কাস্টম স্পিড"
+    },
+    {
+      "line": 24,
+      "text": "public AnimationCurve speedCurve;      // Acceleration/Deceleration কার্ভের জন্য (Pro level!)"
+    },
+    {
+      "line": 27,
+      "text": "public float jitterAmount;             // পাথর কতটা কাঁপবে (Jitter)"
+    },
+    {
+      "line": 28,
+      "text": "public float driftSpeed;               // আস্তে আস্তে সরে যাওয়া (Drift)"
+    },
+    {
+      "line": 29,
+      "text": "public Vector3 loopOffset;             // লুপ অফসেট (প্লেয়ারের মেমরি ধোঁকা দেওয়ার জন্য)"
+    },
+    {
+      "line": 37,
+      "text": "// 🌟 নতুন টাইম স্টেপ সিকোয়েন্স সেভ রাখার জন্য লিস্ট"
+    },
+    {
+      "line": 45,
+      "text": "public float targetScoreToWin;         // জেতার জন্য মিনিমাম কত পয়েন্ট লাগবে"
+    },
+    {
+      "line": 48,
+      "text": "public StoneSize targetStoneSize;      // Small, Medium, Large (অ্যাঙ্করের পরিমাণ নির্ধারণ করবে)"
+    },
+    {
+      "line": 49,
+      "text": "public int wagerAmount;                // Predictor কত পয়েন্ট বাজি ধরছে"
+    },
+    {
+      "line": 50,
+      "text": "public bool isFairnessValidated;       // AI কি চেক করেছে যে এটা জেতা সম্ভব?"
+    },
+    {
+      "line": 54,
+      "text": "// 🌟 ENUMS: তোমার গেম ডিজাইন ডকুমেন্ট অনুযায়ী ক্যাটাগরি 🌟"
+    },
+    {
+      "line": 64,
+      "text": "public enum StoneSize { Small, Medium, Large } // 🌟 নতুন যোগ করা হলো"
+    },
+    {
+      "line": 67,
+      "text": "// 🌟 Multi-phase মোশনের জন্য আলাদা স্ট্রাকচার (ফেজ অনুযায়ী আচরণ বদলানো)"
+    },
+    {
+      "line": 71,
+      "text": "public float startTime; // এই ফেজ কখন শুরু হবে (যেমন: ২০ সেকেন্ড পর)"
+    },
+    {
+      "line": 72,
+      "text": "public float duration;  // কতক্ষণ চলবে"
+    },
+    {
+      "line": 73,
+      "text": "public StoneChallengeData.MovementType phaseMovement; // নতুন ফেজে মুভমেন্ট কেমন হবে"
+    },
+    {
+      "line": 75,
+      "text": "public StoneChallengeData.PredictorMetaTrap trapType; // এই ফেজে হঠাৎ করে ধোঁকা দেওয়া"
+    },
+    {
+      "line": 76,
+      "text": "public float phaseSpeedMultiplier; // হঠাৎ স্পিড বাড়ানো বা কমানো"
+    }
+  ],
+  "Assets/Scripts\\MVC\\Models\\StoneDataVerifier.cs": [
+    {
+      "line": 20,
+      "text": "// 2. Rotation Angle (এটা Blueprint থেকে আসছে)"
+    },
+    {
+      "line": 24,
+      "text": "// 3. Anchor Points (এটা Blueprint থেকে আসছে)"
+    },
+    {
+      "line": 37,
+      "text": "// 7. Movement Pattern (ব্যাকএন্ডের লজিক থেকে UI-এর নাম বের করা)"
+    }
+  ],
+  "Assets/Scripts\\MVC\\Models\\StoneServer.cs": [
+    {
+      "line": 3,
+      "text": "// 🌟 মোডগুলোকে ডিফাইন করার জন্য এনাম (Enum)"
+    },
+    {
+      "line": 8,
+      "text": "// Singleton প্যাটার্ন: যাতে যেকোনো সিন থেকে ডাটা পাঠানো যায়"
+    },
+    {
+      "line": 11,
+      "text": "// লাইভ জেনারেট হওয়া পাথরের লিস্ট"
+    },
+    {
+      "line": 14,
+      "text": "// 🌟 নতুন: প্লেয়ার কোন মোড সিলেক্ট করেছে তা সার্ভারে সেভ থাকবে"
+    },
+    {
+      "line": 51,
+      "text": "DontDestroyOnLoad(gameObject); // এক সিন থেকে অন্য সিনে গেলেও ডাটা মুছবে না"
+    },
+    {
+      "line": 59,
+      "text": "// Predictor Mode থেকে পাথর জেনারেট হলে এই ফাংশন কল করে ডাটা পাঠাতে হবে"
+    }
+  ],
+  "Assets/Scripts\\MVC\\Models\\UserProfileData.cs": [
+    {
+      "line": 2,
+      "text": "// [System.Serializable] দেওয়ার মানে হলো এই ক্লাসটিকে খুব সহজেই JSON-এ কনভার্ট করা যাবে"
+    },
+    {
+      "line": 8,
+      "text": "public string avatarUrl;      // সার্ভার থেকে ছবির লিংক আসবে"
+    },
+    {
+      "line": 10,
+      "text": "public int currentTier;       // যেমন: 5"
+    },
+    {
+      "line": 11,
+      "text": "public int currentPoints;     // যেমন: 12897"
+    },
+    {
+      "line": 12,
+      "text": "public int maxPointsForTier;  // যেমন: 20000 (স্লাইডারের জন্য লাগবে)"
+    },
+    {
+      "line": 14,
+      "text": "public int stonesPlayed;      // যেমন: 1245"
+    },
+    {
+      "line": 15,
+      "text": "public int perfectCuts;       // যেমন: 426"
+    },
+    {
+      "line": 16,
+      "text": "public int failedCuts;        // যেমন: 127"
+    },
+    {
+      "line": 18,
+      "text": "public string tierStatus;     // যেমন: \"Master\""
+    }
+  ],
+  "Assets/Scripts\\MVC\\Views\\ButtonGroupManager.cs": [
+    {
+      "line": 9,
+      "text": "// 🌟 বুলডোজার লজিক: গেম শুরু হলে ইনডেক্স যাই থাকুক, সব হাইলাইট জোর করে অফ করে দাও!"
+    },
+    {
+      "line": 19,
+      "text": "// বাটন ক্লিক হলে এই ফাংশনটা কল হবে (Inspector থেকে 0, 1, 2 পাঠাবে)"
+    },
+    {
+      "line": 26,
+      "text": "// যেটায় ক্লিক পড়বে শুধু সেটা অন হবে, বাকি সব অফ!"
+    }
+  ],
+  "Assets/Scripts\\MVC\\Views\\FindBlockingUI.cs": [
+    {
+      "line": 20,
+      "text": "Debug.Log(\"🚫 <color=red><b>CLICK BLOCKED!</b></color> যে UI গুলো ক্লিক আটকে দিচ্ছে:\");"
+    },
+    {
+      "line": 28,
+      "text": "Debug.Log(\"✅ <color=green>No UI blocked the click!</color> থ্রিডি পাথরে ক্লিক লাগার কথা।\");"
+    }
+  ],
+  "Assets/Scripts\\MVC\\Views\\GlobalPointsUI.cs": [
+    {
+      "line": 10,
+      "text": "// নিজে থেকেই TextMeshPro কম্পোনেন্টটা খুঁজে নেবে"
+    },
+    {
+      "line": 18,
+      "text": "// DataManager এর সাথে কানেকশন (পয়েন্ট চেঞ্জ হলেই আপডেট হবে)"
+    }
+  ],
+  "Assets/Scripts\\MVC\\Views\\LeaderboardItemUI.cs": [
+    {
+      "line": 4,
+      "text": "using UnityEngine.Networking; // 🌟 ইন্টারনেট থেকে ছবি ডাউনলোডের জন্য এটি লাগবে"
+    },
+    {
+      "line": 11,
+      "text": "// levelText রিমুভ করা হয়েছে কারণ ডিজাইনে এটি নেই"
+    },
+    {
+      "line": 26,
+      "text": "// 🌟 ইন্টারনেট থেকে ছবি লোড করার Coroutine কল করা হচ্ছে"
+    },
+    {
+      "line": 38,
+      "text": "// URL থেকে ছবি রিকোয়েস্ট করা"
+    },
+    {
+      "line": 41,
+      "text": "// ছবি ডাউনলোড হওয়া পর্যন্ত অপেক্ষা করা"
+    },
+    {
+      "line": 50,
+      "text": "// ডাউনলোড সফল হলে টেক্সচারটিকে স্প্রাইটে (Sprite) কনভার্ট করে UI-তে বসানো"
+    }
+  ],
+  "Assets/Scripts\\MVC\\Views\\LoopDurationController.cs": [
+    {
+      "line": 5,
+      "text": "[Tooltip(\"এখানে আপনার পুরো ডায়াল বা স্পিন (Spin) ইমেজটি টেনে দিন\")]"
+    },
+    {
+      "line": 29,
+      "text": "// 🌟 আপডেট করা মেথড (ইউনিটি বাটনের জন্য একদম পারফেক্ট)"
+    },
+    {
+      "line": 30,
+      "text": "// 🌟 আপডেট করা মেথড (অ্যাঙ্গেলের দিক ঠিক করা হয়েছে)"
+    },
+    {
+      "line": 33,
+      "text": "// ১. মেইন ডেটাবেসে ডেটা পাঠানো হলো"
+    },
+    {
+      "line": 39,
+      "text": "// ২. আপনার ডিজাইনের অ্যাঙ্গেলগুলো ঠিক করা হলো (প্লাস-মাইনাস উল্টে দিয়েছি)"
+    },
+    {
+      "line": 40,
+      "text": "if (durationValue == 0f) targetAngle = -135f;      // বামে নিচে"
+    },
+    {
+      "line": 41,
+      "text": "else if (durationValue == 10f) targetAngle = -90f;   // বামে মাঝখানে"
+    },
+    {
+      "line": 42,
+      "text": "else if (durationValue == 20f) targetAngle = -45f;   // বামে উপরে"
+    },
+    {
+      "line": 43,
+      "text": "else if (durationValue == 30f) targetAngle = 0f;     // একদম সোজা উপরে"
+    },
+    {
+      "line": 44,
+      "text": "else if (durationValue == 40f) targetAngle = 45f;    // ডানে উপরে"
+    },
+    {
+      "line": 45,
+      "text": "else if (durationValue == 50f) targetAngle = 90f;    // ডানে মাঝখানে"
+    },
+    {
+      "line": 46,
+      "text": "else if (durationValue == 60f) targetAngle = 135f;   // ডানে নিচে"
+    }
+  ],
+  "Assets/Scripts\\MVC\\Views\\OptionCarouselController.cs": [
+    {
+      "line": 29,
+      "text": "RefreshIfLocked(); // শুরুতে সব ঠিকঠাক লোড করার জন্য"
+    },
+    {
+      "line": 39,
+      "text": "if (currentIndex == startIndex) break; // যদি সবগুলো লক থাকে, তাহলে লুপ ভেঙে যাবে"
+    },
+    {
+      "line": 52,
+      "text": "if (currentIndex == startIndex) break; // যদি সবগুলো লক থাকে, তাহলে লুপ ভেঙে যাবে"
+    },
+    {
+      "line": 58,
+      "text": "// 🌟 নতুন: সেভ করার পর অটোমেটিক পরের আনলক অপশনে যাওয়ার জন্য"
+    },
+    {
+      "line": 71,
+      "text": "// 🌟 চেক করবে এই অপশনটি অলরেডি সেভড লিস্টে আছে কি না"
+    },
+    {
+      "line": 89,
+      "text": "// যদি ৫টি অপশনই ব্যবহার হয়ে যায়"
+    },
+    {
+      "line": 98,
+      "text": "displayText.color = Color.cyan; // আনলক থাকলে সায়ান কালার দেখাবে"
+    }
+  ],
+  "Assets/Scripts\\MVC\\Views\\PlayerProfileUI.cs": [
+    {
+      "line": 13,
+      "text": "// যখনই প্রোফাইল সিন ওপেন হবে, এই ফাংশন লেটেস্ট পয়েন্ট টেনে আনবে"
+    },
+    {
+      "line": 16,
+      "text": "// মেমোরি থেকে সেভ করা পয়েন্ট টেনে আনা (আগে না থাকলে 0 দেখাবে)"
+    },
+    {
+      "line": 21,
+      "text": "totalPointsText.text = totalPoints.ToString(\"N0\"); // কমা দিয়ে সুন্দর করে দেখাবে, যেমন: 10,500"
+    }
+  ],
+  "Assets/Scripts\\MVC\\Views\\PredictorUIManager.cs": [
+    {
+      "line": 4,
+      "text": "// --- তোমার আগের ENUMS (অক্ষত রাখা হলো) ---"
+    },
+    {
+      "line": 36,
+      "text": "public TextMeshProUGUI wagerDisplayText; // ডিসপ্লেতে দেখানোর জন্য"
+    },
+    {
+      "line": 37,
+      "text": "private string currentWagerString = \"\";  // ব্যাকগ্রাউন্ডে নাম্বার সেভ রাখার জন্য"
+    },
+    {
+      "line": 59,
+      "text": "// 🌟 গেম শুরুর সময় আলাদা টেক্সটটিতে ডিফল্টভাবেই \"Generating...\" লেখা থাকবে"
+    },
+    {
+      "line": 65,
+      "text": "// 🌟 শুরুতে অ্যাংকরের ভ্যালু UI-তে দেখানোর জন্য"
+    },
+    {
+      "line": 68,
+      "text": "// 🌟 শুরুতে ওয়েজার ডিসপ্লেতে 0 দেখানোর জন্য"
+    },
+    {
+      "line": 73,
+      "text": "// 🌟 NUMPAD LOGIC (নতুন)"
+    },
+    {
+      "line": 142,
+      "text": "// পুরানো ম্যানুয়াল আপডেট মেথড"
+    },
+    {
+      "line": 233,
+      "text": "// UI থেকে সেভ করা সম্পূর্ণ সিকোয়েন্স লিস্টটা মেইন ডাটাবেসে ঢুকিয়ে দেওয়া হলো"
+    },
+    {
+      "line": 300,
+      "text": "// 🌟 NEW: নতুন মেকানিজমে ডায়ালের সেকেন্ড পাঠিয়ে দেওয়া হলো!"
+    },
+    {
+      "line": 310,
+      "text": "// 🌟 THE MAGIC UPDATE (ক্যারোজেলের জন্য আসল লজিক)"
+    }
+  ],
+  "Assets/Scripts\\MVC\\Views\\StoneItemUI.cs": [
+    {
+      "line": 20,
+      "text": "[Tooltip(\"আপনার কাটিং সিনের হুবহু নাম এখানে লিখুন\")]"
+    },
+    {
+      "line": 26,
+      "text": "// ১. ডামি পাথরের জন্য (Scriptable Object)"
+    },
+    {
+      "line": 35,
+      "text": "// আইকন সেট করা"
+    },
+    {
+      "line": 39,
+      "text": "else SetIconBySize(GetCorrectSize(currentBlueprint)); // 🌟 আপডেটেড লজিক"
+    },
+    {
+      "line": 46,
+      "text": "// ২. লাইভ পাথরের জন্য (Predictor Mode থেকে আসা)"
+    },
+    {
+      "line": 55,
+      "text": "SetIconBySize(GetCorrectSize(currentBlueprint)); // 🌟 আপডেটেড লজিক"
+    },
+    {
+      "line": 61,
+      "text": "// 🌟 নতুন: সঠিক সাইজ বের করার ম্যাজিক ফাংশন"
+    },
+    {
+      "line": 65,
+      "text": "// যদি Predictor Data থাকে, তবে সেখান থেকে একদম একুরেট সাইজটা নেবে"
+    },
+    {
+      "line": 71,
+      "text": "// না থাকলে ব্লুপ্রিন্টের ডিফল্ট সাইজ নেবে"
+    },
+    {
+      "line": 76,
+      "text": "// ৩. কমন UI আপডেট ফাংশন"
+    },
+    {
+      "line": 83,
+      "text": "// 🌟 এখন সাইজটা সরাসরি সঠিক ফাংশন থেকে আসবে"
+    },
+    {
+      "line": 89,
+      "text": "// ৪. বাটন লিসেনার সেটআপ (কাটিং সিনে ডাটা পাঠানো)"
+    },
+    {
+      "line": 93,
+      "text": "// (আপনার আগের কোড অনুযায়ী কমেন্ট করা আছে)"
+    },
+    {
+      "line": 114,
+      "text": "// 🌟 এই ফাংশনটা আমরা ইউনিটির ইন্সপেক্টর থেকে ম্যানুয়ালি ধরিয়ে দেব"
+    }
+  ],
+  "Assets/Scripts\\MVC\\Views\\StonePropertySelector.cs": [
+    {
+      "line": 4,
+      "text": "// 🌟 1. নতুন ইনপুটগুলোর জন্য Enum লিস্ট আপডেট করা হলো"
+    },
+    {
+      "line": 10,
+      "text": "StoneSize,           // নতুন"
+    },
+    {
+      "line": 11,
+      "text": "DifficultyTier,      // নতুন"
+    },
+    {
+      "line": 12,
+      "text": "MovementPattern,     // নতুন"
+    },
+    {
+      "line": 13,
+      "text": "LoopDuration         // নতুন"
+    },
+    {
+      "line": 20,
+      "text": "// (হাইলাইটের কোডগুলো রিমুভ করা হলো, কারণ ButtonGroupManager সেটা কন্ট্রোল করবে)"
+    },
+    {
+      "line": 24,
+      "text": "// গেম জেনারেট হওয়ার সময় বাটনে ক্লিক ব্লক করা"
+    },
+    {
+      "line": 27,
+      "text": "// 🌟 2. PredictorUIManager-এ শুধু ডেটা পাঠানো"
+    }
+  ],
+  "Assets/Scripts\\MVC\\Views\\StoneSpawner.cs": [
+    {
+      "line": 18,
+      "text": "// 🛑 Crack Material রিমুভ করা হয়েছে"
+    },
+    {
+      "line": 39,
+      "text": "// ১. মেইন পাথর স্পন"
+    },
+    {
+      "line": 42,
+      "text": "// পাথরের সাইজ"
+    },
+    {
+      "line": 48,
+      "text": "// ২. রোটেশন এবং ফিজিক্স"
+    },
+    {
+      "line": 51,
+      "text": "// ৩. ভেতরের জেড কোর"
+    },
+    {
+      "line": 54,
+      "text": "// ৪. শুধুমাত্র অ্যাঙ্কর স্পন (Cracks রিমুভ করা হয়েছে)"
+    },
+    {
+      "line": 81,
+      "text": "// ভেতরের জেডের সব ফিজিক্স ডিলিট করা হলো"
+    },
+    {
+      "line": 120,
+      "text": "// 🌟 সিম্পল ম্যাথ লজিক (Raycast ছাড়া - Inside the stone)"
+    },
+    {
+      "line": 129,
+      "text": "// ব্যাসার্ধ (Radius) যাতে অ্যাঙ্করগুলো পাথরের ভেতরে তৈরি হয়"
+    },
+    {
+      "line": 144,
+      "text": "// 🛑 StoneRotator ক্লাস"
+    },
+    {
+      "line": 197,
+      "text": "//         // ১. মেইন পাথর স্পন"
+    },
+    {
+      "line": 200,
+      "text": "//         // 🌟 ফিক্স ১: পাথরের সাইজ আগের চেয়ে একটু ছোট করা হলো"
+    },
+    {
+      "line": 206,
+      "text": "//         // ২. রোটেশন এবং ফিজিক্স"
+    },
+    {
+      "line": 209,
+      "text": "//         // ৩. ভেতরের জেড কোর"
+    },
+    {
+      "line": 212,
+      "text": "//         // ৪. সিম্পল ম্যাথ ব্যবহার করে অ্যাঙ্কর ও ফাটল স্পন"
+    },
+    {
+      "line": 241,
+      "text": "//         // ভেতরের জেডের সব ফিজিক্স ডিলিট করা হলো"
+    },
+    {
+      "line": 280,
+      "text": "//     // 🌟 সিম্পল ম্যাথ লজিক (Raycast ছাড়া - Inside the stone)"
+    },
+    {
+      "line": 289,
+      "text": "//         // 🌟 ফিক্স ২: ব্যাসার্ধ (Radius) অনেক কমানো হলো (1.05f থেকে 0.6f) যাতে অ্যাঙ্করগুলো পাথরের ভেতরে তৈরি হয়"
+    },
+    {
+      "line": 312,
+      "text": "//         // 🌟 ফিক্স ৩: ফাটলগুলোকেও পাথরের ভেতরে ঢোকানো হলো (Radius * 0.65f)"
+    },
+    {
+      "line": 345,
+      "text": "// // 🛑 StoneRotator ক্লাস"
+    }
+  ],
+  "Assets/Scripts\\MVC\\Views\\TimeStepSequenceManager.cs": [
+    {
+      "line": 17,
+      "text": "public int maxSteps = 5; // আমাদের মোট প্যাটার্ন ৫টি, তাই ৫-ই হবে সর্বোচ্চ"
+    },
+    {
+      "line": 49,
+      "text": "timeStepSlider.minValue = 1; // 🌟 0 সেভ করা যাবে না, সর্বনিম্ন 1s"
+    },
+    {
+      "line": 51,
+      "text": "// 🌟 ফিক্স: স্লাইডারের সর্বোচ্চ ভ্যালু একদম হুবহু রিমেইনিং টাইমের সমান হবে"
+    },
+    {
+      "line": 54,
+      "text": "// 🌟 ফিক্স: ডিফল্টভাবে স্লাইডারটি টেনে একদম ফুল (Full) টাইমে রাখা থাকবে"
+    },
+    {
+      "line": 89,
+      "text": "// যদি এটি শেষ প্যাটার্ন হয় (৫ম প্যাটার্ন), তবে এটি জোর করে বাকি সবটুকু সময় নিয়ে নেবে!"
+    },
+    {
+      "line": 106,
+      "text": "// বাকি সময় কমানো হলো"
+    },
+    {
+      "line": 109,
+      "text": "// 🌟 স্লাইডার আপডেট ও লক করার লজিক"
+    },
+    {
+      "line": 112,
+      "text": "// যদি ৪টি প্যাটার্ন সেভ হয়ে গিয়ে থাকে (মানে ৫ম বা শেষ প্যাটার্নটি বাকি)"
+    },
+    {
+      "line": 118,
+      "text": "timeStepSlider.interactable = false; // 🌟 শেষ প্যাটার্নের জন্য স্লাইডার লক!"
+    },
+    {
+      "line": 123,
+      "text": "// 🌟 ফিক্স: স্লাইডারের সর্বোচ্চ লিমিট এখন বাকি থাকা সময়ের সমান!"
+    },
+    {
+      "line": 125,
+      "text": "// 🌟 ফিক্স: স্লাইডারের হ্যান্ডেলটি অটোমেটিক বাকি থাকা সর্বোচ্চ সময়ে গিয়ে বসে থাকবে!"
+    },
+    {
+      "line": 132,
+      "text": "// সময় একদম ০ হয়ে গেলে স্লাইডার অফ"
+    },
+    {
+      "line": 143,
+      "text": "// ৫টি মুভমেন্ট শেষ হলে বা সময় শেষ হলে সেভ বাটন লক"
+    }
+  ],
+  "Assets/Scripts\\MVC\\Views\\ToolItemUI.cs": [
+    {
+      "line": 13,
+      "text": "// এই ফাংশনটি দিয়ে আমরা শপ থেকে ডাটা পাঠাবো"
+    },
+    {
+      "line": 18,
+      "text": "priceText.text = price.ToString(\"N0\"); // কমা সহ দাম দেখাবে (যেমন 12,500)"
+    },
+    {
+      "line": 24,
+      "text": "// এখানে আপগ্রেডের লজিক বসবে"
+    }
+  ],
+  "Assets/Scripts\\Saw\\SawArmController.cs": [
+    {
+      "line": 41,
+      "text": "[Tooltip(\"কোন অক্ষে রুট ঘুরবে? (যেমন: X=0, Y=1, Z=0)\")]"
+    },
+    {
+      "line": 44,
+      "text": "[Tooltip(\"বামে সর্বোচ্চ কত ডিগ্রি ঘুরবে\")]"
+    },
+    {
+      "line": 46,
+      "text": "[Tooltip(\"ডানে সর্বোচ্চ কত ডিগ্রি ঘুরবে\")]"
+    },
+    {
+      "line": 50,
+      "text": "[Tooltip(\"কোন অক্ষে টিল্ট ঘুরবে? (যেমন: X=0, Y=0, Z=1)\")]"
+    },
+    {
+      "line": 282,
+      "text": "// 🌟 [AUTOMATIC SLICE] ব্লেড পাথরে টাচ করা মাত্রই স্লাইস ফাংশন কল হবে!"
+    }
+  ],
+  "Assets/Scripts\\Saw\\SawBladeRotator.cs": [
+    {
+      "line": 4,
+      "text": "public float rotationSpeed = 1000f; // ব্লেড ঘোরার স্পিড"
+    },
+    {
+      "line": 5,
+      "text": "public Vector3 rotationAxis = new Vector3(1, 0, 0); // কোন অক্ষে ঘুরবে (X, Y বা Z)"
+    },
+    {
+      "line": 9,
+      "text": "// টর্চ বা অন্য কিছু অন থাকলে এটা বন্ধ রাখতে চাইলে এখানে সেই লজিক দিতে পারো"
+    }
+  ],
+  "Assets/Scripts\\Saw\\SawController.cs": [
+    {
+      "line": 138,
+      "text": "// 🌟 জাদুকরী লাইন: ২ সেকেন্ড পর নিচের টুকরো হাওয়ায় মিলিয়ে যাবে!"
+    }
+  ],
+  "Assets/Scripts\\Saw\\SawToolController.cs": [
+    {
+      "line": 16,
+      "text": "[Tooltip(\"ফোন কতটুকু কাত করলে করাত কত জোরে মুভ করবে।\")]"
+    },
+    {
+      "line": 150,
+      "text": "// 🌟 নতুন মেথড: UI Slider থেকে Gyro Sensitivity কন্ট্রোল করার জন্য 🌟"
+    }
+  ],
+  "Assets/Scripts\\Saw\\StoneCuttingHandler.cs": [
+    {
+      "line": 1,
+      "text": "// using EzySlice; // আপনার EzySlice এর নেমস্পেস যদি প্রয়োজন হয়"
+    },
+    {
+      "line": 6,
+      "text": "public Transform sawBladeVisual;     // করারতের ব্লেডের ৩ডি মডেল"
+    },
+    {
+      "line": 7,
+      "text": "public ParticleSystem sawDustParticles; // গুঁড়ো ওড়ার পার্টিকেল ইফেক্ট"
+    },
+    {
+      "line": 8,
+      "text": "public float cuttingDepth = 0.1f;    // করারতের ব্লেড কতটা পাথরের ভেতরে ঢুকবে"
+    },
+    {
+      "line": 9,
+      "text": "public float bladeSpinSpeed = 1000f; // ব্লেড কত জোরে ঘুরবে"
+    },
+    {
+      "line": 12,
+      "text": "public GameObject targetStone; // আপনার ঘোরন্ত পাথর (targetStone)"
+    },
+    {
+      "line": 21,
+      "text": "// শুরুতে করারতের ব্লেড ও পার্টিকেল বন্ধ"
+    },
+    {
+      "line": 28,
+      "text": "// ১. টুল সিলেকশন চেক: যদি আপনার টুলের Enums মডার্ন মোড বা ক্লাসিক মোড অনুযায়ী Saw সিলেক্ট করে থাকে"
+    },
+    {
+      "line": 36,
+      "text": "if (Input.GetMouseButtonDown(0)) // ১. ক্লিক শুরু"
+    },
+    {
+      "line": 40,
+      "text": "// ২. করারতের ব্লেড অন করো, পার্টিকেল অন করো"
+    },
+    {
+      "line": 44,
+      "text": "dragStartPoint = GetMouseWorldPosition(); // করারতের স্টার্ট পজিশন নাও"
+    },
+    {
+      "line": 48,
+      "text": "if (Input.GetMouseButton(0) && isSawing) // ২. ক্লিক করে ধরে ড্র্যাগ করা (The Cutting Process)"
+    },
+    {
+      "line": 50,
+      "text": "// ৩. করারতের ব্লেড ঘোরাও"
+    },
+    {
+      "line": 53,
+      "text": "// ৪. করারতের ব্লেডকে মাউসের সাথে সাথে পাথরের ভেতর দিয়ে মুভ করাও"
+    },
+    {
+      "line": 57,
+      "text": "if (Input.GetMouseButtonUp(0) && isSawing) // ৩. ক্লিক শেষ (The Split)"
+    },
+    {
+      "line": 59,
+      "text": "// ৫. করারতের ব্লেড ও পার্টিকেল অফ করো"
+    },
+    {
+      "line": 64,
+      "text": "// ৬. এখন EzySlice দিয়ে ফাইনাল কাট করো!"
+    },
+    {
+      "line": 69,
+      "text": "// মাউস দিয়ে একটা Raycast করে পাথরের উপর করারতের পজিশন বের করার জন্য ফাংশন"
+    },
+    {
+      "line": 79,
+      "text": "// করারতের ব্লেডকে ক্লিক করা জায়গায় নিয়ে যাও এবং একটু ভেতরের দিকে ঢুকাও"
+    },
+    {
+      "line": 82,
+      "text": "// পার্টিকেল সিস্টেমকেও করারতের ব্লেডের সাথে মুভ করাও"
+    },
+    {
+      "line": 88,
+      "text": "// EzySlice এর মাধ্যমে মূল কাটটি করার ফাংশন"
+    },
+    {
+      "line": 91,
+      "text": "// এখানে আপনার আগের EzySlice এর লজিক বসাবেন"
+    },
+    {
+      "line": 92,
+      "text": "// start এবং end পয়েন্ট দিয়ে একটি কাটিং প্লেন তৈরি করে স্লাইস করবেন।"
+    },
+    {
+      "line": 93,
+      "text": "// কাট হওয়ার পর আপনি কাটের দাগ বা কচ্ছপের খোলসের মতো কিছু চাইলে, স্লাইসড মেশের গায়ে কাটের দাগের টেক্সচার (Texture) লাগাতে হবে।"
+    },
+    {
+      "line": 98,
+      "text": "// 🌟 হেল্পার ফাংশনস (এগুলো আপনার বর্তমান কোডে আছে)"
+    },
+    {
+      "line": 100,
+      "text": "private bool IsSawSelected() { /* আপনার টুল সিলেকশন এনুমের চেক বসান */ return true; }"
+    },
+    {
+      "line": 101,
+      "text": "private bool CanStartCutting() { /* পাথরটা কি কাটার উপযোগী? */ return true; }"
+    },
+    {
+      "line": 102,
+      "text": "private Vector3 GetMouseWorldPosition() { /* Raycast করে মাউসের ওয়ার্ল্ড পজিশন বের করুন */ return Vector3.zero; }"
+    }
+  ],
+  "Assets/Scripts\\Saw\\TableSawSlicer.cs": [
+    {
+      "line": 9,
+      "text": "// পাথর ব্লেডে লাগলেই কাটবে"
+    },
+    {
+      "line": 18,
+      "text": "// ব্লেডের পজিশন এবং রোটেশন অনুযায়ী কাটার প্লেন"
+    },
+    {
+      "line": 21,
+      "text": "// 🌟 ব্লেড যদি সোজা না কাটে, তবে transform.up এর বদলে transform.right বা transform.forward দিয়ে চেক করবে"
+    },
+    {
+      "line": 31,
+      "text": "// --- 🌟 তোমার আগের স্ক্রিপ্টের জাদুকরী লজিক ---"
+    },
+    {
+      "line": 33,
+      "text": "// ১. মূল পাথরটাকে জায়গাতেই স্থির রাখা (শুধু মেশ আপডেট করা)"
+    },
+    {
+      "line": 46,
+      "text": "targetCollider.enabled = true; // কলিশন রিফ্রেশ করা"
+    },
+    {
+      "line": 49,
+      "text": "// ২. পাথরের গায়ে থাকা অ্যাঙ্কর (Anchor) গুলো ঠিকমতো ফেলা"
+    },
+    {
+      "line": 63,
+      "text": "Destroy(upperHull); // বাড়তি অংশ ডিলিট করে দেওয়া"
+    },
+    {
+      "line": 65,
+      "text": "// ৩. শুধু নিচের টুকরোটাকে ফিজিক্স দিয়ে ফেলে দেওয়া"
+    },
+    {
+      "line": 77,
+      "text": "slicedObject.tag = \"Untagged\"; // যাতে এই টুকরোটা আবার ব্লেডে লেগে না কাটে"
+    },
+    {
+      "line": 79,
+      "text": "// একটু ধাক্কা দিয়ে ফেলে দেওয়া"
+    },
+    {
+      "line": 82,
+      "text": "// 🌟 ২ সেকেন্ড পর হাওয়ায় মিলিয়ে যাবে!"
+    }
+  ],
+  "Assets/Scripts\\Saw\\TrimSawController.cs": [
+    {
+      "line": 6,
+      "text": "public Transform targetPoint; // 🌟 করাত ঠিক কতদূর যাবে (সেই অদৃশ্য পয়েন্ট)"
+    },
+    {
+      "line": 7,
+      "text": "public float moveSpeed = 3f;  // 🌟 যাওয়ার এবং আসার স্পিড (ইন্সপেক্টর থেকে কন্ট্রোল করতে পারবে)"
+    },
+    {
+      "line": 14,
+      "text": "// গেম শুরুর সময় করাতের পজিশন সেভ করে রাখা"
+    },
+    {
+      "line": 20,
+      "text": "// টর্চ অন থাকলে বা করাত মুভ করা অবস্থায় থাকলে নতুন ক্লিক কাজ করবে না"
+    },
+    {
+      "line": 23,
+      "text": "// যদি মাউসে ক্লিক করা হয়"
+    },
+    {
+      "line": 29,
+      "text": "// 🌟 যদি ক্লিকটা পাথরের গায়ে লাগে"
+    },
+    {
+      "line": 42,
+      "text": "// ১. সামনের দিকে যাওয়া (পাথর কাটার জন্য)"
+    },
+    {
+      "line": 51,
+      "text": "// 🌟 পাথর কাটার পর হালকা একটু ওয়েট করা (যাতে দেখতে রিয়েলিস্টিক লাগে)"
+    },
+    {
+      "line": 54,
+      "text": "// ২. আবার আগের জায়গায় ফিরে আসা"
+    }
+  ],
+  "Assets/Scripts\\Scriptable Object\\StoneDataSO.cs": [
+    {
+      "line": 2,
+      "text": "// 🌟 রাইট ক্লিক করে মেনু থেকে ডাটা ফাইল বানানোর জন্য"
+    },
+    {
+      "line": 7,
+      "text": "public Sprite stoneIcon; // পাথরের ছবিটা সরাসরি এখানেই থাকবে"
+    },
+    {
+      "line": 10,
+      "text": "public StoneBlueprint blueprint; // তোমার ওই পুরো ডাটা স্ট্রাকচারটা এখানে থাকবে"
+    }
+  ],
+  "Assets/Scripts\\Stone\\DraggableStone.cs": [
+    {
+      "line": 22,
+      "text": "// মাউস দিয়ে পাথর টানা হচ্ছে"
+    }
+  ],
+  "Assets/Scripts\\Stone\\HitAnchor.cs": [
+    {
+      "line": 8,
+      "text": "// 🌟 নতুন যোগ করা হলো: গেম শুরুতেই সে ম্যানেজারকে নিজে নিজে খুঁজে নেবে"
+    },
+    {
+      "line": 17,
+      "text": "// টুল যখন এই অ্যাঙ্করে আঘাত করবে"
+    },
+    {
+      "line": 22,
+      "text": "// জেনারেটরকে জানাবে যে অ্যাঙ্করটি ধ্বংস হয়েছে"
+    },
+    {
+      "line": 28,
+      "text": "// নিজেকে গায়েব করে দেওয়া"
+    }
+  ],
+  "Assets/Scripts\\Stone\\StoneDragger.cs": [
+    {
+      "line": 16,
+      "text": "// 🌟 মাউসের ডান বাটন (Right Click) চাপলে"
+    },
+    {
+      "line": 22,
+      "text": "// চেক করবে মাউসটি এই পাথরের ওপরে আছে কি না"
+    },
+    {
+      "line": 28,
+      "text": "// মাউস এবং পাথরের মাঝের দূরত্ব (Offset) হিসাব করা, যাতে পাথর লাফ না মারে"
+    },
+    {
+      "line": 34,
+      "text": "// 🌟 ডান বাটন চেপে ধরে টানলে পাথর মুভ করবে"
+    },
+    {
+      "line": 40,
+      "text": "// 🌟 ডান বাটন ছেড়ে দিলে ড্র্যাগিং বন্ধ হবে"
+    },
+    {
+      "line": 47,
+      "text": "// স্ক্রিনের মাউস পজিশনকে 3D দুনিয়ার পজিশনে কনভার্ট করার ফাংশন"
+    },
+    {
+      "line": 51,
+      "text": "mousePos.z = zDistance; // পাথরের গভীরতা (Z) ঠিক রাখা"
+    }
+  ],
+  "Assets/Scripts\\Stone\\StonePreviewManager.cs": [
+    {
+      "line": 15,
+      "text": "// লাইভ আপডেটের জন্য ভেরিয়েবল"
+    },
+    {
+      "line": 18,
+      "text": "private float currentAngle = 45f; // 🌟 নতুন: এঙ্গেল ট্র্যাকিং"
+    },
+    {
+      "line": 53,
+      "text": "// 🌟 নতুন: রোটেশন এঙ্গেল আপডেট করা"
+    },
+    {
+      "line": 57,
+      "text": "ApplyTilt(); // এঙ্গেল চেঞ্জ হলেই পাথরটা একটু বেঁকে যাবে"
+    },
+    {
+      "line": 65,
+      "text": "// প্যাটার্ন চেঞ্জ হলে পাথর আগের জায়গায় রিসেট করে নেওয়া"
+    },
+    {
+      "line": 71,
+      "text": "// 🌟 পাথরটাকে নির্দিষ্ট এঙ্গেলে বাঁকানোর ফাংশন"
+    },
+    {
+      "line": 84,
+      "text": "// 🌟 ফিক্স করা মুভমেন্ট এবং রোটেশন লজিক"
+    },
+    {
+      "line": 87,
+      "text": "// ফিক্স: Static এ এখন আর ঘুরবে না, একদম স্থির থাকবে (শুধু Angle অনুযায়ী বাঁকা থাকবে)"
+    },
+    {
+      "line": 91,
+      "text": "// 🌟 ফিক্স: Linear আগে কাজ করতো না। এখন ডানে-বামে সোজা মুভ করবে"
+    },
+    {
+      "line": 102,
+      "text": "// শুধু Circular সিলেক্ট করলেই গোল হয়ে ঘুরবে"
+    }
+  ],
+  "Assets/Scripts\\Stone\\StoneShatter.cs": [
+    {
+      "line": 4,
+      "text": "public GameObject brokenStonePrefab; // এখানে আপনার ভাঙা পাথরের Prefab-টি ড্র্যাগ করে দিন"
+    },
+    {
+      "line": 8,
+      "text": "// যদি হ্যামার পাথরকে আঘাত করে"
+    },
+    {
+      "line": 17,
+      "text": "// আস্ত পাথরের জায়গায় ভাঙা পাথরের টুকরোগুলো তৈরি করা"
+    },
+    {
+      "line": 20,
+      "text": "// আসল আস্ত পাথরটি গেম থেকে ডিলিট করে দেওয়া"
+    }
+  ],
+  "Assets/Scripts\\Stone\\StoneSpinController.cs": [
+    {
+      "line": 39,
+      "text": "private float globalTimer = 0f;          // পুরো লুপের জন্য টাইমার"
+    },
+    {
+      "line": 40,
+      "text": "private float stepTimer = 0f;            // বর্তমান স্টেপের জন্য টাইমার"
+    },
+    {
+      "line": 41,
+      "text": "private int currentStepIndex = 0;        // এখন কত নাম্বার স্টেপে আছে"
+    },
+    {
+      "line": 42,
+      "text": "private string activePattern = \"Static\"; // বর্তমানে কোন মুভমেন্ট চলছে"
+    },
+    {
+      "line": 91,
+      "text": "// 🌟 NEW: যদি নতুন Sequence List থাকে, তবে প্রথম স্টেপটা লোড করো"
+    },
+    {
+      "line": 101,
+      "text": "// পুরানো সিঙ্গেল মুভমেন্ট সিস্টেম (ব্যাকআপ)"
+    },
+    {
+      "line": 128,
+      "text": "HandleSequenceTimer(); // 🌟 NEW: টাইমার চেক করবে"
+    },
+    {
+      "line": 129,
+      "text": "ApplyPredictorMovement(); // মুভমেন্ট চালাবে"
+    },
+    {
+      "line": 152,
+      "text": "// যদি লিস্ট না থাকে, তবে কিছুই করার দরকার নেই (পুরানো সিস্টেম চলবে)"
+    },
+    {
+      "line": 155,
+      "text": "stepTimer -= Time.deltaTime; // টাইমার কমানো হচ্ছে"
+    },
+    {
+      "line": 157,
+      "text": "// বর্তমান স্টেপের সময় শেষ হলে"
+    },
+    {
+      "line": 160,
+      "text": "currentStepIndex++; // পরের স্টেপে যাও"
+    },
+    {
+      "line": 162,
+      "text": "// যদি লিস্ট শেষ হয়ে যায়, তাহলে আবার প্রথম থেকে শুরু করো (লুপ)"
+    },
+    {
+      "line": 168,
+      "text": "// নতুন স্টেপের ডাটা সেট করা"
+    },
+    {
+      "line": 178,
+      "text": "globalTimer += Time.deltaTime; // মুভমেন্ট স্মুথ রাখার জন্য গ্লোবাল টাইমার"
+    },
+    {
+      "line": 185,
+      "text": "// 🌟 NEW: এখন activePattern অনুযায়ী মুভমেন্ট হবে (Enum এর বদলে String দিয়ে চেক)"
+    },
+    {
+      "line": 208,
+      "text": "// \"Static\" হলে পাথর এক জায়গায় দাঁড়িয়ে থাকবে"
+    },
+    {
+      "line": 210,
+      "text": "// 🌟 স্মুথ জিটার লজিক (Adversity)"
+    },
+    {
+      "line": 227,
+      "text": "// ব্যাকআপ মেথড: যদি প্লেয়ার পুরনো UI দিয়ে মুভমেন্ট সেট করে থাকে"
+    }
+  ],
+  "Assets/Scripts\\Stone\\TorchInspectionManager.cs": [
+    {
+      "line": 25,
+      "text": "public Material dryMaterial;      // টর্চ অফ, পাথর শুকনো"
+    },
+    {
+      "line": 26,
+      "text": "public Material wetMaterial;      // টর্চ অফ, পাথর ভেজা"
+    },
+    {
+      "line": 27,
+      "text": "public Material dryXRayMaterial;  // টর্চ অন, পাথর শুকনো (আপনার আগের X-Ray)"
+    },
+    {
+      "line": 28,
+      "text": "public Material wetXRayMaterial;  // টর্চ অন, পাথর ভেজা (নতুন X-Ray)"
+    },
+    {
+      "line": 37,
+      "text": "// 🌟 স্প্রে বাটন সবসময় অন থাকবে (টর্চের উপর নির্ভরশীল নয়)"
+    },
+    {
+      "line": 72,
+      "text": "// টর্চ অন থাকলে বর্তমান ম্যাটেরিয়ালে টর্চের পজিশন পাঠাবে"
+    },
+    {
+      "line": 88,
+      "text": "// 🔦 টর্চ লজিক"
+    },
+    {
+      "line": 121,
+      "text": "// টর্চ অফ করার পর টর্চের পজিশন দূরে সরিয়ে দেওয়া (যাতে এক্স-রে গ্লিচ না হয়)"
+    },
+    {
+      "line": 142,
+      "text": "// 💦 স্প্রে লজিক (টর্চ থেকে সম্পূর্ণ আলাদা)"
+    },
+    {
+      "line": 151,
+      "text": "// একবার পানি দিলে বাটন অফ হয়ে যাবে"
+    },
+    {
+      "line": 159,
+      "text": "// 🎨 ম্যাটেরিয়াল চেঞ্জ লজিক"
+    },
+    {
+      "line": 173,
+      "text": "// 🌟 টর্চ অন থাকলে: ভেজা হলে নতুন X-Ray, শুকনো হলে আগের X-Ray"
+    },
+    {
+      "line": 178,
+      "text": "// 🌟 টর্চ অফ থাকলে: ভেজা হলে Wet ম্যাটেরিয়াল, শুকনো হলে Dry ম্যাটেরিয়াল"
+    },
+    {
+      "line": 189,
+      "text": "// 📊 ইন্সপেকশন লজিক"
+    }
+  ],
+  "Assets/Scripts\\Tool\\ToolCameraManager.cs": [
+    {
+      "line": 13,
+      "text": "[Tooltip(\"টর্চ জুম ইন করলে ক্যামেরা কতটুকু ঘুরবে (Inspector থেকে Main Camera এর X, Y, Z রোটেশন দিন)\")]"
+    },
+    {
+      "line": 14,
+      "text": "public Vector3 torchZoomRotation; // 🌟 শুধুমাত্র টর্চের রোটেশন"
+    },
+    {
+      "line": 27,
+      "text": "private Quaternion defaultLocalRotation; // 🌟 ক্যামেরার ডিফল্ট রোটেশন মনে রাখার জন্য"
+    },
+    {
+      "line": 46,
+      "text": "defaultLocalRotation = cam.transform.localRotation; // গেম শুরুর রোটেশন সেভ"
+    },
+    {
+      "line": 63,
+      "text": "// FOV এবং রোটেশন স্মুথলি পরিবর্তন করা"
+    },
+    {
+      "line": 78,
+      "text": "currentTargetRotation = defaultLocalRotation; // 🌟 সাধারণ টুলে রোটেশন চেঞ্জ হবে না, আগের জায়গাতেই থাকবে!"
+    },
+    {
+      "line": 86,
+      "text": "currentTargetRotation = Quaternion.Euler(torchZoomRotation); // 🌟 শুধু টর্চের জন্য আপনার দেওয়া রোটেশন কাজ করবে"
+    },
+    {
+      "line": 94,
+      "text": "currentTargetRotation = defaultLocalRotation; // 🌟 জুম আউট করলে আগের রোটেশনে ফিরে আসবে"
+    }
+  ],
+  "Assets/Scripts\\Tool\\ToolController.cs": [
+    {
+      "line": 12,
+      "text": "public float minX = -5f; // বামে কতটুকু যাবে"
+    },
+    {
+      "line": 13,
+      "text": "public float maxX = 5f;  // ডানে কতটুকু যাবে"
+    },
+    {
+      "line": 14,
+      "text": "public float minY = -2f; // নিচে কতটুকু যাবে"
+    },
+    {
+      "line": 15,
+      "text": "public float maxY = 5f;  // উপরে কতটুকু যাবে"
+    },
+    {
+      "line": 16,
+      "text": "public float minZ = 0f;  // পেছনে কতটুকু আসবে"
+    },
+    {
+      "line": 17,
+      "text": "public float maxZ = 10f; // সামনে কতটুকু যাবে"
+    },
+    {
+      "line": 53,
+      "text": "// গেম শুরুর সাথে সাথে কাজ করার জন্য"
+    },
+    {
+      "line": 62,
+      "text": "// 🌟 টর্চ জ্বললে করাত কোনো কাজ করবে না, সিলেক্ট হবে না এবং সাথে সাথে আগের জায়গায় ফিরে যাবে!"
+    },
+    {
+      "line": 65,
+      "text": "isSelected = false; // জোর করে করাত ডি-সিলেক্ট করে দেওয়া হলো"
+    },
+    {
+      "line": 70,
+      "text": "// টুল সিলেক্ট করা থাকলে এবং মাউস চাপলে কাজ করবে"
+    },
+    {
+      "line": 128,
+      "text": "// পজিশন লিমিট বা Clamp করা হচ্ছে"
+    },
+    {
+      "line": 163,
+      "text": "// যখন টুল কোনো কিছুর সাথে ধাক্কা খাবে বা ভেতরে ঢুকবে"
+    },
+    {
+      "line": 166,
+      "text": "// টুল সিলেক্টেড এবং ওয়ার্কিং মোডে থাকতে হবে"
+    },
+    {
+      "line": 169,
+      "text": "// ১. যদি টুল পাথরের গায়ে লাগে, তবে স্ট্রাইক কাউন্ট ১ বাড়বে"
+    },
+    {
+      "line": 172,
+      "text": "// পাথর থেকে জেনারেটর স্ক্রিপ্টটি খুঁজে বের করা"
+    },
+    {
+      "line": 176,
+      "text": "// জেনারেটরকে জানিয়ে দেওয়া যে একটি স্ট্রাইক হয়েছে"
+    },
+    {
+      "line": 181,
+      "text": "// ২. যদি টুল পাথরের ভেতরের অ্যাঙ্করের গায়ে লাগে, সেটি অ্যাঙ্কর নিজেই হ্যান্ডেল করবে।"
+    },
+    {
+      "line": 185,
+      "text": "// (ভবিষ্যতে কাটার প্রয়োজন হলে এটি ব্যবহার করতে পারবেন)"
+    },
+    {
+      "line": 205,
+      "text": "Debug.LogWarning(\"EzySlice কাটতে ব্যর্থ হয়েছে!\");"
+    },
+    {
+      "line": 218,
+      "text": "} // <-- এই ব্র্যাকেটটি আপনার আগের কোডে মিসিং ছিল!"
+    }
+  ],
+  "Assets/Scripts\\Tool\\ToolManager.cs": [
+    {
+      "line": 17,
+      "text": "// বাটন থেকে এই ফাংশনটি কল হবে"
+    },
+    {
+      "line": 23,
+      "text": "// নামের বানান চেক করুন (Case Sensitive: Saw, Hammer, Chisel)"
+    }
+  ],
+  "Assets/Scripts\\Tool\\ToolSwitcher.cs": [
+    {
+      "line": 12,
+      "text": "// গেম শুরুর সময় ডিফল্টভাবে হাতুড়ি সিলেক্ট করা থাকবে"
+    },
+    {
+      "line": 52,
+      "text": "// ১. হাতুড়ি কন্ট্রোল"
+    },
+    {
+      "line": 67,
+      "text": "// ২. করাত (Saw) কন্ট্রোল"
+    },
+    {
+      "line": 97,
+      "text": "// ৩. 🌟 ড্রেমেল কন্ট্রোল (এখানে আপডেট করা হয়েছে)"
+    },
+    {
+      "line": 102,
+      "text": "// ড্রেমেলের স্ক্রিপ্ট খুঁজে Equip/Unequip কল করা হচ্ছে"
+    },
+    {
+      "line": 118,
+      "text": "// ৪. ছেনি (Chisel) কন্ট্রোল"
+    }
+  ],
+  "Assets/Scripts\\Torch\\SimpleTorch.cs": [
+    {
+      "line": 10,
+      "text": "// গেম শুরুর সময় লাইট অফ থাকবে কিন্তু পজিশন নড়বে না"
+    },
+    {
+      "line": 26,
+      "text": "// লাইট গেমে না দেখা গেলে এটি ফোর্স রেন্ডার করবে"
+    }
+  ],
+  "Assets/Scripts\\Torch\\TorchFollower.cs": [
+    {
+      "line": 5,
+      "text": "public float hoverDistance = 0.5f; // পাথর থেকে টর্চটা কতটুকু ওপরে ভাসবে"
+    },
+    {
+      "line": 6,
+      "text": "public Vector3 rotationOffset = new Vector3(0, 0, 0); // টর্চ সোজা করার জন্য"
+    },
+    {
+      "line": 13,
+      "text": "// টর্চের লাইট এবং বডি খুঁজে বের করা"
+    },
+    {
+      "line": 17,
+      "text": "SetTorchVisibility(false); // শুরুতে টর্চ গায়েব থাকবে"
+    },
+    {
+      "line": 22,
+      "text": "// 🌟 যদি টর্চ বাটন অন না থাকে, তাহলে মডেলটা গায়েব রাখো"
+    },
+    {
+      "line": 29,
+      "text": "// মাউসের পজিশন থেকে একটা লেজার (Ray) মারা হচ্ছে"
+    },
+    {
+      "line": 33,
+      "text": "// লেজারটা যদি পাথরের গায়ে লাগে"
+    },
+    {
+      "line": 36,
+      "text": "SetTorchVisibility(true); // টর্চ দেখাও"
+    },
+    {
+      "line": 38,
+      "text": "// ১. পজিশন: পাথরের সারফেস থেকে একটু দূরে (hoverDistance) ভাসবে"
+    },
+    {
+      "line": 42,
+      "text": "// ২. রোটেশন: টর্চের মুখ সবসময় পাথরের সারফেসের দিকে থাকবে"
+    },
+    {
+      "line": 48,
+      "text": "// মাউস পাথরের বাইরে গেলে টর্চ লুকিয়ে ফেলবে"
+    },
+    {
+      "line": 58,
+      "text": "// টর্চের বডি এবং আলো অন-অফ করার ম্যাজিক ফাংশন"
+    }
+  ],
+  "Assets/Scripts\\Torch\\TorchManager.cs": [
+    {
+      "line": 10,
+      "text": "// Awake এবং Start থেকে পজিশন সেভ করার লজিক সরিয়ে দেওয়া হয়েছে"
+    },
+    {
+      "line": 11,
+      "text": "// যাতে ইউনিটি আপনার সেট করা পজিশনে হাত না দেয়।"
+    },
+    {
+      "line": 15,
+      "text": "// শুরুতে সবকিছু বন্ধ থাকবে"
+    },
+    {
+      "line": 27,
+      "text": "// ১. ভিজ্যুয়াল মডেল অন/অফ"
+    },
+    {
+      "line": 31,
+      "text": "// ২. লাইট অন/অফ (গেম অবজেক্ট এবং কম্পোনেন্ট দুইটাই অন করা হচ্ছে)"
+    },
+    {
+      "line": 37,
+      "text": "// লাইট গেমে না দেখা গেলে নিচের লাইনটি ফোর্স রেন্ডার করতে সাহায্য করবে"
+    }
+  ],
+  "Assets/Scripts\\Torch\\TorchPermanentPosition.cs": [
+    {
+      "line": 14,
+      "text": "// গেম শুরুর সময় সংরক্ষিত পজিশনে টর্চ নিয়ে আসা"
+    },
+    {
+      "line": 22,
+      "text": "// ইউনিটি ইন্সপেক্টরে কম্পোনেন্টের ওপর রাইট ক্লিক করলে এই অপশনটি আসবে"
+    }
+  ]
+}

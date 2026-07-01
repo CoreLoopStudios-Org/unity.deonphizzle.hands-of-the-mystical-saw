@@ -7,7 +7,7 @@ public class ButtonGroupManager : MonoBehaviour
 
     void Start()
     {
-        // 🌟 বুলডোজার লজিক: গেম শুরু হলে ইনডেক্স যাই থাকুক, সব হাইলাইট জোর করে অফ করে দাও!
+        // 🌟 Bulldozer Logic: Force all highlights to turn off at game start regardless of index!
         foreach (var img in highlightImages)
         {
             if (img != null)
@@ -17,14 +17,14 @@ public class ButtonGroupManager : MonoBehaviour
         }
     }
 
-    // বাটন ক্লিক হলে এই ফাংশনটা কল হবে (Inspector থেকে 0, 1, 2 পাঠাবে)
+    // This function will be called when the button is clicked (will send 0, 1, 2 from Inspector)
     public void SelectButton(int selectedIndex)
     {
         for (int i = 0; i < highlightImages.Length; i++)
         {
             if (highlightImages[i] != null)
             {
-                // যেটায় ক্লিক পড়বে শুধু সেটা অন হবে, বাকি সব অফ!
+                // Only the one that will be clicked will be on, all the rest are off!
                 highlightImages[i].SetActive(i == selectedIndex);
             }
         }

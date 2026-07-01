@@ -18,11 +18,11 @@ public class StoneDataVerifier : MonoBehaviour
                 // 1. Stone Size
                 Debug.Log($"🪨 Stone Size: {predData.targetStoneSize}");
 
-                // 2. Rotation Angle (এটা Blueprint থেকে আসছে)
+                // 2. Rotation Angle (this is coming from Blueprint)
                 if(latestStone.rotation_system != null)
                     Debug.Log($"📐 Rotation Angle: {latestStone.rotation_system.rotation_angle}");
 
-                // 3. Anchor Points (এটা Blueprint থেকে আসছে)
+                // 3. Anchor Points (this is coming from Blueprint)
                 if(latestStone.anchor_network != null)
                     Debug.Log($"⚓ Anchor Points: {latestStone.anchor_network.point_count}");
 
@@ -35,7 +35,7 @@ public class StoneDataVerifier : MonoBehaviour
                 // 6. Adversity
                 Debug.Log($"🌪️ Adversity: {predData.jitterAmount}");
 
-                // 7. Movement Pattern (ব্যাকএন্ডের লজিক থেকে UI-এর নাম বের করা)
+                // 7. Movement Pattern (Deriving UI name from backend logic)
                 string movementPatternUI = "Static";
                 if (predData.rotationPattern == StoneChallengeData.RotationalPattern.Circular) movementPatternUI = "Circular";
                 else if (predData.rotationPattern == StoneChallengeData.RotationalPattern.Chaotic) movementPatternUI = "Chaotic";

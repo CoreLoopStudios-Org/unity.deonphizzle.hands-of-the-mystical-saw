@@ -9,10 +9,10 @@ public class HammerAction : MonoBehaviour
 
     void Update()
     {
-        // 🌟 জাদুকরী লাইন: টর্চ অন থাকলে নিচের কোনো ক্লিক বা হাতুড়ির কোড কাজ করবে না!
+        // 🌟 magic line: none of the click or hammer codes below will work if the torch is on!
         if (StoneSpinController.GlobalTorchActive) return;
 
-        // মাউস ক্লিক করলে বা হাতুড়ি বাটনে ক্লিক করলে
+        // When the mouse is clicked or the hammer button is clicked
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -20,7 +20,7 @@ public class HammerAction : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                // যদি পাথরটিতে (Stone_1 বা Stone ট্যাগ যুক্ত) আঘাত লাগে
+                // If the stone (Stone_1 or Stone tag) is hit
                 if (hit.transform.name == "Stone_1" || hit.transform.CompareTag("Stone"))
                 {
                     BreakStone(hit.transform.gameObject, hit.point);
@@ -31,28 +31,28 @@ public class HammerAction : MonoBehaviour
 
     void BreakStone(GameObject originalStone, Vector3 hitPoint)
     {
-        // ১. GameManager কে জানানো
+        // 1. Report to GameManager
         if (gameManager != null)
         {
             gameManager.OnActionButtonClick();
         }
 
-        // ২. অরিজিনাল পাথরটি লুকিয়ে ফেলা
+        // 2. Hiding the original stone
         originalStone.SetActive(false);
 
-        // ৩. ভাঙা পাথরের টুকরোগুলো সেই জায়গায় তৈরি করা
+        // 3. The pieces of broken stone are made in that place
         if (fracturedStonePrefab != null)
         {
             GameObject pieces = Instantiate(fracturedStonePrefab, originalStone.transform.position, originalStone.transform.rotation);
             pieces.transform.localScale = originalStone.transform.localScale;
 
-            // ৪. প্রতিটি টুকরোকে ছিটকে দেওয়ার জন্য বল প্রয়োগ করা
+            // 4. Apply force to knock out each piece
             foreach (Rigidbody rb in pieces.GetComponentsInChildren<Rigidbody>())
             {
                 rb.AddExplosionForce(breakForce, hitPoint, 2f);
             }
 
-            // ৫. ৩ সেকেন্ড পর টুকরোগুলো মুছে ফেলা
+            // 5. Remove the pieces after 3 seconds
             Destroy(pieces, 3f);
         }
     }

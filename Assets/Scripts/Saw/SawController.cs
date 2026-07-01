@@ -136,7 +136,7 @@ public class SawController : MonoBehaviour
         
         rb.AddExplosionForce(100f, slicedObject.transform.position, 5f);
 
-        // 🌟 জাদুকরী লাইন: ২ সেকেন্ড পর নিচের টুকরো হাওয়ায় মিলিয়ে যাবে!
+        // 🌟 Magic Line: After 2 seconds the bottom piece will vanish into thin air!
         Destroy(slicedObject, 2f);
     }
 }

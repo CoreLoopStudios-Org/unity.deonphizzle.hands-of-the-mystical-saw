@@ -2,14 +2,14 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.Networking; // 🌟 ইন্টারনেট থেকে ছবি ডাউনলোডের জন্য এটি লাগবে
+using UnityEngine.Networking; // 🌟 This is required for downloading images from the internet
 
 public class LeaderboardItemUI : MonoBehaviour
 {
     [Header("Item References")]
     public TextMeshProUGUI rankText;
     public TextMeshProUGUI userNameText;
-    // levelText রিমুভ করা হয়েছে কারণ ডিজাইনে এটি নেই
+    // levelText is removed because the design doesn't have it
     public TextMeshProUGUI tierText;   
     public TextMeshProUGUI pointText;  
     public Image avatarImage;
@@ -24,7 +24,7 @@ public class LeaderboardItemUI : MonoBehaviour
         if (tierText != null) tierText.text = player.tier;
         if (pointText != null) pointText.text = player.points.ToString();
 
-        // 🌟 ইন্টারনেট থেকে ছবি লোড করার Coroutine কল করা হচ্ছে
+        // 🌟 Calling coroutine to load image from internet
         if (avatarImage != null && !string.IsNullOrEmpty(player.avatarUrl))
         {
             StartCoroutine(DownloadAvatarImage(player.avatarUrl));
@@ -36,10 +36,10 @@ public class LeaderboardItemUI : MonoBehaviour
     // ==========================================
     private IEnumerator DownloadAvatarImage(string mediaUrl)
     {
-        // URL থেকে ছবি রিকোয়েস্ট করা
+        // Request image from URL
         UnityWebRequest request = UnityWebRequestTexture.GetTexture(mediaUrl);
         
-        // ছবি ডাউনলোড হওয়া পর্যন্ত অপেক্ষা করা
+        // Wait for the image to download
         yield return request.SendWebRequest();
 
         if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
@@ -48,7 +48,7 @@ public class LeaderboardItemUI : MonoBehaviour
         }
         else
         {
-            // ডাউনলোড সফল হলে টেক্সচারটিকে স্প্রাইটে (Sprite) কনভার্ট করে UI-তে বসানো
+            // If the download is successful, convert the texture to a sprite and place it in the UI
             Texture2D texture = ((DownloadHandlerTexture)request.downloadHandler).texture;
             Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
             

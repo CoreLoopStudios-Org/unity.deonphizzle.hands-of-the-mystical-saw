@@ -11,17 +11,17 @@ public class ToolItemUI : MonoBehaviour
     public Slider upgradeSlider;
     public Button upgradeButton;
 
-    // এই ফাংশনটি দিয়ে আমরা শপ থেকে ডাটা পাঠাবো
+    // With this function we will send data from shop
     public void SetupTool(string name, Sprite icon, int price)
     {
         toolNameText.text = name;
         toolIcon.sprite = icon;
-        priceText.text = price.ToString("N0"); // কমা সহ দাম দেখাবে (যেমন 12,500)
+        priceText.text = price.ToString("N0"); // will show the price with commas (eg 12,500)
     }
 
     public void OnUpgradeClicked()
     {
         Debug.Log($"Upgrade clicked for {toolNameText.text}!");
-        // এখানে আপগ্রেডের লজিক বসবে
+        // This is where the upgrade logic sits
     }
 }

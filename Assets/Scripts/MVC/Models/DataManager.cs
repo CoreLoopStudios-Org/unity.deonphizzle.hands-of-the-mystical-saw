@@ -5,7 +5,7 @@ public class DataManager : MonoBehaviour
 {
     public static DataManager Instance;
 
-    // 🌟 এই সেই জাদুকরী লাইন যেটা মিসিং থাকার কারণে এরর দিচ্ছিল!
+    // 🌟 This is the magical line that was giving the error because it was missing!
     public event Action OnPointsUpdated; 
 
     [Header("Current User Global Data")]
@@ -34,18 +34,18 @@ public class DataManager : MonoBehaviour
 
     private void LoadPoints()
     {
-        // মেমোরি থেকে ডাটা আনবে
+        // Fetch data from memory
         totalPoints = PlayerPrefs.GetInt("PlayerTotalPoints", totalPoints);
     }
 
-    // 🌟 পয়েন্ট যোগ করার ফাংশন
+    // 🌟 Function to add points
     public void AddPoints(int amount)
     {
         totalPoints += amount;
         SaveAndNotify();
     }
 
-    // 🌟 পয়েন্ট খরচ করার ফাংশন
+    // 🌟 Function to spend points
     public bool SpendPoints(int amount)
     {
         if (totalPoints >= amount) 
@@ -57,13 +57,13 @@ public class DataManager : MonoBehaviour
         return false; 
     }
 
-    // 🌟 ডাটা সেভ এবং সবাইকে সিগন্যাল দেওয়া
+    // 🌟 Save data and signal to everyone
     private void SaveAndNotify()
     {
         PlayerPrefs.SetInt("PlayerTotalPoints", totalPoints);
         PlayerPrefs.Save();
         
-        // সিগন্যাল ফায়ার করা (যাতে GlobalPointsUI আপডেট হয়ে যায়)
+        // Fire the signal (so that GlobalPointsUI is updated)
         OnPointsUpdated?.Invoke(); 
     }
 
@@ -72,7 +72,7 @@ public class DataManager : MonoBehaviour
     {
         if (Application.isPlaying)
         {
-            // Inspector-এ চেঞ্জ করলে লাইভ আপডেট হবে
+            // Changing to Inspector will update live
             PlayerPrefs.SetInt("PlayerTotalPoints", totalPoints);
             OnPointsUpdated?.Invoke();
         }

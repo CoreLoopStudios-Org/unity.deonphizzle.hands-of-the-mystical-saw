@@ -11,8 +11,8 @@ public class ToolCameraManager : MonoBehaviour
     public float zoomSpeed = 5f;    
 
     [Header("--- Torch Rotation Settings ---")]
-    [Tooltip("টর্চ জুম ইন করলে ক্যামেরা কতটুকু ঘুরবে (Inspector থেকে Main Camera এর X, Y, Z রোটেশন দিন)")]
-    public Vector3 torchZoomRotation; // 🌟 শুধুমাত্র টর্চের রোটেশন
+    [Tooltip("How much will the camera rotate when the torch zooms in (Give X, Y, Z rotation of Main Camera from Inspector)")]
+    public Vector3 torchZoomRotation; // 🌟 Torch rotation only
 
     [Header("--- Background Parallax ---")]
     public RectTransform backgroundImage;
@@ -25,7 +25,7 @@ public class ToolCameraManager : MonoBehaviour
     public Button torchButton; 
 
     private float defaultFOV;
-    private Quaternion defaultLocalRotation; // 🌟 ক্যামেরার ডিফল্ট রোটেশন মনে রাখার জন্য
+    private Quaternion defaultLocalRotation; // 🌟 To remember the camera's default rotation
     private Vector3 defaultBgScale; 
     private Camera cam;
     
@@ -44,7 +44,7 @@ public class ToolCameraManager : MonoBehaviour
         if (cam != null)
         {
             defaultFOV = cam.fieldOfView;
-            defaultLocalRotation = cam.transform.localRotation; // গেম শুরুর রোটেশন সেভ
+            defaultLocalRotation = cam.transform.localRotation; // Save game start rotation
             cam.nearClipPlane = nearClipPlane;
             
             currentTargetFOV = defaultFOV; 
@@ -61,7 +61,7 @@ public class ToolCameraManager : MonoBehaviour
     {
         if (cam == null) return;
 
-        // FOV এবং রোটেশন স্মুথলি পরিবর্তন করা
+        // Changing FOV and rotation smoothly
         cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, currentTargetFOV, Time.deltaTime * zoomSpeed);
         cam.transform.localRotation = Quaternion.Lerp(cam.transform.localRotation, currentTargetRotation, Time.deltaTime * zoomSpeed);
 
@@ -76,7 +76,7 @@ public class ToolCameraManager : MonoBehaviour
     {
         isZoomingIn = true;
         currentTargetFOV = zoomInFOV; 
-        currentTargetRotation = defaultLocalRotation; // 🌟 সাধারণ টুলে রোটেশন চেঞ্জ হবে না, আগের জায়গাতেই থাকবে!
+        currentTargetRotation = defaultLocalRotation; // 🌟 Normal tool rotation will not change, will stay in place!
         Debug.Log("<color=green>Normal Zoom In Active!</color>"); 
     }
 
@@ -84,7 +84,7 @@ public class ToolCameraManager : MonoBehaviour
     {
         isZoomingIn = true;
         currentTargetFOV = torchZoomInFOV; 
-        currentTargetRotation = Quaternion.Euler(torchZoomRotation); // 🌟 শুধু টর্চের জন্য আপনার দেওয়া রোটেশন কাজ করবে
+        currentTargetRotation = Quaternion.Euler(torchZoomRotation); // 🌟 Only the rotation you give for the torch will work
         Debug.Log("<color=orange>Torch Zoom In Active!</color>"); 
     }
 
@@ -92,7 +92,7 @@ public class ToolCameraManager : MonoBehaviour
     {
         isZoomingIn = false;
         currentTargetFOV = defaultFOV; 
-        currentTargetRotation = defaultLocalRotation; // 🌟 জুম আউট করলে আগের রোটেশনে ফিরে আসবে
+        currentTargetRotation = defaultLocalRotation; // 🌟 Zooming out will return to previous rotation
         Debug.Log("<color=red>Zoom Out Active!</color>"); 
     }
 }

@@ -1,16 +1,16 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; // সিন লোড করার জন্য অবশ্যই লাগবে
+using UnityEngine.SceneManagement; // Required to load the scene
 
 public class SceneSwitcher : MonoBehaviour
 {
-    // এই ফাংশনটি দিয়ে যেকোনো সিন লোড করা যাবে
+    // Any scene can be loaded with this function
     public void GoToScene(string sceneName)
     {
         Debug.Log("Loading: " + sceneName);
         SceneManager.LoadScene(sceneName);
     }
 
-    // গেম থেকে বের হওয়ার জন্য
+    // To exit the game
     public void ExitGame()
     {
         Debug.Log("Exiting Game...");

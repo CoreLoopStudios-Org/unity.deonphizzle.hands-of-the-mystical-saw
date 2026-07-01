@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class StoneShatter : MonoBehaviour
 {
-    public GameObject brokenStonePrefab; // এখানে আপনার ভাঙা পাথরের Prefab-টি ড্র্যাগ করে দিন
+    public GameObject brokenStonePrefab; // Drag your broken stone prefab here
 
     void OnCollisionEnter(Collision collision)
     {
-        // যদি হ্যামার পাথরকে আঘাত করে
+        // If the hammer hits the rock
         if (collision.gameObject.CompareTag("Hammer"))
         {
             Shatter();
@@ -15,10 +15,10 @@ public class StoneShatter : MonoBehaviour
 
     void Shatter()
     {
-        // আস্ত পাথরের জায়গায় ভাঙা পাথরের টুকরোগুলো তৈরি করা
+        // Making broken stone pieces replace whole stones
         Instantiate(brokenStonePrefab, transform.position, transform.rotation);
 
-        // আসল আস্ত পাথরটি গেম থেকে ডিলিট করে দেওয়া
+        // Delete the original whole stone from the game
         Destroy(gameObject);
     }
 }

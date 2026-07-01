@@ -20,7 +20,7 @@ public class DraggableStone : MonoBehaviour
 
     void OnMouseDrag()
     {
-        // মাউস দিয়ে পাথর টানা হচ্ছে
+        // Dragging stone with mouse
         transform.position = GetMouseAsWorldPoint() + mOffset;
     }
 }

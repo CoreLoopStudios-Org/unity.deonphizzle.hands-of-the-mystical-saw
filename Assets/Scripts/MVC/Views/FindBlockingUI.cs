@@ -18,7 +18,7 @@ public class FindBlockingUI : MonoBehaviour
 
             if (results.Count > 0)
             {
-                Debug.Log("🚫 <color=red><b>CLICK BLOCKED!</b></color> যে UI গুলো ক্লিক আটকে দিচ্ছে:");
+                Debug.Log("🚫 <color=red><b>CLICK BLOCKED!</b></color> UIs that are blocking clicks:");
                 foreach(RaycastResult result in results)
                 {
                     Debug.Log("-> <color=orange>" + result.gameObject.name + "</color>");
@@ -26,7 +26,7 @@ public class FindBlockingUI : MonoBehaviour
             }
             else
             {
-                Debug.Log("✅ <color=green>No UI blocked the click!</color> থ্রিডি পাথরে ক্লিক লাগার কথা।");
+                Debug.Log(" ✅ <color=green>No UI blocked the click!</color> 3D stone should be clicked.");
             }
         }
     }

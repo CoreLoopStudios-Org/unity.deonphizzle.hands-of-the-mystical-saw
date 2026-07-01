@@ -3,50 +3,50 @@ using UnityEngine;
 public class TorchFollower : MonoBehaviour
 {
     [Header("Torch Settings")]
-    public float hoverDistance = 0.5f; // পাথর থেকে টর্চটা কতটুকু ওপরে ভাসবে
-    public Vector3 rotationOffset = new Vector3(0, 0, 0); // টর্চ সোজা করার জন্য
+    public float hoverDistance = 0.5f; // How far above the stone will the torch float
+    public Vector3 rotationOffset = new Vector3(0, 0, 0); // To straighten the torch
 
     private Light torchLight;
     private MeshRenderer[] renderers;
 
     void Start()
     {
-        // টর্চের লাইট এবং বডি খুঁজে বের করা
+        // Finding the torch's lights and body
         torchLight = GetComponentInChildren<Light>();
         renderers = GetComponentsInChildren<MeshRenderer>();
         
-        SetTorchVisibility(false); // শুরুতে টর্চ গায়েব থাকবে
+        SetTorchVisibility(false); // Initially the torch will be invisible
     }
 
     void Update()
     {
-        // 🌟 যদি টর্চ বাটন অন না থাকে, তাহলে মডেলটা গায়েব রাখো
+        // 🌟 If the torch button is not on, hide the model
         if (!StoneSpinController.GlobalTorchActive)
         {
             SetTorchVisibility(false);
             return;
         }
 
-        // মাউসের পজিশন থেকে একটা লেজার (Ray) মারা হচ্ছে
+        // Firing a laser (Ray) from the mouse position
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            // লেজারটা যদি পাথরের গায়ে লাগে
+            // If the laser hits the stone
             if (hit.collider.CompareTag("Stone") || hit.collider.name.Contains("Stone"))
             {
-                SetTorchVisibility(true); // টর্চ দেখাও
+                SetTorchVisibility(true); // Show the torch
 
-                // ১. পজিশন: পাথরের সারফেস থেকে একটু দূরে (hoverDistance) ভাসবে
+                // 1. Position: HoverDistance (hoverDistance) from the stone surface
                 Vector3 targetPosition = hit.point + hit.normal * hoverDistance;
                 transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * 15f);
 
-                // ২. রোটেশন: টর্চের মুখ সবসময় পাথরের সারফেসের দিকে থাকবে
+                // 2. Rotation: The face of the torch will always be towards the stone surface
                 Quaternion targetRotation = Quaternion.LookRotation(-hit.normal) * Quaternion.Euler(rotationOffset);
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 15f);
             }
             else
             {
-                // মাউস পাথরের বাইরে গেলে টর্চ লুকিয়ে ফেলবে
+                // Will hide the torch when the mouse goes outside the rock
                 SetTorchVisibility(false);
             }
         }
@@ -56,7 +56,7 @@ public class TorchFollower : MonoBehaviour
         }
     }
 
-    // টর্চের বডি এবং আলো অন-অফ করার ম্যাজিক ফাংশন
+    // Magic function to turn torch body and light on-off
     private void SetTorchVisibility(bool isVisible)
     {
         if (torchLight != null) torchLight.enabled = isVisible;

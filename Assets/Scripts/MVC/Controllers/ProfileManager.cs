@@ -8,10 +8,10 @@ public class ProfileManager : MonoBehaviour
     [Header("UI References")]
     public TextMeshProUGUI userNameText;
     
-    // 🌟 প্রোগ্রেস বারের পয়েন্ট (যেমন: 12897 / 20000)
+    // 🌟 Point of progress bar (ie: 12897 / 20000)
     public TextMeshProUGUI pointsText; 
     
-    // 🌟 মোট পয়েন্ট (যেমন: 45000) দেখানোর জন্য
+    // 🌟 To show total points (ie: 45000).
     public TextMeshProUGUI totalPointsText; 
     
     public Image tierProgressFill; 
@@ -34,9 +34,9 @@ public class ProfileManager : MonoBehaviour
 
     private void FetchProfileDataFromServer()
     {
-        // 🌟 জাদুকরী লাইন: 
-        // কাটিং সিন থেকে জেতা পয়েন্টটা মেমোরি থেকে টেনে আনবে। 
-        // যদি মেমোরিতে কিছু না থাকে (ফার্স্ট টাইম প্লে), তাহলে তোমার DataManager এর ডিফল্ট 45000 নিয়ে নেবে।
+        // 🌟 magic line: 
+        // Retrieves the winning point from the cutting scene from memory. 
+        // If there is nothing in memory (first time play), your DataManager will take the default of 45000.
         int latestTotalPoints = PlayerPrefs.GetInt("PlayerTotalPoints", DataManager.Instance.totalPoints);
 
         UserProfileData mockData = new UserProfileData
@@ -45,11 +45,11 @@ public class ProfileManager : MonoBehaviour
             userName = DataManager.Instance.userName,                
             currentTier = 5,
             
-            // টিয়ার প্রোগ্রেস ডাটা
+            // Tear progress data
             currentPoints = DataManager.Instance.tierProgressPoints, 
             maxPointsForTier = DataManager.Instance.tierMaxPoints,   
             
-            // 🌟 আপডেট: এখন মেমোরি থেকে লেটেস্ট পয়েন্ট নেবে
+            // 🌟 Update: Now fetches latest point from memory
             totalPoints = latestTotalPoints,          
             
             stonesPlayed = 1245,
@@ -63,16 +63,16 @@ public class ProfileManager : MonoBehaviour
 
     private void UpdateProfileUI(UserProfileData data)
     {
-        // Null চেক করে সাধারণ টেক্সট আপডেট
+        // Simple text update by checking for null
         if (userNameText != null) userNameText.text = data.userName;
         
-        // প্রোগ্রেস বারের টেক্সট
+        // Progress bar text
         if (pointsText != null) pointsText.text = $"{data.currentPoints:N0} / {data.maxPointsForTier:N0}";
         
-        // 🌟 আপডেট: N0 দেওয়ার কারণে ৪৫,০০০ কমা সহ সুন্দর করে আসবে
+        // 🌟 UPDATE: 45,000 will come nicely with commas due to giving N0
         if (totalPointsText != null) totalPointsText.text = data.totalPoints.ToString("N0");
 
-        // স্লাইডার আপডেট
+        // Slider update
         if (tierProgressFill != null && data.maxPointsForTier > 0)
         {
             tierProgressFill.fillAmount = (float)data.currentPoints / data.maxPointsForTier;
@@ -82,7 +82,7 @@ public class ProfileManager : MonoBehaviour
         if (perfectText != null) perfectText.text = data.perfectCuts.ToString("N0");
         if (failureText != null) failureText.text = data.failedCuts.ToString("N0");
 
-        // লুপ চালিয়ে ৩টি জায়গাতেই একই Tier টেক্সট বসিয়ে দেওয়া
+        // Looping to place the same Tier text in 3 places
         foreach (var tierText in allTierTexts)
         {
             if (tierText != null)
@@ -91,7 +91,7 @@ public class ProfileManager : MonoBehaviour
             }
         }
 
-        // Tier অনুযায়ী ব্যাজ (Image) আপডেট করা
+        // Update badge (Image) according to Tier
         UpdateTierBadge(data.tierStatus);
     }
 
@@ -110,7 +110,7 @@ public class ProfileManager : MonoBehaviour
     }
 }
 
-// 🌟 Inspector-এ ব্যাজ সেট করার জন্য কাস্টম ক্লাস
+// 🌟 Custom class to set badges in Inspector
 [System.Serializable]
 public class TierBadgeData
 {

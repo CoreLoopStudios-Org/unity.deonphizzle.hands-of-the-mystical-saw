@@ -10,7 +10,7 @@ public class ToolSwitcher : MonoBehaviour
 
     void Start()
     {
-        // গেম শুরুর সময় ডিফল্টভাবে হাতুড়ি সিলেক্ট করা থাকবে
+        // Hammer will be selected by default at game start
         SelectHammer();
     }
 
@@ -50,7 +50,7 @@ public class ToolSwitcher : MonoBehaviour
 
     private void ActivateTool(GameObject activeTool)
     {
-        // ১. হাতুড়ি কন্ট্রোল
+        // 1. Hammer control
         if(hammerTool != null) 
         {
             bool isActive = (hammerTool == activeTool);
@@ -65,7 +65,7 @@ public class ToolSwitcher : MonoBehaviour
             hammerTool.SetActive(isActive);
         }
 
-        // ২. করাত (Saw) কন্ট্রোল
+        // 2. Saw control
         if(sawTool != null) 
         {
             bool isActive = (sawTool == activeTool);
@@ -95,12 +95,12 @@ public class ToolSwitcher : MonoBehaviour
             sawTool.SetActive(isActive);
         }
 
-        // ৩. 🌟 ড্রেমেল কন্ট্রোল (এখানে আপডেট করা হয়েছে)
+        // 3. 🌟 Dremel Control (updated here)
         if(dremelTool != null) 
         {
             bool isActive = (dremelTool == activeTool);
 
-            // ড্রেমেলের স্ক্রিপ্ট খুঁজে Equip/Unequip কল করা হচ্ছে
+            // Calling Equip/Unequip to find Dremel's script
             DremelToolController dtc = dremelTool.GetComponentInChildren<DremelToolController>(true);
             if (dtc == null)
             {
@@ -116,7 +116,7 @@ public class ToolSwitcher : MonoBehaviour
             dremelTool.SetActive(isActive);
         }
 
-        // ৪. ছেনি (Chisel) কন্ট্রোল
+        // 4. Chisel control
         if(chiselTool != null) 
         {
             bool isActive = (chiselTool == activeTool);

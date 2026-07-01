@@ -4,30 +4,30 @@ using System.Collections;
 public class TrimSawController : MonoBehaviour
 {
     [Header("Movement Settings")]
-    public Transform targetPoint; // 🌟 করাত ঠিক কতদূর যাবে (সেই অদৃশ্য পয়েন্ট)
-    public float moveSpeed = 3f;  // 🌟 যাওয়ার এবং আসার স্পিড (ইন্সপেক্টর থেকে কন্ট্রোল করতে পারবে)
+    public Transform targetPoint; // 🌟 Exactly how far the saw will go (the vanishing point).
+    public float moveSpeed = 3f;  // 🌟 Departure and arrival speed (can be controlled from inspector)
 
     private Vector3 startPosition;
     private bool isMoving = false;
 
     void Start()
     {
-        // গেম শুরুর সময় করাতের পজিশন সেভ করে রাখা
+        // Save saw position at game start
         startPosition = transform.position;
     }
 
     void Update()
     {
-        // টর্চ অন থাকলে বা করাত মুভ করা অবস্থায় থাকলে নতুন ক্লিক কাজ করবে না
+        // New click won't work if torch is on or saw is moving
         if (StoneSpinController.GlobalTorchActive || isMoving) return;
 
-        // যদি মাউসে ক্লিক করা হয়
+        // If the mouse is clicked
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
-                // 🌟 যদি ক্লিকটা পাথরের গায়ে লাগে
+                // 🌟 If the click is on the stone
                 if (hit.collider.CompareTag("Stone"))
                 {
                     StartCoroutine(MoveSawRoutine());
@@ -40,7 +40,7 @@ public class TrimSawController : MonoBehaviour
     {
         isMoving = true;
 
-        // ১. সামনের দিকে যাওয়া (পাথর কাটার জন্য)
+        // 1. go forward (to cut stone)
         float t = 0;
         while (t < 1f)
         {
@@ -49,10 +49,10 @@ public class TrimSawController : MonoBehaviour
             yield return null;
         }
 
-        // 🌟 পাথর কাটার পর হালকা একটু ওয়েট করা (যাতে দেখতে রিয়েলিস্টিক লাগে)
+        // 🌟 Lightly wet the stone after cutting (so that it looks realistic)
         yield return new WaitForSeconds(0.2f);
 
-        // ২. আবার আগের জায়গায় ফিরে আসা
+        // 2. Back to the previous place
         t = 0;
         while (t < 1f)
         {

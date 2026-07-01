@@ -53,7 +53,7 @@ public class JadeCuttingGame : MonoBehaviour
         UpdateWagerTexts();
         UpdatePrizeUI();
         UpdateTimerUI();
-        SetStatusText("পছন্দ করুন: সরাসরি আঘাত, ড্রেমেল নাকি করাত?");
+        SetStatusText("Choose: direct hit, dremel or saw?");
         
         Canvas.ForceUpdateCanvases();
     }
@@ -74,7 +74,7 @@ public class JadeCuttingGame : MonoBehaviour
         }
         else
         {
-            GameOver("সময় শেষ!");
+            GameOver("Time's up!");
         }
 
         if (isTorchActive)
@@ -91,7 +91,7 @@ public class JadeCuttingGame : MonoBehaviour
         isTorchActive = !isTorchActive;
         isSpinning = !isTorchActive; 
 
-        // 🌟 জাদুকরী লক: গ্লোবাল ভেরিয়েবল আপডেট করে পুরো গেমকে জানিয়ে দেওয়া
+        // 🌟 Magic Lock: Update global variables to notify the entire game
         StoneSpinController.GlobalTorchActive = isTorchActive;
 
         if (simpleTorch != null)
@@ -133,7 +133,7 @@ public class JadeCuttingGame : MonoBehaviour
 
     public void OnActionButtonClick()
     {
-        // 🌟 জাদুকরী লক: টর্চ অন থাকলে কোনো টুলস অ্যাক্টিভ হবে না!
+        // 🌟 Magic Lock: No tools will be active when torch is on!
         if (isGameOver || toolManager == null || StoneSpinController.GlobalTorchActive) return;
 
         if (toolManager.activeToolController != null)
@@ -157,7 +157,7 @@ public class JadeCuttingGame : MonoBehaviour
     
     public void ProcessToolHit(string toolTag) 
     {
-        // 🌟 জাদুকরী লক: টর্চ অন থাকলে কোনো আঘাত কাজ করবে না!
+        // 🌟 Magic Lock: No damage will work if the torch is on!
         if (isGameOver || StoneSpinController.GlobalTorchActive) return;
 
         Debug.Log("Hit detected by: " + toolTag);
@@ -167,19 +167,19 @@ public class JadeCuttingGame : MonoBehaviour
 
         if (roll <= successChance) 
         {
-            SetStatusText(toolTag + " দিয়ে চমৎকার কাট!"); 
+            SetStatusText("nice cut with " + toolTag + "!"); 
         }
         else
         {
             bool isShattered = strikeSystem.AddStrike(); 
-            SetStatusText(toolTag + " আঘাত ব্যর্থ!");
+            SetStatusText(toolTag + " hit failed!");
         
-            if (isShattered) GameOver("পাথরটি পুরোপুরি ভেঙে গেছে!");
+            if (isShattered) GameOver("The rock is completely shattered!");
         }
-        Debug.Log(toolTag + " দিয়ে পাথর কাটা হচ্ছে!");
+        Debug.Log("cutting stone with " + toolTag + "!");
     }
 
-    // --- UI আপডেট মেথডসমূহ ---
+    // --- UI update methods ---
     void UpdateTimerUI() {
         int min = Mathf.FloorToInt(timeRemaining / 60);
         int sec = Mathf.FloorToInt(timeRemaining % 60);

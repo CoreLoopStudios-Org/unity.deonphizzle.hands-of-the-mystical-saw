@@ -6,7 +6,7 @@ public class HitAnchor : MonoBehaviour
     public StoneGenerator stoneManager; 
     public bool isPrimary; 
 
-    // 🌟 নতুন যোগ করা হলো: গেম শুরুতেই সে ম্যানেজারকে নিজে নিজে খুঁজে নেবে
+    // 🌟 NEW ADDED: He will automatically find the manager at the start of the game
     void Start()
     {
         if (stoneManager == null)
@@ -15,18 +15,18 @@ public class HitAnchor : MonoBehaviour
         }
     }
 
-    // টুল যখন এই অ্যাঙ্করে আঘাত করবে
+    // When the tool hits this anchor
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Tool") || other.CompareTag("Hammer"))
         {
-            // জেনারেটরকে জানাবে যে অ্যাঙ্করটি ধ্বংস হয়েছে
+            // Tells the generator that the anchor has been destroyed
             if (stoneManager != null)
             {
                 stoneManager.AnchorDestroyed(this);
             }
             
-            // নিজেকে গায়েব করে দেওয়া
+            // Make yourself disappear
             Destroy(gameObject);
         }
     }

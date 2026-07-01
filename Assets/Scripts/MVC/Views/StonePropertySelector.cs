@@ -2,30 +2,30 @@ using UnityEngine;
 
 public class StonePropertySelector : MonoBehaviour
 {
-    // 🌟 1. নতুন ইনপুটগুলোর জন্য Enum লিস্ট আপডেট করা হলো
+    // 🌟 1. Enum list updated for new inputs
     public enum PropertyType 
     { 
         RotationAngle, 
         RotationSpeed, 
         AnchorPoints,
-        StoneSize,           // নতুন
-        DifficultyTier,      // নতুন
-        MovementPattern,     // নতুন
-        LoopDuration         // নতুন
+        StoneSize , // new
+        DifficultyTier, // new
+        MovementPattern, // new
+        LoopDuration // new
     }
     
     [Header("Data to Send")]
     public PropertyType propertyType;
     public string propertyValue; 
 
-    // (হাইলাইটের কোডগুলো রিমুভ করা হলো, কারণ ButtonGroupManager সেটা কন্ট্রোল করবে)
+    // (Highlight code removed, as ButtonGroupManager will control it)
 
     public void OnClick()
     {
-        // গেম জেনারেট হওয়ার সময় বাটনে ক্লিক ব্লক করা
+        // Block click on button while game is generated
         if (PredictorUIManager.Instance != null && PredictorUIManager.Instance.isGenerating) return;
 
-        // 🌟 2. PredictorUIManager-এ শুধু ডেটা পাঠানো
+        // 🌟 2. Just sending data to PredictorUIManager
         PredictorUIManager.Instance.UpdateManualSelection(propertyType.ToString(), propertyValue);
     }
 }

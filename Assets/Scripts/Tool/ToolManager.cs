@@ -15,13 +15,13 @@ public class ToolManager : MonoBehaviour
         DeselectAll();
     }
 
-    // বাটন থেকে এই ফাংশনটি কল হবে
+    // This function will be called from the button
     public void SelectTool(string toolName)
     {
         Debug.Log("SelectTool Button Clicked: " + toolName);
         DeselectAll();
 
-        // নামের বানান চেক করুন (Case Sensitive: Saw, Hammer, Chisel)
+        // Check the spelling of the name (Case Sensitive: Saw, Hammer, Chisel)
         if (toolName == "Hammer") SetupTool(hammerCtrl);
         else if (toolName == "Saw") SetupTool(sawCtrl);
         else if (toolName == "Chisel") SetupTool(chiselCtrl);

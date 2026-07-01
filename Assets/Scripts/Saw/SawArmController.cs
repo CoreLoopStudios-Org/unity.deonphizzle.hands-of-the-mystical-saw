@@ -39,16 +39,16 @@ public class SawArmController : MonoBehaviour
     public Vector3 spinAxis = new Vector3(1, 0, 0); 
 
     [Header("--- Root Rotation Settings (Joystick X) ---")]
-    [Tooltip("কোন অক্ষে রুট ঘুরবে? (যেমন: X=0, Y=1, Z=0)")]
+    [Tooltip("Which axis will the route rotate on? (eg: X=0, Y=1, Z=0)")]
     public Vector3 rootRotationAxis = new Vector3(0, 1, 0); 
     public float rootTurnSpeed = 60f;
-    [Tooltip("বামে সর্বোচ্চ কত ডিগ্রি ঘুরবে")]
+    [Tooltip("Maximum degree to rotate left")]
     public float minRootAngle = -45f;
-    [Tooltip("ডানে সর্বোচ্চ কত ডিগ্রি ঘুরবে")]
+    [Tooltip("Maximum degree to rotate right")]
     public float maxRootAngle = 45f;
 
     [Header("--- Up/Down Tilt Settings (Joystick Y) ---")]
-    [Tooltip("কোন অক্ষে টিল্ট ঘুরবে? (যেমন: X=0, Y=0, Z=1)")]
+    [Tooltip("On which axis will the tilt rotate? (eg: X=0, Y=0, Z=1)")]
     public Vector3 tiltRotationAxis = new Vector3(0, 0, 1); 
     public float tiltSpeed = 60f;    
     public float minTiltZ = -60f;    
@@ -280,7 +280,7 @@ public class SawArmController : MonoBehaviour
             }
         }
 
-        // 🌟 [AUTOMATIC SLICE] ব্লেড পাথরে টাচ করা মাত্রই স্লাইস ফাংশন কল হবে!
+        // 🌟 [AUTOMATIC SLICE] The slice function will be called as soon as the blade touches the stone!
         SliceStoneAtBladePosition();
     }
 

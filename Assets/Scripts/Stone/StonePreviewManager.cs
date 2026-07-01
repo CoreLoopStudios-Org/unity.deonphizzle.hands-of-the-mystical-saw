@@ -13,10 +13,10 @@ public class StonePreviewManager : MonoBehaviour
 
     private GameObject currentPreviewStone;
     
-    // লাইভ আপডেটের জন্য ভেরিয়েবল
+    // Variables for live updates
     private float currentSpinSpeed = 10f;
     private string currentPattern = "Static";
-    private float currentAngle = 45f; // 🌟 নতুন: এঙ্গেল ট্র্যাকিং
+    private float currentAngle = 45f; // 🌟 New: angle tracking
     private Vector3 originalPosition;
 
     void Start()
@@ -51,11 +51,11 @@ public class StonePreviewManager : MonoBehaviour
         currentSpinSpeed = speed;
     }
 
-    // 🌟 নতুন: রোটেশন এঙ্গেল আপডেট করা
+    // 🌟 New: Updating the rotation angle
     public void UpdateAngle(float angle)
     {
         currentAngle = angle;
-        ApplyTilt(); // এঙ্গেল চেঞ্জ হলেই পাথরটা একটু বেঁকে যাবে
+        ApplyTilt(); // When the angle changes, the stone will bend a little
     }
 
     public void UpdatePattern(string pattern)
@@ -63,13 +63,13 @@ public class StonePreviewManager : MonoBehaviour
         currentPattern = pattern;
         if (currentPreviewStone != null)
         {
-            // প্যাটার্ন চেঞ্জ হলে পাথর আগের জায়গায় রিসেট করে নেওয়া
+            // Reset stones to previous position when pattern changes
             currentPreviewStone.transform.localPosition = originalPosition; 
             ApplyTilt(); 
         }
     }
 
-    // 🌟 পাথরটাকে নির্দিষ্ট এঙ্গেলে বাঁকানোর ফাংশন
+    // 🌟 Function to bend the stone to a specified angle
     private void ApplyTilt()
     {
         if (currentPreviewStone != null)
@@ -82,14 +82,14 @@ public class StonePreviewManager : MonoBehaviour
     {
         if (currentPreviewStone == null) return;
 
-        // 🌟 ফিক্স করা মুভমেন্ট এবং রোটেশন লজিক
+        // 🌟 Fixed movement and rotation logic
         if (currentPattern == "Static")
         {
-            // ফিক্স: Static এ এখন আর ঘুরবে না, একদম স্থির থাকবে (শুধু Angle অনুযায়ী বাঁকা থাকবে)
+            // Fix: Static will no longer rotate, it will be completely fixed (only curved according to Angle)
         }
         else if (currentPattern == "Linear")
         {
-            // 🌟 ফিক্স: Linear আগে কাজ করতো না। এখন ডানে-বামে সোজা মুভ করবে
+            // 🌟 Fix: Linear was not working before. Now move straight left and right
             float offset = Mathf.PingPong(Time.time * (currentSpinSpeed * 0.05f), 2f) - 1f; 
             currentPreviewStone.transform.localPosition = originalPosition + new Vector3(offset, 0, 0);
         }
@@ -100,7 +100,7 @@ public class StonePreviewManager : MonoBehaviour
         }
         else if (currentPattern == "Circular")
         {
-            // শুধু Circular সিলেক্ট করলেই গোল হয়ে ঘুরবে
+            // Only select Circular to rotate
             currentPreviewStone.transform.Rotate(Vector3.up * currentSpinSpeed * Time.deltaTime, Space.World);
         }
         else if (currentPattern == "Chaotic")

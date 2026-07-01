@@ -9,7 +9,7 @@ public class moveAtDirection : MonoBehaviour
 
     private void Update()
     {
-        // 🌟 ম্যাজিক শেকল: টর্চ জ্বললে এই হাতুড়ি এক চুলও সামনে এগোবে না!
+        // 🌟 Magic Shackle: When the torch is lit, this hammer won't move a hair!
         if (StoneSpinController.GlobalTorchActive) return;
 
         transform.Translate(direction * (speed * Time.deltaTime));

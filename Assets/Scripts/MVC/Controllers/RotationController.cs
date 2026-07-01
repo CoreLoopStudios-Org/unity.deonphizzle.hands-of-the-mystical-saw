@@ -11,10 +11,10 @@ public class RotationController : MonoBehaviour
     public float rotationSpeed = 5f;
     
     [Header("UI Calibration")]
-    [Tooltip("UI অ্যারো ঠিক জায়গায় না গেলে এখানে ভ্যালু পরিবর্তন করে ঠিক করুন (যেমন: 90, -90, 45 ইত্যাদি)")]
+    [Tooltip("If the UI arrow doesn't move to the right place, fix it by changing the value here (eg: 90, -90, 45 etc.)")]
     public float uiRotationOffset = 0f; 
 
-    // 🌟 Quaternion-এর বদলে Float ব্যবহার করছি যাতে সে Shortest-Path না খোঁজে!
+    // 🌟 Using Float instead of Quaternion so it doesn't search for Shortest-Path!
     private float currentUIAngle = 0f;
     private float targetUIAngle = 0f;
 
@@ -23,7 +23,7 @@ public class RotationController : MonoBehaviour
 
     void Start()
     {
-        // শুরুতে বর্তমান রোটেশন সেট করে নেওয়া হচ্ছে
+        // Initializing the current rotation
         if (uiPointer != null) currentUIAngle = -uiPointer.localEulerAngles.z;
         if (target3DObject != null) currentObjectAngle = target3DObject.localEulerAngles.y;
         
@@ -35,14 +35,14 @@ public class RotationController : MonoBehaviour
     {
         if (uiPointer != null)
         {
-            // 🌟 Mathf.Lerp ব্যবহার করার ফলে সে সবসময় সিরিয়ালি ঘুরবে (Clockwise / Anti-Clockwise)
+            // 🌟 Using Mathf.Lerp will always rotate serially (Clockwise / Anti-Clockwise)
             currentUIAngle = Mathf.Lerp(currentUIAngle, targetUIAngle, Time.deltaTime * rotationSpeed);
             uiPointer.localRotation = Quaternion.Euler(0, 0, -currentUIAngle);
         }
 
         if (target3DObject != null)
         {
-            // 3D অবজেক্টটিও একইভাবে ঘুরবে
+            // The 3D object will also rotate the same way
             currentObjectAngle = Mathf.Lerp(currentObjectAngle, targetObjectAngle, Time.deltaTime * rotationSpeed);
             target3DObject.localRotation = Quaternion.Euler(0, currentObjectAngle, 0);
         }
@@ -53,11 +53,11 @@ public class RotationController : MonoBehaviour
         float visualUIAngle = angle;
 
         // ==========================================
-        // 🌟 কাস্টম UI রোটেশন লজিক (আপনার ডিজাইনের জন্য)
+        // 🌟 Custom UI rotation logic (for your design)
         // ==========================================
         if (angle == 180f)
         {
-            // ১৮০ এর জন্য কাঁটাকে সঠিক জায়গায় নিতে এক্সট্রা ৯০ যোগ করা হলো (২৭০ ডিগ্রি)
+            // Extra 90 is added to get the fork in the right place for 180 (270 degrees)
             visualUIAngle = 230f; 
         }
         else if (angle == 90f)
@@ -66,7 +66,7 @@ public class RotationController : MonoBehaviour
         }
         else if (angle == 45f)
         {
-            // 🌟 ফিক্স: ৪৫ ডিগ্রির জন্য কাঁটাকে উল্টোদিকে (-৪৫) যাওয়ার লজিক
+            // 🌟 Fix: logic to move the fork to the opposite direction (-45) for 45 degrees
             // visualUIAngle = 2f; 
         }
         else if (angle == 0f) 
@@ -74,20 +74,20 @@ public class RotationController : MonoBehaviour
             visualUIAngle = 0f;
         }
 
-        // UI-এর জন্য টার্গেট রোটেশন Float ভ্যালু (অফসেট সহ)
+        // Target rotation Float value for UI (with offset)
         targetUIAngle = visualUIAngle + uiRotationOffset; 
 
-        // 3D অবজেক্টের জন্য টার্গেট রোটেশন Float ভ্যালু
+        // Target rotation Float value for 3D object
         targetObjectAngle = angle; 
 
         // ==========================================
-        // 🌟 প্রেডিক্টর ডেটাবেস আপডেট 
+        // 🌟 Update predictor database 
         // ==========================================
         if (PredictorUIManager.Instance != null)
         {
             PredictorUIManager.Instance.selectedAngle = angle;
             
-            // স্ট্যাটাস আপডেট করে Generating করে দেওয়া হলো
+            // Status is updated to Generating
             if (PredictorUIManager.Instance.statusText != null) 
             {
                 PredictorUIManager.Instance.statusText.text = "Generating...";

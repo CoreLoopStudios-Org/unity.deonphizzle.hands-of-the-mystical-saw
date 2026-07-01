@@ -3,13 +3,13 @@
 // public class PredictorMotionController : MonoBehaviour
 // {
 //     [Header("Data Source (MVC Architecture)")]
-//     public CurrentStoneModel currentStoneModel; // 🌟 তোমার MVC স্ক্রিপ্টেবল অবজেক্ট
+// public CurrentStoneModel currentStoneModel; // 🌟 your MVC scriptable object
 //
 //     [Header("Predictor Challenge Data")]
 //     public StoneChallengeData challengeData;
 //     public bool isDataLoaded = false;
 //
-//     // পাথরের আদি পজিশন মনে রাখার জন্য
+// // To remember the initial position of the stone
 //     private Vector3 originalPosition;
 //     private float timer = 0f;
 //
@@ -21,7 +21,7 @@
 //
 //     void LoadPredictorData()
 //     {
-//         // 🌟 PlayerPrefs এর বদলে তোমার ScriptableObject থেকে ডেটা নিচ্ছি
+// // 🌟 Taking data from your ScriptableObject instead of PlayerPrefs
 //         if (currentStoneModel != null && currentStoneModel.parsedBlueprint != null && currentStoneModel.parsedBlueprint.predictor_challenge_data != null)
 //         {
 //             challengeData = currentStoneModel.parsedBlueprint.predictor_challenge_data;
@@ -40,39 +40,39 @@
 //
 //         timer += Time.deltaTime;
 //         
-//         // প্রতিটি ফ্রেমের শুরুতে পাথরকে তার বেস পজিশনে নিয়ে আসবো (যাতে Jitter বা Oscillation লিমিট ক্রস না করে)
+// // Bring the stone to its base position at the start of each frame (so as not to cross jitter or oscillation limits)
 //         Vector3 currentTargetPosition = originalPosition;
 //
 //         // ==========================================
-//         // 🌟 ১. Core Movement (পাথরের পজিশন পরিবর্তন)
+// // 🌟 1. Core Movement (change in stone position)
 //         // ==========================================
 //         float moveSpeed = challengeData.manualSpeedSlider > 0 ? challengeData.manualSpeedSlider * 0.1f : 1f;
 //
 //         if (challengeData.coreMovement == StoneChallengeData.MovementType.Oscillation)
 //         {
-//             // ডানে-বামে দোল খাবে (Ping-Pong)
+// // Ping-Pong
 //             float offset = Mathf.Sin(timer * moveSpeed) * 2f; 
 //             currentTargetPosition += new Vector3(offset, 0, 0);
 //         }
 //         else if (challengeData.coreMovement == StoneChallengeData.MovementType.Drift)
 //         {
-//             // আস্তে আস্তে সরে যাবে এবং originalPosition আপডেট হবে
+// // will slowly move and update the originalPosition
 //             originalPosition += Vector3.right * (challengeData.driftSpeed * Time.deltaTime);
 //             currentTargetPosition = originalPosition;
 //         }
 //
 //         // ==========================================
-//         // 🌟 ২. Rotational Pattern & The "BAIT TRAP"
+// // 🌟 2. Rotational Pattern & The "BAIT TRAP"
 //         // ==========================================
 //         float rotSpeed = challengeData.manualSpeedSlider > 0 ? challengeData.manualSpeedSlider : 20f;
 //         
-//         // 😈 Bait Pattern Logic: সময়ের অর্ধেক পার হলে হঠাৎ উল্টো দিকে দ্বিগুণ স্পিডে ঘুরবে!
+// // 😈 Bait Pattern Logic: When half of the time passes, it will suddenly turn in the opposite direction at double speed!
 //         if (challengeData.globalTrap == StoneChallengeData.PredictorMetaTrap.BaitPattern)
 //         {
 //             float halfTime = (int)challengeData.challengeDuration / 2f;
 //             if (timer > halfTime) 
 //             {
-//                 rotSpeed = -rotSpeed * 1.5f; // ধোঁকা! ডিরেকশন রিভার্স এবং স্পিড আপ!
+// rotSpeed = -rotSpeed * 1.5f; // cheat! Reverse direction and speed up!
 //             }
 //         }
 //
@@ -88,17 +88,17 @@
 //         }
 //
 //         // ==========================================
-//         // 🌟 ৩. Adversity: Jitter (পাথর কাঁপুনি)
+// // 🌟 3. Adversity: Jitter
 //         // ==========================================
 //         if (challengeData.jitterAmount > 0)
 //         {
-//             // Jitter value অনুযায়ী রেন্ডম পজিশন শিফট (থরথর করে কাঁপবে)
+// // Random position shift according to jitter value
 //             float jitterStr = challengeData.jitterAmount * 0.01f;
 //             Vector3 randomJitter = Random.insideUnitSphere * jitterStr;
 //             currentTargetPosition += randomJitter;
 //         }
 //
-//         // ফাইনাল পজিশন অ্যাপ্লাই করা
+// // Apply final position
 //         transform.position = currentTargetPosition;
 //     }
 // }
