@@ -2,7 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class JadeCuttingGame : MonoBehaviour
+public class 
+    JadeCuttingGame : MonoBehaviour
 {
     [Header("Stone & Spin Settings")]
     public GameObject stoneObject;      
